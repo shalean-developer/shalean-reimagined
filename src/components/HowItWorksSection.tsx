@@ -1,4 +1,5 @@
 import { CalendarCheck, UserCheck, Sparkles } from "lucide-react";
+import Script from "next/script";
 
 const steps = [
   {
@@ -22,8 +23,31 @@ const steps = [
 ];
 
 const HowItWorksSection = () => {
+  // HowTo Schema for the booking process
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Book a Cleaning Service with Shalean",
+    description: "Learn how to book a professional cleaning service in three simple steps",
+    step: steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.title,
+      text: step.description,
+    })),
+  };
+
   return (
-    <section className="section-padding">
+    <>
+      {/* HowTo Structured Data */}
+      <Script
+        id="howto-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(howToSchema),
+        }}
+      />
+      <section className="section-padding">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -70,6 +94,7 @@ const HowItWorksSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

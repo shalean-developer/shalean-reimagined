@@ -1,18 +1,23 @@
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
 const team = [
   {
-    name: "Andrew Ryan",
-    role: "Lead Cleaner",
-    experience: "5 years",
+    name: "Normatter Mazhinji",
+    role: "Professional Cleaner",
+    experience: "2 years",
+    image: "/images/cleaner-1.jpg",
   },
   {
-    name: "Sarah Edwards",
-    role: "Senior Cleaner",
-    experience: "4 years",
+    name: "Lucia Pazvakavambwa",
+    role: "Professional Cleaner",
+    experience: "2 years",
+    image: "/images/cleaner-2.jpg",
   },
   {
-    name: "Elizabeth Anders",
-    role: "Specialist Cleaner",
-    experience: "3 years",
+    name: "Nyasha Mudoni",
+    role: "Professional Cleaner",
+    experience: "2 years",
+    image: "/images/cleaner-3.jpg",
   },
 ];
 
@@ -39,9 +44,16 @@ const TeamSection = () => {
               className="text-center animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary-medium mx-auto mb-4 flex items-center justify-center text-primary-foreground text-3xl font-bold shadow-button">
-                {member.name.charAt(0)}
-              </div>
+              <Avatar className="w-28 h-28 mx-auto mb-4 shadow-button border-4 border-white">
+                <AvatarImage src={member.image} alt={member.name} />
+                <AvatarFallback className="bg-gradient-to-br from-primary to-primary-medium text-primary-foreground text-3xl font-bold">
+                  {member.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")
+                    .toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
               <h3 className="text-lg font-bold text-foreground mb-1">
                 {member.name}
               </h3>

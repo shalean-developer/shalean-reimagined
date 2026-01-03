@@ -1,4 +1,4 @@
-import { Home, Building2, Factory, Sparkles, ArrowRight, Truck } from "lucide-react";
+import { Home, Building2, Factory, Sparkles, ArrowRight, Sprout } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const services = [
@@ -22,15 +22,15 @@ const services = [
   },
   {
     icon: Sparkles,
-    title: "Deep Cleaning",
-    description: "Thorough deep cleaning for those hard-to-reach areas.",
+    title: "Specialized Cleaning",
+    description: "Expert cleaning services tailored to your unique requirements.",
     color: "bg-purple-500/10 text-purple-500",
   },
   {
-    icon: Truck,
-    title: "Move In/Out Cleaning",
-    description: "Leave your old place spotless or start fresh in your new one.",
-    color: "bg-pink-500/10 text-pink-500",
+    icon: Sprout,
+    title: "Outdoor & Exterior Cleaning",
+    description: "Professional cleaning for patios, driveways, and exterior surfaces.",
+    color: "bg-emerald-500/10 text-emerald-500",
   },
   {
     icon: ArrowRight,

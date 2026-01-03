@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Star, Play } from "lucide-react";
-import heroImage from "@/assets/hero-cleaning-team.jpg";
+import { Star } from "lucide-react";
+import Image from "next/image";
 
 const HeroSection = () => {
   return (
@@ -12,11 +12,6 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-center lg:text-left animate-fade-in">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Star className="w-4 h-4 fill-primary" />
-              <span>Trusted by 5,000+ customers</span>
-            </div>
-            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
               Professional{" "}
               <span className="text-gradient">Cleaning</span>
@@ -32,9 +27,8 @@ const HeroSection = () => {
               <Button variant="hero" size="xl">
                 Get a Free Quote
               </Button>
-              <Button variant="heroOutline" size="xl" className="gap-2">
-                <Play className="w-5 h-5 fill-primary" />
-                Watch Video
+              <Button variant="heroOutline" size="xl">
+                Book a service
               </Button>
             </div>
             
@@ -60,10 +54,13 @@ const HeroSection = () => {
           {/* Hero Image */}
           <div className="relative animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src={heroImage}
+              <Image
+                src="/images/hero-cleaning-team.jpg"
                 alt="Professional cleaning team ready to serve you"
+                width={800}
+                height={600}
                 className="w-full h-auto object-cover"
+                priority
               />
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />

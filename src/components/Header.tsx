@@ -1,3 +1,5 @@
+"use client";
+
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -9,7 +11,7 @@ const Header = () => {
     { label: "Home", href: "#" },
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Locations", href: "#locations" },
     { label: "Blog", href: "#blog" },
   ];
 
@@ -40,9 +42,9 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:+27123456789" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+            <a href="tel:+27871535250" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
               <Phone className="w-4 h-4" />
-              <span className="font-medium">+27 12 345 6789</span>
+              <span className="font-medium">(+27) 87 153 5250</span>
             </a>
             <Button variant="hero" size="lg">
               Book Now

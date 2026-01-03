@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import houseCleaningImg from "@/assets/house-cleaning.jpg";
-import deepCleaningImg from "@/assets/deep-cleaning.jpg";
+import Image from "next/image";
+import Script from "next/script";
 
 const greatestServices = [
   {
-    image: houseCleaningImg,
+    image: "/images/house-cleaning.jpg",
     category: "Residential",
     title: "House Cleaning",
     description: "Regular house cleaning services to keep your home fresh and organized. Our team handles everything from dusting to mopping.",
@@ -13,7 +13,7 @@ const greatestServices = [
     priceUnit: "/ session",
   },
   {
-    image: deepCleaningImg,
+    image: "/images/deep-cleaning.jpg",
     category: "Specialty",
     title: "Deep Cleaning",
     description: "Intensive deep cleaning service that covers every corner of your space. Perfect for seasonal cleaning or special occasions.",
@@ -23,8 +23,90 @@ const greatestServices = [
 ];
 
 const GreatestServicesSection = () => {
+  // Service Schema for each service
+  const serviceSchemas = greatestServices.map((service) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    provider: {
+      "@type": "LocalBusiness",
+      "@id": "https://shalean.co.za/#organization",
+      name: "Shalean Cleaning Services",
+      url: "https://shalean.co.za",
+      telephone: "+27 87 153 5250",
+      email: "info@shalean.com",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "39 Harvey Rd, Claremont",
+        addressLocality: "Cape Town",
+        addressRegion: "Western Cape",
+        postalCode: "7780",
+        addressCountry: "ZA",
+      },
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Cape Town",
+      containedInPlace: {
+        "@type": "State",
+        name: "Western Cape",
+      },
+    },
+    image: {
+      "@type": "ImageObject",
+      url: `https://shalean.co.za${service.image}`,
+    },
+    offers: {
+      "@type": "Offer",
+      price: service.price.replace(/[^0-9]/g, ""), // Extract numeric price
+      priceCurrency: "ZAR",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: service.price.replace(/[^0-9]/g, ""),
+        priceCurrency: "ZAR",
+        unitText: service.priceUnit,
+      },
+    },
+    serviceType: service.category,
+    category: service.category,
+  }));
+
+  // ItemList Schema for services
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Shalean Cleaning Services - Featured Services",
+    description: "Featured cleaning services offered by Shalean Cleaning Services",
+    itemListElement: serviceSchemas.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: service,
+    })),
+  };
+
   return (
-    <section className="section-padding bg-secondary/30">
+    <>
+      {/* ItemList Structured Data */}
+      <Script
+        id="itemlist-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(itemListSchema),
+        }}
+      />
+      {/* Service Structured Data */}
+      {serviceSchemas.map((schema, index) => (
+        <Script
+          key={`service-schema-${index}`}
+          id={`service-schema-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
+        />
+      ))}
+      <section className="section-padding bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -52,10 +134,11 @@ const GreatestServicesSection = () => {
               {/* Image */}
               <div className="w-full lg:w-1/2">
                 <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-                  <img
+                  <Image
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </div>
@@ -84,6 +167,7 @@ const GreatestServicesSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

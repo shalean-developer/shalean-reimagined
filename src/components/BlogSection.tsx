@@ -1,23 +1,21 @@
 import { ArrowRight } from "lucide-react";
-import officeCleaningImg from "@/assets/office-cleaning.jpg";
-import industrialCleaningImg from "@/assets/industrial-cleaning.jpg";
-import moveCleaningImg from "@/assets/move-cleaning.jpg";
+import Image from "next/image";
 
 const articles = [
   {
-    image: officeCleaningImg,
+    image: "/images/office-cleaning.jpg",
     category: "Cleaning Services",
     title: "Top Benefits of Hiring a Professional Cleaning Service",
     excerpt: "Discover why professional cleaning is worth the investment for your home or office.",
   },
   {
-    image: industrialCleaningImg,
+    image: "/images/industrial-cleaning.jpg",
     category: "Tips & Tricks",
     title: "Top Tips for Selecting The Best Cleaning Service",
     excerpt: "Learn what to look for when choosing a cleaning company for your needs.",
   },
   {
-    image: moveCleaningImg,
+    image: "/images/move-cleaning.jpg",
     category: "Guides",
     title: "The Ultimate Guide to Move-in Cleaning Your Home in One Day",
     excerpt: "Get your new place spotless and ready to move in with these expert tips.",
@@ -49,11 +47,12 @@ const BlogSection = () => {
               className="group cursor-pointer animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="rounded-2xl overflow-hidden mb-4">
-                <img
+              <div className="relative rounded-2xl overflow-hidden mb-4 h-48">
+                <Image
                   src={article.image}
                   alt={article.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <span className="text-primary font-medium text-sm">
