@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import QuoteFormModal from "./QuoteFormModal";
+import Link from "next/link";
 
 const HeroSection = () => {
-  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
 
   return (
     <>
@@ -31,8 +29,8 @@ const HeroSection = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button variant="hero" size="xl" onClick={() => setQuoteModalOpen(true)}>
-                  Get a Free Quote
+                <Button variant="hero" size="xl" asChild>
+                  <Link href="/booking/quote">Get a Free Quote</Link>
                 </Button>
                 <Button variant="heroOutline" size="xl">
                   Book a service
@@ -87,8 +85,6 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-
-      <QuoteFormModal open={quoteModalOpen} onOpenChange={setQuoteModalOpen} />
     </>
   );
 };
