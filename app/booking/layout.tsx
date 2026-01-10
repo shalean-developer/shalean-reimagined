@@ -175,6 +175,7 @@ function BookingLayoutContent({
         looseCarpetsPrice: 0,
         additionalServicesPrice: 0,
         equipmentSupplyPrice: 0,
+        additionalCleanersPrice: 0,
         subtotal: 0,
         frequencyDiscountPercent: 0,
         frequencyDiscountAmount: 0,

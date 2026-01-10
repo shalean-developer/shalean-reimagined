@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
         const paidAmount = verification.data.amount / 100; // Convert from kobo/cents to ZAR
         
         // Check transaction type
-        const metadata = verification.data.metadata || {};
+        const metadata = (verification.data.metadata || {}) as any;
         const isCreditPurchase = metadata.transaction_type === 'credit_purchase' || 
                                  reference?.startsWith('CREDIT_');
         const isVoucherPurchase = metadata.transaction_type === 'voucher_purchase' || 
@@ -464,7 +464,7 @@ export async function POST(request: NextRequest) {
                     // Check if referral record already exists
                     let { data: existingReferral, error: referralCheckError } = await supabase
                       .from('referrals')
-                      .select('id, status, referrer_reward_status')
+                      .select('id, status, referrer_reward_status, referred_booking_id')
                       .eq('referral_code', referralCode)
                       .eq('referred_email', referredEmail)
                       .maybeSingle();
@@ -487,7 +487,7 @@ export async function POST(request: NextRequest) {
                           referrer_reward_amount: 150.00,
                           referrer_reward_status: 'pending',
                         })
-                        .select('id, status, referrer_reward_status')
+                        .select('id, status, referrer_reward_status, referred_booking_id')
                         .single();
 
                       if (createReferralError) {

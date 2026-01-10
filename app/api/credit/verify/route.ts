@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     const paidAmount = verification.data.amount / 100; // Convert from kobo/cents to ZAR
 
     // Check if this is a credit purchase transaction
-    const metadata = verification.data.metadata || {};
+    const metadata = (verification.data.metadata || {}) as any;
     const isCreditPurchase = metadata.transaction_type === 'credit_purchase' || 
                             reference?.startsWith('CREDIT_');
 

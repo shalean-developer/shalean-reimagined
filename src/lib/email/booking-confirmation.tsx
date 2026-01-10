@@ -95,7 +95,7 @@ export const BookingConfirmationEmail = ({
               {discountAmount > 0 && (
                 <Section style={detailRow}>
                   <Text style={detailLabel}>Discount:</Text>
-                  <Text style={[detailValue, { color: '#16a34a' }]}>-R{discountAmount.toFixed(2)}</Text>
+                  <Text style={{ ...detailValue, color: '#16a34a' }}>-R{discountAmount.toFixed(2)}</Text>
                 </Section>
               )}
 
@@ -107,13 +107,13 @@ export const BookingConfirmationEmail = ({
               <Hr style={hr} />
 
               <Section style={detailRow}>
-                <Text style={[detailLabel, { fontWeight: 'bold', fontSize: '18px' }]}>Total Paid:</Text>
-                <Text style={[detailValue, { fontWeight: 'bold', fontSize: '18px', color: '#3b82f6' }]}>
+                <Text style={{ ...detailLabel, fontWeight: 'bold', fontSize: '18px' }}>Total Paid:</Text>
+                <Text style={{ ...detailValue, fontWeight: 'bold', fontSize: '18px', color: '#3b82f6' }}>
                   R{totalAmount.toFixed(2)}
                 </Text>
               </Section>
 
-              <Text style={[detailLabel, { fontSize: '12px', marginTop: '8px' }]}>
+              <Text style={{ ...detailLabel, fontSize: '12px', marginTop: '8px' }}>
                 Payment Status: {paymentStatus}
               </Text>
             </Section>

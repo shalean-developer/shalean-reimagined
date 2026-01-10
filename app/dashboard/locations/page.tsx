@@ -70,15 +70,21 @@ export default function LocationsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userEmail]);
 
-  const handleCreateLocation = async (data: LocationCreateInput) => {
+  const handleCreateLocation = async (data: LocationCreateInput | LocationUpdateInput) => {
     if (!userEmail) {
       toast.error('Please wait for authentication');
       return;
     }
 
+    // Ensure required fields are present for create
+    if (!('nickname' in data && data.nickname)) {
+      toast.error('Nickname is required');
+      return;
+    }
+
     try {
       setSaving(true);
-      const result = await createLocation(userEmail, undefined, data);
+      const result = await createLocation(userEmail, undefined, data as LocationCreateInput);
 
       if (result.success && result.location) {
         setLocations((prev) => [result.location!, ...prev]);
@@ -96,7 +102,7 @@ export default function LocationsPage() {
     }
   };
 
-  const handleUpdateLocation = async (data: LocationUpdateInput) => {
+  const handleUpdateLocation = async (data: LocationCreateInput | LocationUpdateInput) => {
     if (!editingLocation) return;
 
     try {

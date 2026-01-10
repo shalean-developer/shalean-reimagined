@@ -230,6 +230,8 @@ export async function getCustomerProfile(
       phone: bookingData.customer_phone || null,
       first_name: bookingData.customer_first_name,
       last_name: bookingData.customer_last_name,
+      referral_code: null,
+      avatar_url: null,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     };
@@ -311,7 +313,6 @@ export async function uploadProfilePicture(
           return { 
             success: false, 
             error: 'Storage bucket RLS policy error. Please check your "profile-pictures" bucket policies in Supabase Storage. The bucket needs policies that allow authenticated users to upload files.',
-            errorDetails: uploadError.message,
           };
         }
         
@@ -320,13 +321,11 @@ export async function uploadProfilePicture(
           return { 
             success: false, 
             error: 'Storage bucket not configured. Please create a "profile-pictures" bucket in Supabase Storage.',
-            errorDetails: uploadError.message,
           };
         }
         return { 
           success: false, 
           error: uploadError.message || 'Failed to upload file',
-          errorDetails: uploadError.error || uploadError.statusCode?.toString(),
         };
       }
 
@@ -552,14 +551,12 @@ export async function updateCustomerProfile(
           return { 
             success: false, 
             error: 'Row Level Security error. Please ensure: 1) RLS is disabled on profiles table, 2) SUPABASE_SERVICE_ROLE_KEY is set in .env.local',
-            errorDetails: `Error code: ${updateError.code || 'unknown'}. ${updateError.hint || ''}`,
           };
         }
         
         return { 
           success: false, 
           error: updateError.message || 'Failed to update profile',
-          errorDetails: updateError.details || updateError.hint || undefined,
         };
       }
 
@@ -604,13 +601,11 @@ export async function updateCustomerProfile(
           return { 
             success: false, 
             error: 'Row Level Security error. Please ensure: 1) RLS is disabled on profiles table, 2) SUPABASE_SERVICE_ROLE_KEY is set in .env.local',
-            errorDetails: `Error code: ${insertError.code || 'unknown'}. ${insertError.hint || ''}`,
           };
         }
         return { 
           success: false, 
           error: insertError.message || 'Failed to create profile',
-          errorDetails: insertError.details || insertError.hint || undefined,
         };
       }
 

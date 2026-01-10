@@ -213,7 +213,6 @@ function ProfilePageContent() {
         console.log('📝 Profile update result:', {
           success: updateResult.success,
           error: updateResult.error,
-          errorDetails: updateResult.errorDetails,
         });
 
         if (updateResult.success && updateResult.profile) {
@@ -222,9 +221,8 @@ function ProfilePageContent() {
           toast.success('Profile picture uploaded successfully!');
         } else {
           const errorMsg = updateResult.error || 'Failed to save profile picture';
-          const detailsMsg = updateResult.errorDetails ? ` Details: ${updateResult.errorDetails}` : '';
-          console.error('❌ Profile update failed:', errorMsg, detailsMsg);
-          toast.error(errorMsg + detailsMsg);
+          console.error('❌ Profile update failed:', errorMsg);
+          toast.error(errorMsg);
           setPreviewImage(null);
         }
       } else {

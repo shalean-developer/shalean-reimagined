@@ -107,6 +107,9 @@ export function Step1ServiceDetails({ formData, updateFormData, pricingRules = [
           day_of_week: null,
           is_active: true,
           display_order: idx + 1,
+          max_bookings_per_slot: null,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
         }));
       }
       // Deduplicate by start_time to prevent duplicates

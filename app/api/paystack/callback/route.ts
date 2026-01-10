@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
 
     if (verification.status && verification.data.status === 'success') {
       // Check transaction type
-      const metadata = verification.data.metadata || {};
+      const metadata = (verification.data.metadata || {}) as any;
       const isCreditPurchase = metadata.transaction_type === 'credit_purchase' || 
                               reference?.startsWith('CREDIT_');
       const isVoucherPurchase = metadata.transaction_type === 'voucher_purchase' || 

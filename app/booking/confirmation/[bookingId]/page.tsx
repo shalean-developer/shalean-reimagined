@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { Loader2, CheckCircle2, Calendar, Clock, MapPin, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getBooking } from '../../book/actions';
 import { format } from 'date-fns';
 
-export default function BookingConfirmationPage() {
+function BookingConfirmationContent() {
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -133,6 +133,21 @@ export default function BookingConfirmationPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function BookingConfirmationPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-muted/30 flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg p-8 shadow-lg text-center">
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    }>
+      <BookingConfirmationContent />
+    </Suspense>
   );
 }
 

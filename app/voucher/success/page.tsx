@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Gift, Check, Copy, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,7 @@ interface VoucherData {
   voucherType?: string;
 }
 
-export default function VoucherSuccessPage() {
+function VoucherSuccessContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -183,6 +183,21 @@ export default function VoucherSuccessPage() {
         </Card>
       </div>
     </div>
+  );
+}
+
+export default function VoucherSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-muted/30 flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg p-8 shadow-lg text-center max-w-md">
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    }>
+      <VoucherSuccessContent />
+    </Suspense>
   );
 }
 

@@ -157,7 +157,7 @@ export interface WorkingHour {
 
 export interface PricingRule {
   id: string;
-  rule_type: 'base_price' | 'bedroom' | 'bathroom' | 'additional_service' | 'service_fee' | 'frequency_discount';
+  rule_type: 'base_price' | 'bedroom' | 'bathroom' | 'additional_service' | 'service_fee' | 'frequency_discount' | 'fitted_room' | 'loose_carpet';
   service_id: string | null;
   additional_service_id: string | null;
   rule_key: string | null;

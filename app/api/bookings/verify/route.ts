@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
 
     const supabase = await createClient();
     const paidAmount = verification.data.amount / 100; // Convert from kobo/cents to ZAR
-    const metadata = verification.data.metadata || {};
+    const metadata = (verification.data.metadata || {}) as any;
 
     // Check if this is a booking payment (not credit or voucher)
     const isCreditPurchase = metadata.transaction_type === 'credit_purchase' || 
