@@ -227,7 +227,7 @@ export default function FixReferralPage() {
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold">Referral Status Details</h3>
               <Button
-                onClick={checkReferralStatus}
+                onClick={() => checkReferralStatus()}
                 disabled={checkLoading}
                 variant="outline"
                 size="sm"
