@@ -1,0 +1,110 @@
+{
+  "node": {
+    "00f6a41d53889140d7e9eb8567bc58b1384742947f": {
+      "workers": {
+        "app/booking/details/page": {
+          "moduleId": "[project]/.next-internal/server/app/booking/details/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/page": "action-browser"
+      },
+      "exportedName": "getServices",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "40ba270d5bde2a8477c429febb815e3168fe1f680c": {
+      "workers": {
+        "app/booking/details/page": {
+          "moduleId": "[project]/.next-internal/server/app/booking/details/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/page": "action-browser"
+      },
+      "exportedName": "getAdditionalServices",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "4064366348e3635d7d32c5f8e580ee61d31c234f51": {
+      "workers": {
+        "app/booking/details/page": {
+          "moduleId": "[project]/.next-internal/server/app/booking/details/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getHomeDetailOptions",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/page": "action-browser"
+      },
+      "exportedName": "getHomeDetailOptions",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "00d1405999e1046495476b3d80637183450821bfc0": {
+      "workers": {
+        "app/booking/details/page": {
+          "moduleId": "[project]/.next-internal/server/app/booking/details/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleaningEquipment",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/page": "action-browser"
+      },
+      "exportedName": "getCleaningEquipment",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "0019532f868a94df6c0122768d799c068359648554": {
+      "workers": {
+        "app/booking/details/page": {
+          "moduleId": "[project]/.next-internal/server/app/booking/details/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getWorkingHours",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/page": "action-browser"
+      },
+      "exportedName": "getWorkingHours",
+      "filename": "app/booking/book/actions.ts"
+    },
+    "00c3eb366471dc28d2ba12ca24c27104c719562fe7": {
+      "workers": {
+        "app/booking/details/page": {
+          "moduleId": "[project]/.next-internal/server/app/booking/details/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getWorkingHoursFromOptions",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/page": "action-browser"
+      },
+      "exportedName": "getWorkingHoursFromOptions",
+      "filename": "app/booking/book/actions.ts"
+    },
+    "70aa5452687b8d50280a60de82263c1c523830b083": {
+      "workers": {
+        "app/booking/details/page": {
+          "moduleId": "[project]/.next-internal/server/app/booking/details/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "checkAvailabilityForAllSlots",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/page": "action-browser"
+      },
+      "exportedName": "checkAvailabilityForAllSlots",
+      "filename": "app/booking/book/actions.ts"
+    }
+  },
+  "edge": {}
+}

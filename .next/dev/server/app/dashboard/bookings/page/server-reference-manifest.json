@@ -1,0 +1,20 @@
+{
+  "node": {
+    "70caa94967fdb96320fe4ad03b796848c625ec7638": {
+      "workers": {
+        "app/dashboard/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCustomerBookings",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/page": "action-browser"
+      },
+      "exportedName": "getCustomerBookings",
+      "filename": "app/dashboard/actions.ts"
+    }
+  },
+  "edge": {}
+}

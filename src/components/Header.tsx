@@ -3,6 +3,8 @@
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,8 +23,15 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">S</span>
+            <div className="w-10 h-10 flex items-center justify-center">
+              <Image
+                src="/logo.png"
+                alt="Shalean Logo"
+                width={40}
+                height={40}
+                className="object-contain"
+                priority
+              />
             </div>
             <span className="font-bold text-xl text-foreground">Shalean</span>
           </a>
@@ -46,8 +55,8 @@ const Header = () => {
               <Phone className="w-4 h-4" />
               <span className="font-medium">(+27) 87 153 5250</span>
             </a>
-            <Button variant="hero" size="lg">
-              Book Now
+            <Button variant="hero" size="lg" asChild>
+              <Link href="/booking/details">Book Now</Link>
             </Button>
           </div>
 
@@ -74,8 +83,8 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="hero" className="mt-2">
-                Book Now
+              <Button variant="hero" className="mt-2" asChild>
+                <Link href="/booking/details">Book Now</Link>
               </Button>
             </nav>
           </div>

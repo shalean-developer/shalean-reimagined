@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  // Disable source maps in production to avoid 404 errors
+  productionBrowserSourceMaps: false,
   async headers() {
     return [
       {

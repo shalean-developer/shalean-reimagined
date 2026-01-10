@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Calendar } from "lucide-react";
+import Link from "next/link";
 
 const CTASection = () => {
   return (
@@ -23,9 +24,12 @@ const CTASection = () => {
             <Button
               size="xl"
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
+              asChild
             >
-              <Calendar className="w-5 h-5 mr-2" />
-              Book a Cleaning Today
+              <Link href="/booking/details">
+                <Calendar className="w-5 h-5 mr-2" />
+                Book a Cleaning Today
+              </Link>
             </Button>
             <Button
               size="xl"

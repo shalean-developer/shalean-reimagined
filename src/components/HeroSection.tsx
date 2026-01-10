@@ -32,8 +32,8 @@ const HeroSection = () => {
                 <Button variant="hero" size="xl" asChild>
                   <Link href="/booking/quote">Get a Free Quote</Link>
                 </Button>
-                <Button variant="heroOutline" size="xl">
-                  Book a service
+                <Button variant="heroOutline" size="xl" asChild>
+                  <Link href="/booking/details">Book a service</Link>
                 </Button>
               </div>
               

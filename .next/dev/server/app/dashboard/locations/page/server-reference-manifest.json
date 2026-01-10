@@ -1,0 +1,95 @@
+{
+  "node": {
+    "6081b7c391ca46ac8c956a5d06a8f5364e25eb8c48": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/locations/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCustomerLocations",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "exportedName": "getCustomerLocations",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "708760b781486bdaa46639d3bdf4f0104447aee4f1": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/locations/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "createLocation",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "exportedName": "createLocation",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "60d9b390bb62bf267a9022110594d83f38b182252b": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/locations/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateLocation",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "exportedName": "updateLocation",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "407b8db984c03bd19df0cbb8fb8e3216b7e89c78a3": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/locations/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "deleteLocation",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "exportedName": "deleteLocation",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "70bb0744d56df2ae59ba51d8dd60a8f120df04299b": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/locations/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "setDefaultLocation",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "exportedName": "setDefaultLocation",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "00d62cc413d9b16ce2ea0ff37e9486d3704f49d049": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/locations/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    }
+  },
+  "edge": {}
+}

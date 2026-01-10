@@ -1,0 +1,20 @@
+{
+  "node": {
+    "70e6da898144ffc7776dcd20e7e2115ec0fee08cfd": {
+      "workers": {
+        "app/dashboard/bookings/page": {
+          "moduleId": 76903,
+          "async": false,
+          "exportedName": "getCustomerBookings",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/page": "action-browser"
+      },
+      "exportedName": "getCustomerBookings",
+      "filename": "app/dashboard/actions.ts"
+    }
+  },
+  "edge": {}
+}

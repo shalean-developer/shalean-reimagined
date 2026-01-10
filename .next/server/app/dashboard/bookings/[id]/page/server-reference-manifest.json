@@ -1,0 +1,35 @@
+{
+  "node": {
+    "40359be6e74c1eba27b6679754c2af2a5285e493ca": {
+      "workers": {
+        "app/dashboard/bookings/[id]/page": {
+          "moduleId": 51664,
+          "async": false,
+          "exportedName": "getBookingById",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/[id]/page": "action-browser"
+      },
+      "exportedName": "getBookingById",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "40540b8b91cad549ccd1dc3156387906d069c86d10": {
+      "workers": {
+        "app/dashboard/bookings/[id]/page": {
+          "moduleId": 51664,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/[id]/page": "action-browser"
+      },
+      "exportedName": "getAdditionalServices",
+      "filename": "app/booking/quote/actions.ts"
+    }
+  },
+  "edge": {}
+}

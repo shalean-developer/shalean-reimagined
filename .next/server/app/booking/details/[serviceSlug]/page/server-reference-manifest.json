@@ -1,0 +1,110 @@
+{
+  "node": {
+    "0026c99b1fc5a300062834048bb7384d6673cbd3b4": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser"
+      },
+      "exportedName": "getServices",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "40540b8b91cad549ccd1dc3156387906d069c86d10": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser"
+      },
+      "exportedName": "getAdditionalServices",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "403d5060c438758b6bdd12da808273b0b83b23adf1": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getHomeDetailOptions",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser"
+      },
+      "exportedName": "getHomeDetailOptions",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "0082f6af760ec65a22f8bbcbd587389fd743a6840c": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getCleaningEquipment",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser"
+      },
+      "exportedName": "getCleaningEquipment",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "002f2abc3677e869298b74e0b52ead1d3096ac9f66": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getWorkingHours",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser"
+      },
+      "exportedName": "getWorkingHours",
+      "filename": "app/booking/book/actions.ts"
+    },
+    "00d01b934d9d6a3f1077d04df6441f592ce986a493": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getWorkingHoursFromOptions",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser"
+      },
+      "exportedName": "getWorkingHoursFromOptions",
+      "filename": "app/booking/book/actions.ts"
+    },
+    "70959ca63333f4e34442b0b835d429af0b90998e3e": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "checkAvailabilityForAllSlots",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser"
+      },
+      "exportedName": "checkAvailabilityForAllSlots",
+      "filename": "app/booking/book/actions.ts"
+    }
+  },
+  "edge": {}
+}

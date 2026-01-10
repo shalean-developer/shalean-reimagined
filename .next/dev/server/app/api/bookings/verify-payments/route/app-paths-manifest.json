@@ -1,0 +1,3 @@
+{
+  "/api/bookings/verify-payments/route": "app/api/bookings/verify-payments/route.js"
+}

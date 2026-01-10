@@ -1,0 +1,50 @@
+{
+  "node": {
+    "70e6da898144ffc7776dcd20e7e2115ec0fee08cfd": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getCustomerBookings",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "action-browser"
+      },
+      "exportedName": "getCustomerBookings",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "action-browser"
+      },
+      "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "0026c99b1fc5a300062834048bb7384d6673cbd3b4": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "action-browser"
+      },
+      "exportedName": "getServices",
+      "filename": "app/booking/quote/actions.ts"
+    }
+  },
+  "edge": {}
+}

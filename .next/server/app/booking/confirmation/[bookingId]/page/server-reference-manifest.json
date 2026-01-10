@@ -1,0 +1,50 @@
+{
+  "node": {
+    "0026c99b1fc5a300062834048bb7384d6673cbd3b4": {
+      "workers": {
+        "app/booking/confirmation/[bookingId]/page": {
+          "moduleId": 51374,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/confirmation/[bookingId]/page": "action-browser"
+      },
+      "exportedName": "getServices",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "40540b8b91cad549ccd1dc3156387906d069c86d10": {
+      "workers": {
+        "app/booking/confirmation/[bookingId]/page": {
+          "moduleId": 51374,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/confirmation/[bookingId]/page": "action-browser"
+      },
+      "exportedName": "getAdditionalServices",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "4019077b570b948a0ce0bdaa6a6ff3658da4c84eee": {
+      "workers": {
+        "app/booking/confirmation/[bookingId]/page": {
+          "moduleId": 51374,
+          "async": false,
+          "exportedName": "getBooking",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/confirmation/[bookingId]/page": "action-browser"
+      },
+      "exportedName": "getBooking",
+      "filename": "app/booking/book/actions.ts"
+    }
+  },
+  "edge": {}
+}

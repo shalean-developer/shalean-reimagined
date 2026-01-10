@@ -1,5 +1,673 @@
 {
-  "node": {},
+  "node": {
+    "0026c99b1fc5a300062834048bb7384d6673cbd3b4": {
+      "workers": {
+        "app/booking/book/page": {
+          "moduleId": 36827,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/confirmation/[bookingId]/page": {
+          "moduleId": 51374,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/details/page": {
+          "moduleId": 43551,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/quote/page": {
+          "moduleId": 25562,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/quote/success/page": {
+          "moduleId": 16080,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/submit/[serviceSlug]/page": {
+          "moduleId": 4646,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/submit/page": {
+          "moduleId": 99028,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/worker/[serviceSlug]/page": {
+          "moduleId": 46007,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/worker/page": {
+          "moduleId": 97640,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/book/page": "action-browser",
+        "app/booking/confirmation/[bookingId]/page": "action-browser",
+        "app/booking/details/[serviceSlug]/page": "action-browser",
+        "app/booking/details/page": "action-browser",
+        "app/booking/quote/page": "action-browser",
+        "app/booking/quote/success/page": "action-browser",
+        "app/booking/submit/[serviceSlug]/page": "action-browser",
+        "app/booking/submit/page": "action-browser",
+        "app/booking/worker/[serviceSlug]/page": "action-browser",
+        "app/booking/worker/page": "action-browser",
+        "app/dashboard/page": "action-browser"
+      },
+      "filename": "app/booking/quote/actions.ts",
+      "exportedName": "getServices"
+    },
+    "40540b8b91cad549ccd1dc3156387906d069c86d10": {
+      "workers": {
+        "app/booking/book/page": {
+          "moduleId": 36827,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/confirmation/[bookingId]/page": {
+          "moduleId": 51374,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/details/page": {
+          "moduleId": 43551,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/quote/page": {
+          "moduleId": 25562,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/quote/success/page": {
+          "moduleId": 16080,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/submit/[serviceSlug]/page": {
+          "moduleId": 4646,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/submit/page": {
+          "moduleId": 99028,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/worker/[serviceSlug]/page": {
+          "moduleId": 46007,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/worker/page": {
+          "moduleId": 97640,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/dashboard/bookings/[id]/page": {
+          "moduleId": 51664,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/book/page": "action-browser",
+        "app/booking/confirmation/[bookingId]/page": "action-browser",
+        "app/booking/details/[serviceSlug]/page": "action-browser",
+        "app/booking/details/page": "action-browser",
+        "app/booking/quote/page": "action-browser",
+        "app/booking/quote/success/page": "action-browser",
+        "app/booking/submit/[serviceSlug]/page": "action-browser",
+        "app/booking/submit/page": "action-browser",
+        "app/booking/worker/[serviceSlug]/page": "action-browser",
+        "app/booking/worker/page": "action-browser",
+        "app/dashboard/bookings/[id]/page": "action-browser"
+      },
+      "filename": "app/booking/quote/actions.ts",
+      "exportedName": "getAdditionalServices"
+    },
+    "4019077b570b948a0ce0bdaa6a6ff3658da4c84eee": {
+      "workers": {
+        "app/booking/confirmation/[bookingId]/page": {
+          "moduleId": 51374,
+          "async": false,
+          "exportedName": "getBooking",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/confirmation/[bookingId]/page": "action-browser"
+      },
+      "filename": "app/booking/book/actions.ts",
+      "exportedName": "getBooking"
+    },
+    "403d5060c438758b6bdd12da808273b0b83b23adf1": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getHomeDetailOptions",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/details/page": {
+          "moduleId": 43551,
+          "async": false,
+          "exportedName": "getHomeDetailOptions",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/quote/page": {
+          "moduleId": 25562,
+          "async": false,
+          "exportedName": "getHomeDetailOptions",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser",
+        "app/booking/details/page": "action-browser",
+        "app/booking/quote/page": "action-browser"
+      },
+      "filename": "app/booking/quote/actions.ts",
+      "exportedName": "getHomeDetailOptions"
+    },
+    "0082f6af760ec65a22f8bbcbd587389fd743a6840c": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getCleaningEquipment",
+          "filename": "app/booking/quote/actions.ts"
+        },
+        "app/booking/details/page": {
+          "moduleId": 43551,
+          "async": false,
+          "exportedName": "getCleaningEquipment",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser",
+        "app/booking/details/page": "action-browser"
+      },
+      "filename": "app/booking/quote/actions.ts",
+      "exportedName": "getCleaningEquipment"
+    },
+    "002f2abc3677e869298b74e0b52ead1d3096ac9f66": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getWorkingHours",
+          "filename": "app/booking/book/actions.ts"
+        },
+        "app/booking/details/page": {
+          "moduleId": 43551,
+          "async": false,
+          "exportedName": "getWorkingHours",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser",
+        "app/booking/details/page": "action-browser"
+      },
+      "filename": "app/booking/book/actions.ts",
+      "exportedName": "getWorkingHours"
+    },
+    "00d01b934d9d6a3f1077d04df6441f592ce986a493": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "getWorkingHoursFromOptions",
+          "filename": "app/booking/book/actions.ts"
+        },
+        "app/booking/details/page": {
+          "moduleId": 43551,
+          "async": false,
+          "exportedName": "getWorkingHoursFromOptions",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser",
+        "app/booking/details/page": "action-browser"
+      },
+      "filename": "app/booking/book/actions.ts",
+      "exportedName": "getWorkingHoursFromOptions"
+    },
+    "70959ca63333f4e34442b0b835d429af0b90998e3e": {
+      "workers": {
+        "app/booking/details/[serviceSlug]/page": {
+          "moduleId": 66014,
+          "async": false,
+          "exportedName": "checkAvailabilityForAllSlots",
+          "filename": "app/booking/book/actions.ts"
+        },
+        "app/booking/details/page": {
+          "moduleId": 43551,
+          "async": false,
+          "exportedName": "checkAvailabilityForAllSlots",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/details/[serviceSlug]/page": "action-browser",
+        "app/booking/details/page": "action-browser"
+      },
+      "filename": "app/booking/book/actions.ts",
+      "exportedName": "checkAvailabilityForAllSlots"
+    },
+    "6020f1767bb4f58bcd9c3dba1ef5c9fc5a5d710530": {
+      "workers": {
+        "app/booking/quote/page": {
+          "moduleId": 25562,
+          "async": false,
+          "exportedName": "saveQuoteDraft",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/quote/page": "action-browser"
+      },
+      "filename": "app/booking/quote/actions.ts",
+      "exportedName": "saveQuoteDraft"
+    },
+    "40f80c03caf4e404f1a46d5edc6b6693f1d9c2890f": {
+      "workers": {
+        "app/booking/quote/page": {
+          "moduleId": 25562,
+          "async": false,
+          "exportedName": "getQuoteDraft",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/quote/page": "action-browser"
+      },
+      "filename": "app/booking/quote/actions.ts",
+      "exportedName": "getQuoteDraft"
+    },
+    "60d774a12fe0c308a9835d222a8312cb7788831f7d": {
+      "workers": {
+        "app/booking/quote/page": {
+          "moduleId": 25562,
+          "async": false,
+          "exportedName": "submitQuote",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/quote/page": "action-browser"
+      },
+      "filename": "app/booking/quote/actions.ts",
+      "exportedName": "submitQuote"
+    },
+    "4058c82389d1b0af01e0ab7f3166467c8d163c3dfb": {
+      "workers": {
+        "app/booking/submit/[serviceSlug]/page": {
+          "moduleId": 4646,
+          "async": false,
+          "exportedName": "createBookingDraft",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/submit/[serviceSlug]/page": "action-browser"
+      },
+      "filename": "app/booking/book/actions.ts",
+      "exportedName": "createBookingDraft"
+    },
+    "40856064b0b8a033c99fb4eb0cd1dcbe900869365a": {
+      "workers": {
+        "app/booking/submit/[serviceSlug]/page": {
+          "moduleId": 4646,
+          "async": false,
+          "exportedName": "initializePaymentForBooking",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/submit/[serviceSlug]/page": "action-browser"
+      },
+      "filename": "app/booking/book/actions.ts",
+      "exportedName": "initializePaymentForBooking"
+    },
+    "60bf64c7595e42167f2bb61b3c1cf32233840f6b11": {
+      "workers": {
+        "app/booking/submit/[serviceSlug]/page": {
+          "moduleId": 4646,
+          "async": false,
+          "exportedName": "validateDiscountCode",
+          "filename": "app/booking/book/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/submit/[serviceSlug]/page": "action-browser"
+      },
+      "filename": "app/booking/book/actions.ts",
+      "exportedName": "validateDiscountCode"
+    },
+    "70e6da898144ffc7776dcd20e7e2115ec0fee08cfd": {
+      "workers": {
+        "app/dashboard/bookings/page": {
+          "moduleId": 76903,
+          "async": false,
+          "exportedName": "getCustomerBookings",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getCustomerBookings",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/page": "action-browser",
+        "app/dashboard/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getCustomerBookings"
+    },
+    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": 55,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/profile/page": {
+          "moduleId": 5026,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/refer/page": {
+          "moduleId": 52723,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/vouchers/page": {
+          "moduleId": 38251,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser",
+        "app/dashboard/page": "action-browser",
+        "app/dashboard/profile/page": "action-browser",
+        "app/dashboard/refer/page": "action-browser",
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getAuthenticatedUser"
+    },
+    "40359be6e74c1eba27b6679754c2af2a5285e493ca": {
+      "workers": {
+        "app/dashboard/bookings/[id]/page": {
+          "moduleId": 51664,
+          "async": false,
+          "exportedName": "getBookingById",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/[id]/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getBookingById"
+    },
+    "60c1b9bbbf0512ba645ad27bb23d69b431ccf214be": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": 55,
+          "async": false,
+          "exportedName": "getCustomerLocations",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getCustomerLocations"
+    },
+    "7006f6a543fd1e64a5a18d4b6997a274e04d8e8dec": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": 55,
+          "async": false,
+          "exportedName": "createLocation",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "createLocation"
+    },
+    "6010ca52506169326b0ec9bef8267d64a7b180aff9": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": 55,
+          "async": false,
+          "exportedName": "updateLocation",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "updateLocation"
+    },
+    "40c8a733504bc3047640235398c947b14237259298": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": 55,
+          "async": false,
+          "exportedName": "deleteLocation",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "deleteLocation"
+    },
+    "70acd45e560818e6fd33363f4c63d3d03f35846906": {
+      "workers": {
+        "app/dashboard/locations/page": {
+          "moduleId": 55,
+          "async": false,
+          "exportedName": "setDefaultLocation",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/locations/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "setDefaultLocation"
+    },
+    "60c4adeb47106fed443dcb57029de610afc3c196ee": {
+      "workers": {
+        "app/dashboard/profile/page": {
+          "moduleId": 5026,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/profile/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getCustomerProfile"
+    },
+    "605adaee13a3545fbd6b2e8f8db0e189027c17b984": {
+      "workers": {
+        "app/dashboard/profile/page": {
+          "moduleId": 5026,
+          "async": false,
+          "exportedName": "updateCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/profile/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "updateCustomerProfile"
+    },
+    "78dcc59afc106619c8f9aa9699d1693408b43a9a42": {
+      "workers": {
+        "app/dashboard/profile/page": {
+          "moduleId": 5026,
+          "async": false,
+          "exportedName": "uploadProfilePicture",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/profile/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "uploadProfilePicture"
+    },
+    "405a41acb66d8979595f53da92587b5a17cb0bbc23": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": 52723,
+          "async": false,
+          "exportedName": "getOrCreateReferralCode",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getOrCreateReferralCode"
+    },
+    "7099b4cf66cf8cd78382142420b505316587c18598": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": 52723,
+          "async": false,
+          "exportedName": "sendReferralInvites",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "sendReferralInvites"
+    },
+    "40841e9e069f82de9aa575f302add620cc9682bb9c": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": 52723,
+          "async": false,
+          "exportedName": "getReferralStats",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getReferralStats"
+    },
+    "7081e40464f3c3699fd146e4be7b7e793fd9b413be": {
+      "workers": {
+        "app/dashboard/vouchers/page": {
+          "moduleId": 38251,
+          "async": false,
+          "exportedName": "redeemVoucher",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "redeemVoucher"
+    },
+    "6003e3002eac71bb39708c3f3b82e5b64ef1e083f9": {
+      "workers": {
+        "app/dashboard/vouchers/page": {
+          "moduleId": 38251,
+          "async": false,
+          "exportedName": "getVoucherRedemptions",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getVoucherRedemptions"
+    }
+  },
   "edge": {},
-  "encryptionKey": "l8D2P9iDug6lbZ9WfPcV1e12Tl5fA3sKw7+vor4T2xA="
+  "encryptionKey": "0lTkIdNVfV+9X4rpEJI6jeF7wGFk1HEIJpzHDijn6d4="
 }

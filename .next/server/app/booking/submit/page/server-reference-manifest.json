@@ -1,0 +1,35 @@
+{
+  "node": {
+    "0026c99b1fc5a300062834048bb7384d6673cbd3b4": {
+      "workers": {
+        "app/booking/submit/page": {
+          "moduleId": 99028,
+          "async": false,
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/submit/page": "action-browser"
+      },
+      "exportedName": "getServices",
+      "filename": "app/booking/quote/actions.ts"
+    },
+    "40540b8b91cad549ccd1dc3156387906d069c86d10": {
+      "workers": {
+        "app/booking/submit/page": {
+          "moduleId": 99028,
+          "async": false,
+          "exportedName": "getAdditionalServices",
+          "filename": "app/booking/quote/actions.ts"
+        }
+      },
+      "layer": {
+        "app/booking/submit/page": "action-browser"
+      },
+      "exportedName": "getAdditionalServices",
+      "filename": "app/booking/quote/actions.ts"
+    }
+  },
+  "edge": {}
+}

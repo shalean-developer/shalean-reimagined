@@ -1,0 +1,3 @@
+module.exports=[29253,a=>{"use strict";var b=a.i(72131),c=a.i(50944),d=a.i(33217),e=a.i(18873),f=a.i(39338),g=a.i(47565);function h(){let a=(0,c.useRouter)(),{formData:h}=(0,e.useBookingFormContext)(),{data:i=[]}=(0,d.useQuery)({queryKey:["services"],queryFn:f.getServices,staleTime:3e5});return(0,b.useEffect)(()=>{if(i.length>0)if(h.serviceId){let b=(0,g.getServiceSlugById)(i,h.serviceId);b?a.replace(`/booking/worker/${b}`):a.replace("/booking/details")}else a.replace("/booking/details")},[h.serviceId,i,a]),null}a.s(["default",()=>h])}];
+
+//# sourceMappingURL=app_booking_worker_page_tsx_392dbc41._.js.map

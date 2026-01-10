@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -8,8 +9,14 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">S</span>
+              <div className="w-10 h-10 flex items-center justify-center">
+                <Image
+                  src="/logo.png"
+                  alt="Shalean Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
               </div>
               <span className="font-bold text-xl">Shalean</span>
             </div>

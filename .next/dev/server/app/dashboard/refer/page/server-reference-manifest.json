@@ -1,0 +1,65 @@
+{
+  "node": {
+    "4083061abe59b2358394402bebdab58f404956d9bd": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/refer/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getOrCreateReferralCode",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "getOrCreateReferralCode",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "704f947bea8c67d82cc24ebea183f8185423c2aae7": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/refer/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "sendReferralInvites",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "sendReferralInvites",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "40932535a645b455cb9a9288932c63a53bbcb21a26": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/refer/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getReferralStats",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "getReferralStats",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "00d62cc413d9b16ce2ea0ff37e9486d3704f49d049": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/refer/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    }
+  },
+  "edge": {}
+}

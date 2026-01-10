@@ -1,0 +1,50 @@
+{
+  "node": {
+    "7081e40464f3c3699fd146e4be7b7e793fd9b413be": {
+      "workers": {
+        "app/dashboard/vouchers/page": {
+          "moduleId": 38251,
+          "async": false,
+          "exportedName": "redeemVoucher",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "exportedName": "redeemVoucher",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "6003e3002eac71bb39708c3f3b82e5b64ef1e083f9": {
+      "workers": {
+        "app/dashboard/vouchers/page": {
+          "moduleId": 38251,
+          "async": false,
+          "exportedName": "getVoucherRedemptions",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "exportedName": "getVoucherRedemptions",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
+      "workers": {
+        "app/dashboard/vouchers/page": {
+          "moduleId": 38251,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    }
+  },
+  "edge": {}
+}

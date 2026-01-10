@@ -1,0 +1,65 @@
+{
+  "node": {
+    "60c4adeb47106fed443dcb57029de610afc3c196ee": {
+      "workers": {
+        "app/dashboard/profile/page": {
+          "moduleId": 5026,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/profile/page": "action-browser"
+      },
+      "exportedName": "getCustomerProfile",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "605adaee13a3545fbd6b2e8f8db0e189027c17b984": {
+      "workers": {
+        "app/dashboard/profile/page": {
+          "moduleId": 5026,
+          "async": false,
+          "exportedName": "updateCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/profile/page": "action-browser"
+      },
+      "exportedName": "updateCustomerProfile",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
+      "workers": {
+        "app/dashboard/profile/page": {
+          "moduleId": 5026,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/profile/page": "action-browser"
+      },
+      "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "78dcc59afc106619c8f9aa9699d1693408b43a9a42": {
+      "workers": {
+        "app/dashboard/profile/page": {
+          "moduleId": 5026,
+          "async": false,
+          "exportedName": "uploadProfilePicture",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/profile/page": "action-browser"
+      },
+      "exportedName": "uploadProfilePicture",
+      "filename": "app/dashboard/actions.ts"
+    }
+  },
+  "edge": {}
+}
