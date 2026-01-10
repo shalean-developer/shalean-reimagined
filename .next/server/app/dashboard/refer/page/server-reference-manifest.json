@@ -1,5 +1,35 @@
 {
   "node": {
+    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": 52723,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "60c4adeb47106fed443dcb57029de610afc3c196ee": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": 52723,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "getCustomerProfile",
+      "filename": "app/dashboard/actions.ts"
+    },
     "405a41acb66d8979595f53da92587b5a17cb0bbc23": {
       "workers": {
         "app/dashboard/refer/page": {
@@ -43,21 +73,6 @@
         "app/dashboard/refer/page": "action-browser"
       },
       "exportedName": "getReferralStats",
-      "filename": "app/dashboard/actions.ts"
-    },
-    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
-      "workers": {
-        "app/dashboard/refer/page": {
-          "moduleId": 52723,
-          "async": false,
-          "exportedName": "getAuthenticatedUser",
-          "filename": "app/dashboard/actions.ts"
-        }
-      },
-      "layer": {
-        "app/dashboard/refer/page": "action-browser"
-      },
-      "exportedName": "getAuthenticatedUser",
       "filename": "app/dashboard/actions.ts"
     }
   },

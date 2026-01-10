@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/booking/layout,_N_T_/booking/quote/layout,_N_T_/booking/quote/success/layout,_N_T_/booking/quote/success/page,_N_T_/booking/quote/success"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/booking/quote/success/__PAGE__",
+    "/booking/quote/success",
+    "/booking/quote",
+    "/booking",
+    "/_index",
+    "/_head"
+  ]
+}

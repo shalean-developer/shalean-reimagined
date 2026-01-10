@@ -115,7 +115,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function BookingConfirmationPage() {
+function BookingConfirmationContent() {
     _s();
     const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"])();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -126,10 +126,10 @@ function BookingConfirmationPage() {
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "BookingConfirmationPage.useEffect": ()=>{
+        "BookingConfirmationContent.useEffect": ()=>{
             if (bookingId) {
                 (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$data$3a$6ea5bc__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__["getBooking"])(bookingId).then({
-                    "BookingConfirmationPage.useEffect": (result)=>{
+                    "BookingConfirmationContent.useEffect": (result)=>{
                         if (result.success && result.booking) {
                             setBooking(result.booking);
                         } else {
@@ -137,10 +137,10 @@ function BookingConfirmationPage() {
                         }
                         setLoading(false);
                     }
-                }["BookingConfirmationPage.useEffect"]);
+                }["BookingConfirmationContent.useEffect"]);
             }
         }
-    }["BookingConfirmationPage.useEffect"], [
+    }["BookingConfirmationContent.useEffect"], [
         bookingId
     ]);
     if (loading) {
@@ -516,16 +516,62 @@ function BookingConfirmationPage() {
         columnNumber: 5
     }, this);
 }
-_s(BookingConfirmationPage, "atFjx5lUxPvVteZxxhgQv6Vh5vU=", false, function() {
+_s(BookingConfirmationContent, "atFjx5lUxPvVteZxxhgQv6Vh5vU=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"]
     ];
 });
-_c = BookingConfirmationPage;
-var _c;
-__turbopack_context__.k.register(_c, "BookingConfirmationPage");
+_c = BookingConfirmationContent;
+function BookingConfirmationPage() {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
+        fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "min-h-screen bg-muted/30 flex items-center justify-center p-4",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "bg-white rounded-lg p-8 shadow-lg text-center",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"
+                    }, void 0, false, {
+                        fileName: "[project]/app/booking/confirmation/[bookingId]/page.tsx",
+                        lineNumber: 144,
+                        columnNumber: 11
+                    }, void 0),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-muted-foreground",
+                        children: "Loading..."
+                    }, void 0, false, {
+                        fileName: "[project]/app/booking/confirmation/[bookingId]/page.tsx",
+                        lineNumber: 145,
+                        columnNumber: 11
+                    }, void 0)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/booking/confirmation/[bookingId]/page.tsx",
+                lineNumber: 143,
+                columnNumber: 9
+            }, void 0)
+        }, void 0, false, {
+            fileName: "[project]/app/booking/confirmation/[bookingId]/page.tsx",
+            lineNumber: 142,
+            columnNumber: 7
+        }, void 0),
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(BookingConfirmationContent, {}, void 0, false, {
+            fileName: "[project]/app/booking/confirmation/[bookingId]/page.tsx",
+            lineNumber: 149,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/app/booking/confirmation/[bookingId]/page.tsx",
+        lineNumber: 141,
+        columnNumber: 5
+    }, this);
+}
+_c1 = BookingConfirmationPage;
+var _c, _c1;
+__turbopack_context__.k.register(_c, "BookingConfirmationContent");
+__turbopack_context__.k.register(_c1, "BookingConfirmationPage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

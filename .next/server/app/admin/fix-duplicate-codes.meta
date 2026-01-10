@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/admin/layout,_N_T_/admin/fix-duplicate-codes/layout,_N_T_/admin/fix-duplicate-codes/page,_N_T_/admin/fix-duplicate-codes"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/admin/fix-duplicate-codes/__PAGE__",
+    "/admin/fix-duplicate-codes",
+    "/admin",
+    "/_index",
+    "/_head"
+  ]
+}

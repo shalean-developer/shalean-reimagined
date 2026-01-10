@@ -2670,6 +2670,7 @@ function BookingLayoutContent({ children }) {
                     looseCarpetsPrice: 0,
                     additionalServicesPrice: 0,
                     equipmentSupplyPrice: 0,
+                    additionalCleanersPrice: 0,
                     subtotal: 0,
                     frequencyDiscountPercent: 0,
                     frequencyDiscountAmount: 0,
@@ -2733,12 +2734,12 @@ function BookingLayoutContent({ children }) {
                                             priority: true
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/layout.tsx",
-                                            lineNumber: 241,
+                                            lineNumber: 242,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/layout.tsx",
-                                        lineNumber: 240,
+                                        lineNumber: 241,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2746,13 +2747,13 @@ function BookingLayoutContent({ children }) {
                                         children: "Shalean"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/layout.tsx",
-                                        lineNumber: 250,
+                                        lineNumber: 251,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/layout.tsx",
-                                lineNumber: 239,
+                                lineNumber: 240,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$components$2f$ProgressIndicator$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ProgressIndicator"], {
@@ -2761,23 +2762,23 @@ function BookingLayoutContent({ children }) {
                                 isStepCompleted: isStepCompleted
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/layout.tsx",
-                                lineNumber: 252,
+                                lineNumber: 253,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/layout.tsx",
-                        lineNumber: 238,
+                        lineNumber: 239,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/booking/layout.tsx",
-                    lineNumber: 237,
+                    lineNumber: 238,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/booking/layout.tsx",
-                lineNumber: 236,
+                lineNumber: 237,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -2792,7 +2793,7 @@ function BookingLayoutContent({ children }) {
                             children: children
                         }, void 0, false, {
                             fileName: "[project]/app/booking/layout.tsx",
-                            lineNumber: 270,
+                            lineNumber: 271,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2805,34 +2806,34 @@ function BookingLayoutContent({ children }) {
                                 pricingRules: pricingRules
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/layout.tsx",
-                                lineNumber: 276,
+                                lineNumber: 277,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/booking/layout.tsx",
-                            lineNumber: 275,
+                            lineNumber: 276,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/booking/layout.tsx",
-                    lineNumber: 268,
+                    lineNumber: 269,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/booking/layout.tsx",
-                lineNumber: 262,
+                lineNumber: 263,
                 columnNumber: 7
             }, this),
             !isConfirmationPage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/booking/layout.tsx",
-                lineNumber: 289,
+                lineNumber: 290,
                 columnNumber: 31
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/booking/layout.tsx",
-        lineNumber: 233,
+        lineNumber: 234,
         columnNumber: 5
     }, this);
 }
@@ -2853,12 +2854,12 @@ function BookingLayout({ children }) {
             children: children
         }, void 0, false, {
             fileName: "[project]/app/booking/layout.tsx",
-            lineNumber: 301,
+            lineNumber: 302,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/booking/layout.tsx",
-        lineNumber: 300,
+        lineNumber: 301,
         columnNumber: 5
     }, this);
 }

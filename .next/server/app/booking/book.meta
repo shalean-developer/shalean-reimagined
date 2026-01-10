@@ -1,0 +1,18 @@
+{
+  "status": 307,
+  "headers": {
+    "location": "/booking/details",
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/booking/layout,_N_T_/booking/book/layout,_N_T_/booking/book/page,_N_T_/booking/book"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/booking/book/__PAGE__",
+    "/booking/book",
+    "/booking",
+    "/_index",
+    "/_head"
+  ]
+}

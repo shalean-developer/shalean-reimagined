@@ -27,39 +27,62 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 ;
 async function middleware(request) {
+    // Validate environment variables
+    const supabaseUrl = ("TURBOPACK compile-time value", "https://orrmzbaztgajftxytduk.supabase.co");
+    const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ycm16YmF6dGdhamZ0eHl0ZHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczODkyMTgsImV4cCI6MjA4Mjk2NTIxOH0.ei-T1BLhgmaYwxxd1YQqKkvv-mgXovrY2KpPPompHPw");
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
     let response = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].next({
         request: {
             headers: request.headers
         }
     });
-    const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createServerClient$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["createServerClient"])(("TURBOPACK compile-time value", "https://orrmzbaztgajftxytduk.supabase.co"), ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ycm16YmF6dGdhamZ0eHl0ZHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczODkyMTgsImV4cCI6MjA4Mjk2NTIxOH0.ei-T1BLhgmaYwxxd1YQqKkvv-mgXovrY2KpPPompHPw"), {
-        cookies: {
-            getAll () {
-                return request.cookies.getAll();
-            },
-            setAll (cookiesToSet) {
-                cookiesToSet.forEach(({ name, value, options })=>request.cookies.set(name, value));
-                response = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].next({
-                    request
+    // Store cookies that need to be set
+    const cookiesToSet = [];
+    try {
+        const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createServerClient$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["createServerClient"])(supabaseUrl, supabaseAnonKey, {
+            cookies: {
+                getAll () {
+                    return request.cookies.getAll();
+                },
+                setAll (cookies) {
+                    cookies.forEach(({ name, value, options })=>{
+                        cookiesToSet.push({
+                            name,
+                            value,
+                            options
+                        });
+                        response.cookies.set(name, value, options);
+                    });
+                }
+            }
+        });
+        // Refresh session if expired - required for Server Components
+        const { data: { user }, error } = await supabase.auth.getUser();
+        // If there's an error getting user, log it but don't block the request
+        if (error) {
+            console.error('Error getting user in middleware:', error.message);
+        }
+        // Protect dashboard routes
+        if (request.nextUrl.pathname.startsWith('/dashboard')) {
+            if (!user) {
+                const url = request.nextUrl.clone();
+                url.pathname = '/login';
+                url.searchParams.set('redirect', request.nextUrl.pathname);
+                // Create redirect response and apply cookies
+                const redirectResponse = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].redirect(url);
+                cookiesToSet.forEach(({ name, value, options })=>{
+                    redirectResponse.cookies.set(name, value, options);
                 });
-                cookiesToSet.forEach(({ name, value, options })=>response.cookies.set(name, value, options));
+                return redirectResponse;
             }
         }
-    });
-    // Refresh session if expired - required for Server Components
-    const { data: { user } } = await supabase.auth.getUser();
-    // Protect dashboard routes
-    if (request.nextUrl.pathname.startsWith('/dashboard')) {
-        if (!user) {
-            const url = request.nextUrl.clone();
-            url.pathname = '/login';
-            url.searchParams.set('redirect', request.nextUrl.pathname);
-            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].redirect(url);
-        }
+        return response;
+    } catch (error) {
+        // Log the error but don't crash the middleware
+        console.error('Middleware error:', error);
+        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].next();
     }
-    // Allow public routes: booking, login, signup, forgot-password, reset-password
-    // All other routes (booking, etc.) are publicly accessible
-    return response;
 }
 const config = {
     matcher: [

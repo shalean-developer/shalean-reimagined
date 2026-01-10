@@ -2,63 +2,63 @@
   "node": {
     "00d62cc413d9b16ce2ea0ff37e9486d3704f49d049": {
       "workers": {
-        "app/dashboard/profile/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/profile/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getAuthenticatedUser",
           "filename": "app/dashboard/actions.ts"
         }
       },
       "layer": {
-        "app/dashboard/profile/page": "action-browser"
+        "app/dashboard/page": "action-browser"
       },
       "filename": "app/dashboard/actions.ts",
       "exportedName": "getAuthenticatedUser"
     },
     "60d1908fde86ac220eb7a80a2be1b3941c55a8b34b": {
       "workers": {
-        "app/dashboard/profile/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/profile/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getCustomerProfile",
           "filename": "app/dashboard/actions.ts"
         }
       },
       "layer": {
-        "app/dashboard/profile/page": "action-browser"
+        "app/dashboard/page": "action-browser"
       },
       "filename": "app/dashboard/actions.ts",
       "exportedName": "getCustomerProfile"
     },
-    "601814a93ae97943fba4e2304e5c5cf022cae486fb": {
+    "70caa94967fdb96320fe4ad03b796848c625ec7638": {
       "workers": {
-        "app/dashboard/profile/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/profile/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
-          "exportedName": "updateCustomerProfile",
+          "exportedName": "getCustomerBookings",
           "filename": "app/dashboard/actions.ts"
         }
       },
       "layer": {
-        "app/dashboard/profile/page": "action-browser"
+        "app/dashboard/page": "action-browser"
       },
       "filename": "app/dashboard/actions.ts",
-      "exportedName": "updateCustomerProfile"
+      "exportedName": "getCustomerBookings"
     },
-    "784946da6b0a1d1f58381171ad97126653d91253c5": {
+    "00f6a41d53889140d7e9eb8567bc58b1384742947f": {
       "workers": {
-        "app/dashboard/profile/page": {
-          "moduleId": "[project]/.next-internal/server/app/dashboard/profile/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
-          "exportedName": "uploadProfilePicture",
-          "filename": "app/dashboard/actions.ts"
+          "exportedName": "getServices",
+          "filename": "app/booking/quote/actions.ts"
         }
       },
       "layer": {
-        "app/dashboard/profile/page": "action-browser"
+        "app/dashboard/page": "action-browser"
       },
-      "filename": "app/dashboard/actions.ts",
-      "exportedName": "uploadProfilePicture"
+      "filename": "app/booking/quote/actions.ts",
+      "exportedName": "getServices"
     }
   },
   "edge": {},

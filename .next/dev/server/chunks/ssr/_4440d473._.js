@@ -270,6 +270,8 @@ async function getCustomerProfile(email, phone) {
             phone: bookingData.customer_phone || null,
             first_name: bookingData.customer_first_name,
             last_name: bookingData.customer_last_name,
+            referral_code: null,
+            avatar_url: null,
             created_at: new Date().toISOString(),
             updated_at: new Date().toISOString()
         };
@@ -342,22 +344,19 @@ async function uploadProfilePicture(email, fileData, fileName, fileType) {
             if (uploadError.message?.includes('row-level security') || uploadError.message?.includes('RLS') || uploadError.message?.includes('policy')) {
                 return {
                     success: false,
-                    error: 'Storage bucket RLS policy error. Please check your "profile-pictures" bucket policies in Supabase Storage. The bucket needs policies that allow authenticated users to upload files.',
-                    errorDetails: uploadError.message
+                    error: 'Storage bucket RLS policy error. Please check your "profile-pictures" bucket policies in Supabase Storage. The bucket needs policies that allow authenticated users to upload files.'
                 };
             }
             // If bucket doesn't exist, return helpful error
             if (uploadError.message.includes('not found') || uploadError.message.includes('Bucket')) {
                 return {
                     success: false,
-                    error: 'Storage bucket not configured. Please create a "profile-pictures" bucket in Supabase Storage.',
-                    errorDetails: uploadError.message
+                    error: 'Storage bucket not configured. Please create a "profile-pictures" bucket in Supabase Storage.'
                 };
             }
             return {
                 success: false,
-                error: uploadError.message || 'Failed to upload file',
-                errorDetails: uploadError.error || uploadError.statusCode?.toString()
+                error: uploadError.message || 'Failed to upload file'
             };
         }
         // Get public URL
@@ -568,14 +567,12 @@ async function updateCustomerProfile(email, data) {
                 if (updateError.message?.includes('row-level security') || updateError.code === '42501' || updateError.message?.includes('RLS')) {
                     return {
                         success: false,
-                        error: 'Row Level Security error. Please ensure: 1) RLS is disabled on profiles table, 2) SUPABASE_SERVICE_ROLE_KEY is set in .env.local',
-                        errorDetails: `Error code: ${updateError.code || 'unknown'}. ${updateError.hint || ''}`
+                        error: 'Row Level Security error. Please ensure: 1) RLS is disabled on profiles table, 2) SUPABASE_SERVICE_ROLE_KEY is set in .env.local'
                     };
                 }
                 return {
                     success: false,
-                    error: updateError.message || 'Failed to update profile',
-                    errorDetails: updateError.details || updateError.hint || undefined
+                    error: updateError.message || 'Failed to update profile'
                 };
             }
             result = updatedProfile;
@@ -612,14 +609,12 @@ async function updateCustomerProfile(email, data) {
                 if (insertError.message?.includes('row-level security') || insertError.code === '42501' || insertError.message?.includes('RLS')) {
                     return {
                         success: false,
-                        error: 'Row Level Security error. Please ensure: 1) RLS is disabled on profiles table, 2) SUPABASE_SERVICE_ROLE_KEY is set in .env.local',
-                        errorDetails: `Error code: ${insertError.code || 'unknown'}. ${insertError.hint || ''}`
+                        error: 'Row Level Security error. Please ensure: 1) RLS is disabled on profiles table, 2) SUPABASE_SERVICE_ROLE_KEY is set in .env.local'
                     };
                 }
                 return {
                     success: false,
-                    error: insertError.message || 'Failed to create profile',
-                    errorDetails: insertError.details || insertError.hint || undefined
+                    error: insertError.message || 'Failed to create profile'
                 };
             }
             result = newProfile;

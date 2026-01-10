@@ -1,20 +1,5 @@
 {
   "node": {
-    "70e6da898144ffc7776dcd20e7e2115ec0fee08cfd": {
-      "workers": {
-        "app/dashboard/page": {
-          "moduleId": 92790,
-          "async": false,
-          "exportedName": "getCustomerBookings",
-          "filename": "app/dashboard/actions.ts"
-        }
-      },
-      "layer": {
-        "app/dashboard/page": "action-browser"
-      },
-      "exportedName": "getCustomerBookings",
-      "filename": "app/dashboard/actions.ts"
-    },
     "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
       "workers": {
         "app/dashboard/page": {
@@ -28,6 +13,36 @@
         "app/dashboard/page": "action-browser"
       },
       "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "60c4adeb47106fed443dcb57029de610afc3c196ee": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "action-browser"
+      },
+      "exportedName": "getCustomerProfile",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "70e6da898144ffc7776dcd20e7e2115ec0fee08cfd": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getCustomerBookings",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "action-browser"
+      },
+      "exportedName": "getCustomerBookings",
       "filename": "app/dashboard/actions.ts"
     },
     "0026c99b1fc5a300062834048bb7384d6673cbd3b4": {

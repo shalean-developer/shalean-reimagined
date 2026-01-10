@@ -392,30 +392,20 @@
       "filename": "app/booking/book/actions.ts",
       "exportedName": "validateDiscountCode"
     },
-    "70e6da898144ffc7776dcd20e7e2115ec0fee08cfd": {
+    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
       "workers": {
+        "app/dashboard/bookings/[id]/page": {
+          "moduleId": 51664,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        },
         "app/dashboard/bookings/page": {
           "moduleId": 76903,
           "async": false,
-          "exportedName": "getCustomerBookings",
+          "exportedName": "getAuthenticatedUser",
           "filename": "app/dashboard/actions.ts"
         },
-        "app/dashboard/page": {
-          "moduleId": 92790,
-          "async": false,
-          "exportedName": "getCustomerBookings",
-          "filename": "app/dashboard/actions.ts"
-        }
-      },
-      "layer": {
-        "app/dashboard/bookings/page": "action-browser",
-        "app/dashboard/page": "action-browser"
-      },
-      "filename": "app/dashboard/actions.ts",
-      "exportedName": "getCustomerBookings"
-    },
-    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
-      "workers": {
         "app/dashboard/locations/page": {
           "moduleId": 55,
           "async": false,
@@ -440,6 +430,24 @@
           "exportedName": "getAuthenticatedUser",
           "filename": "app/dashboard/actions.ts"
         },
+        "app/dashboard/settings/page": {
+          "moduleId": 28008,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/shaleancred/buy/page": {
+          "moduleId": 67854,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/shaleancred/page": {
+          "moduleId": 73114,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        },
         "app/dashboard/vouchers/page": {
           "moduleId": 38251,
           "async": false,
@@ -448,14 +456,119 @@
         }
       },
       "layer": {
+        "app/dashboard/bookings/[id]/page": "action-browser",
+        "app/dashboard/bookings/page": "action-browser",
         "app/dashboard/locations/page": "action-browser",
         "app/dashboard/page": "action-browser",
         "app/dashboard/profile/page": "action-browser",
         "app/dashboard/refer/page": "action-browser",
+        "app/dashboard/settings/page": "action-browser",
+        "app/dashboard/shaleancred/buy/page": "action-browser",
+        "app/dashboard/shaleancred/page": "action-browser",
         "app/dashboard/vouchers/page": "action-browser"
       },
       "filename": "app/dashboard/actions.ts",
       "exportedName": "getAuthenticatedUser"
+    },
+    "60c4adeb47106fed443dcb57029de610afc3c196ee": {
+      "workers": {
+        "app/dashboard/bookings/[id]/page": {
+          "moduleId": 51664,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/bookings/page": {
+          "moduleId": 76903,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/locations/page": {
+          "moduleId": 55,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/profile/page": {
+          "moduleId": 5026,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/refer/page": {
+          "moduleId": 52723,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/settings/page": {
+          "moduleId": 28008,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/shaleancred/buy/page": {
+          "moduleId": 67854,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/shaleancred/page": {
+          "moduleId": 73114,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/vouchers/page": {
+          "moduleId": 38251,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/[id]/page": "action-browser",
+        "app/dashboard/bookings/page": "action-browser",
+        "app/dashboard/locations/page": "action-browser",
+        "app/dashboard/page": "action-browser",
+        "app/dashboard/profile/page": "action-browser",
+        "app/dashboard/refer/page": "action-browser",
+        "app/dashboard/settings/page": "action-browser",
+        "app/dashboard/shaleancred/buy/page": "action-browser",
+        "app/dashboard/shaleancred/page": "action-browser",
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getCustomerProfile"
+    },
+    "70e6da898144ffc7776dcd20e7e2115ec0fee08cfd": {
+      "workers": {
+        "app/dashboard/bookings/page": {
+          "moduleId": 76903,
+          "async": false,
+          "exportedName": "getCustomerBookings",
+          "filename": "app/dashboard/actions.ts"
+        },
+        "app/dashboard/page": {
+          "moduleId": 92790,
+          "async": false,
+          "exportedName": "getCustomerBookings",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/page": "action-browser",
+        "app/dashboard/page": "action-browser"
+      },
+      "filename": "app/dashboard/actions.ts",
+      "exportedName": "getCustomerBookings"
     },
     "40359be6e74c1eba27b6679754c2af2a5285e493ca": {
       "workers": {
@@ -546,21 +659,6 @@
       },
       "filename": "app/dashboard/actions.ts",
       "exportedName": "setDefaultLocation"
-    },
-    "60c4adeb47106fed443dcb57029de610afc3c196ee": {
-      "workers": {
-        "app/dashboard/profile/page": {
-          "moduleId": 5026,
-          "async": false,
-          "exportedName": "getCustomerProfile",
-          "filename": "app/dashboard/actions.ts"
-        }
-      },
-      "layer": {
-        "app/dashboard/profile/page": "action-browser"
-      },
-      "filename": "app/dashboard/actions.ts",
-      "exportedName": "getCustomerProfile"
     },
     "605adaee13a3545fbd6b2e8f8db0e189027c17b984": {
       "workers": {

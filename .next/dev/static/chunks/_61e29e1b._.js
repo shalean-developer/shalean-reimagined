@@ -1145,7 +1145,10 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 duration_hours: 3.5,
                                 day_of_week: null,
                                 is_active: true,
-                                display_order: idx + 1
+                                display_order: idx + 1,
+                                max_bookings_per_slot: null,
+                                created_at: new Date().toISOString(),
+                                updated_at: new Date().toISOString()
                             })
                     }["Step1ServiceDetails.useQuery"]);
                 }
@@ -1283,17 +1286,17 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                     className: "w-6 h-6 animate-spin text-muted-foreground"
                 }, void 0, false, {
                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                    lineNumber: 245,
+                    lineNumber: 248,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 244,
+                lineNumber: 247,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-            lineNumber: 243,
+            lineNumber: 246,
             columnNumber: 7
         }, this);
     }
@@ -1307,7 +1310,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "Select Your Service"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 255,
+                        lineNumber: 258,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1318,12 +1321,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 className: "w-6 h-6 animate-spin text-muted-foreground"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 259,
+                                lineNumber: 262,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                            lineNumber: 258,
+                            lineNumber: 261,
                             columnNumber: 13
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-3",
@@ -1341,12 +1344,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                 className: `w-8 h-8 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 277,
+                                                lineNumber: 280,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 268,
+                                            lineNumber: 271,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1356,41 +1359,41 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                         word,
                                                         idx === 0 && arr.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                            lineNumber: 285,
+                                                            lineNumber: 288,
                                                             columnNumber: 59
                                                         }, this)
                                                     ]
                                                 }, idx, true, {
                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                    lineNumber: 283,
+                                                    lineNumber: 286,
                                                     columnNumber: 25
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 281,
+                                            lineNumber: 284,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, service.id, true, {
                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                    lineNumber: 267,
+                                    lineNumber: 270,
                                     columnNumber: 19
                                 }, this);
                             })
                         }, void 0, false, {
                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                            lineNumber: 262,
+                            lineNumber: 265,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 256,
+                        lineNumber: 259,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 254,
+                lineNumber: 257,
                 columnNumber: 7
             }, this),
             isCarpetCleaning ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1401,7 +1404,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "Home Details"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 300,
+                        lineNumber: 303,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1415,7 +1418,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         children: "Carpet Information"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 305,
+                                        lineNumber: 308,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1427,7 +1430,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                 children: "What type of carpets do you have?"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 307,
+                                                lineNumber: 310,
                                                 columnNumber: 17
                                             }, this),
                                             carpetTypeOptions.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1436,12 +1439,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                     className: "w-5 h-5 animate-spin text-muted-foreground"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                    lineNumber: 312,
+                                                    lineNumber: 315,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 311,
+                                                lineNumber: 314,
                                                 columnNumber: 19
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "space-y-3",
@@ -1467,7 +1470,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                                         }
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                        lineNumber: 319,
+                                                                        lineNumber: 322,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -1476,13 +1479,13 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                                         children: option.label
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                        lineNumber: 334,
+                                                                        lineNumber: 337,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                lineNumber: 318,
+                                                                lineNumber: 321,
                                                                 columnNumber: 25
                                                             }, this),
                                                             formData.carpetTypes.includes(option.value) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1494,7 +1497,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                                         children: option.value === 'fitted' ? 'Number of rooms with Fitted Carpets' : 'Number of rugs/carpets with Loose Carpets/Rugs'
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                        lineNumber: 343,
+                                                                        lineNumber: 346,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1509,36 +1512,36 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                                         className: "max-w-[200px]"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                        lineNumber: 348,
+                                                                        lineNumber: 351,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                lineNumber: 342,
+                                                                lineNumber: 345,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, option.id, true, {
                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                        lineNumber: 317,
+                                                        lineNumber: 320,
                                                         columnNumber: 23
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 315,
+                                                lineNumber: 318,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 306,
+                                        lineNumber: 309,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 304,
+                                lineNumber: 307,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1549,7 +1552,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         children: "Room Status"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 370,
+                                        lineNumber: 373,
                                         columnNumber: 15
                                     }, this),
                                     roomStatusOptions.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1558,12 +1561,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                             className: "w-5 h-5 animate-spin text-muted-foreground"
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 373,
+                                            lineNumber: 376,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 372,
+                                        lineNumber: 375,
                                         columnNumber: 17
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$radio$2d$group$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RadioGroup"], {
                                         value: formData.roomStatus,
@@ -1578,7 +1581,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                         id: `room-${option.value}`
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                        lineNumber: 382,
+                                                        lineNumber: 385,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -1587,36 +1590,36 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                         children: option.label
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                        lineNumber: 383,
+                                                        lineNumber: 386,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, option.id, true, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 381,
+                                                lineNumber: 384,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 376,
+                                        lineNumber: 379,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 369,
+                                lineNumber: 372,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 303,
+                        lineNumber: 306,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 299,
+                lineNumber: 302,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "space-y-4 bg-white rounded-xl p-6 max-w-[576px] mx-auto",
@@ -1626,7 +1629,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "House details"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 398,
+                        lineNumber: 401,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1639,7 +1642,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         children: "Bedrooms"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 401,
+                                        lineNumber: 404,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -1653,12 +1656,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                     placeholder: "Select bedrooms"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                    lineNumber: 407,
+                                                    lineNumber: 410,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 406,
+                                                lineNumber: 409,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1667,24 +1670,24 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                         children: option.label
                                                     }, option.id, false, {
                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                        lineNumber: 411,
+                                                        lineNumber: 414,
                                                         columnNumber: 21
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 409,
+                                                lineNumber: 412,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 402,
+                                        lineNumber: 405,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 400,
+                                lineNumber: 403,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1694,7 +1697,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         children: "Bathrooms"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 419,
+                                        lineNumber: 422,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -1708,12 +1711,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                     placeholder: "Select bathrooms"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                    lineNumber: 425,
+                                                    lineNumber: 428,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 424,
+                                                lineNumber: 427,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1722,36 +1725,36 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                         children: option.label
                                                     }, option.id, false, {
                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                        lineNumber: 429,
+                                                        lineNumber: 432,
                                                         columnNumber: 21
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 427,
+                                                lineNumber: 430,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 420,
+                                        lineNumber: 423,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 418,
+                                lineNumber: 421,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 399,
+                        lineNumber: 402,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 397,
+                lineNumber: 400,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1762,7 +1765,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "Additional Services (Optional)"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 442,
+                        lineNumber: 445,
                         columnNumber: 9
                     }, this),
                     isLoadingAdditionalServices ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1771,12 +1774,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                             className: "w-6 h-6 animate-spin text-muted-foreground"
                         }, void 0, false, {
                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                            lineNumber: 445,
+                            lineNumber: 448,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 444,
+                        lineNumber: 447,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3",
@@ -1805,12 +1808,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                             className: `w-8 h-8 ${isSelected ? 'text-primary' : 'text-muted-foreground'}`
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 474,
+                                            lineNumber: 477,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 460,
+                                        lineNumber: 463,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1823,18 +1826,18 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                             word,
                                                             idx === 0 && arr.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                lineNumber: 483,
+                                                                lineNumber: 486,
                                                                 columnNumber: 59
                                                             }, this)
                                                         ]
                                                     }, idx, true, {
                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                        lineNumber: 481,
+                                                        lineNumber: 484,
                                                         columnNumber: 25
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 479,
+                                                lineNumber: 482,
                                                 columnNumber: 21
                                             }, this),
                                             servicePrice > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1845,31 +1848,31 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 488,
+                                                lineNumber: 491,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 478,
+                                        lineNumber: 481,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, service.id, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 459,
+                                lineNumber: 462,
                                 columnNumber: 17
                             }, this);
                         })
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 448,
+                        lineNumber: 451,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 441,
+                lineNumber: 444,
                 columnNumber: 7
             }, this),
             isStandardOrAirbnb && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1880,7 +1883,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "Cleaning Equipment & Supplies"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 503,
+                        lineNumber: 506,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1888,7 +1891,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "Do you want us to provide cleaning equipment/supplies?"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 504,
+                        lineNumber: 507,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$radio$2d$group$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RadioGroup"], {
@@ -1905,7 +1908,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         id: "equipment-yes"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 510,
+                                        lineNumber: 513,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -1927,17 +1930,17 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                                 className: "w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                lineNumber: 520,
+                                                                lineNumber: 523,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                            lineNumber: 515,
+                                                            lineNumber: 518,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                        lineNumber: 514,
+                                                        lineNumber: 517,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$popover$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PopoverContent"], {
@@ -1951,7 +1954,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                                     children: "Equipment & Supplies We Provide:"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                    lineNumber: 525,
+                                                                    lineNumber: 528,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1960,41 +1963,41 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                                             children: item.name
                                                                         }, item.id, false, {
                                                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                            lineNumber: 528,
+                                                                            lineNumber: 531,
                                                                             columnNumber: 27
                                                                         }, this))
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                    lineNumber: 526,
+                                                                    lineNumber: 529,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                            lineNumber: 524,
+                                                            lineNumber: 527,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                        lineNumber: 523,
+                                                        lineNumber: 526,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 513,
+                                                lineNumber: 516,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 511,
+                                        lineNumber: 514,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 509,
+                                lineNumber: 512,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2005,7 +2008,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         id: "equipment-no"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 537,
+                                        lineNumber: 540,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -2014,25 +2017,25 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         children: "No"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 538,
+                                        lineNumber: 541,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 536,
+                                lineNumber: 539,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 505,
+                        lineNumber: 508,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 502,
+                lineNumber: 505,
                 columnNumber: 9
             }, this),
             isStandardOrAirbnb && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2043,7 +2046,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "Number of Cleaners"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 547,
+                        lineNumber: 550,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2051,7 +2054,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "How many cleaners would you like for this service?"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 548,
+                        lineNumber: 551,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$radio$2d$group$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RadioGroup"], {
@@ -2077,7 +2080,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         id: "cleaners-1"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 561,
+                                        lineNumber: 564,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -2086,13 +2089,13 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         children: "Only 1 cleaner"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 562,
+                                        lineNumber: 565,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 560,
+                                lineNumber: 563,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2103,7 +2106,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         id: "cleaners-2"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 567,
+                                        lineNumber: 570,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -2112,19 +2115,19 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         children: "2-5 cleaners"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 568,
+                                        lineNumber: 571,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 566,
+                                lineNumber: 569,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 549,
+                        lineNumber: 552,
                         columnNumber: 11
                     }, this),
                     formData.numberOfCleaners > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2136,7 +2139,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 children: "How many cleaners do you need? (2-5)"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 575,
+                                lineNumber: 578,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2166,7 +2169,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 className: "max-w-[200px]"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 578,
+                                lineNumber: 581,
                                 columnNumber: 15
                             }, this),
                             formData.numberOfCleaners > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2178,19 +2181,19 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 601,
+                                lineNumber: 604,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 574,
+                        lineNumber: 577,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 546,
+                lineNumber: 549,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2201,7 +2204,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "Schedule"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 612,
+                        lineNumber: 615,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2215,7 +2218,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         children: "Which day would you like us to come?"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 615,
+                                        lineNumber: 618,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$popover$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Popover"], {
@@ -2232,19 +2235,19 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                             className: "absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                            lineNumber: 622,
+                                                            lineNumber: 625,
                                                             columnNumber: 19
                                                         }, this),
                                                         selectedDate ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$date$2d$fns$2f$format$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(selectedDate, 'PPP') : 'Pick a date'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                    lineNumber: 618,
+                                                    lineNumber: 621,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 617,
+                                                lineNumber: 620,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$popover$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PopoverContent"], {
@@ -2262,24 +2265,24 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                     initialFocus: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                    lineNumber: 627,
+                                                    lineNumber: 630,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 626,
+                                                lineNumber: 629,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 616,
+                                        lineNumber: 619,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 614,
+                                lineNumber: 617,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2290,7 +2293,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                         children: "What time would you like us to arrive?"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 642,
+                                        lineNumber: 645,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -2303,12 +2306,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                     placeholder: isCheckingAvailability ? "Checking availability..." : formData.serviceDate ? "Select a time" : "Select date first"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                    lineNumber: 649,
+                                                    lineNumber: 652,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 648,
+                                                lineNumber: 651,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -2328,13 +2331,13 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                                     children: "(Unavailable)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                    lineNumber: 676,
+                                                                    lineNumber: 679,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, hour.id, true, {
                                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                            lineNumber: 669,
+                                                            lineNumber: 672,
                                                             columnNumber: 23
                                                         }, this);
                                                     } catch  {
@@ -2348,26 +2351,26 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                                     children: "(Unavailable)"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                                    lineNumber: 689,
+                                                                    lineNumber: 692,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, hour.id, true, {
                                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                            lineNumber: 682,
+                                                            lineNumber: 685,
                                                             columnNumber: 23
                                                         }, this);
                                                     }
                                                 })
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 659,
+                                                lineNumber: 662,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 643,
+                                        lineNumber: 646,
                                         columnNumber: 13
                                     }, this),
                                     isCheckingAvailability && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2377,26 +2380,26 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                 className: "w-3 h-3 animate-spin"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 699,
+                                                lineNumber: 702,
                                                 columnNumber: 17
                                             }, this),
                                             "Checking cleaner availability..."
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 698,
+                                        lineNumber: 701,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 641,
+                                lineNumber: 644,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 613,
+                        lineNumber: 616,
                         columnNumber: 9
                     }, this),
                     formData.serviceTime && !isCarpetCleaning && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2407,7 +2410,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 children: "How long do you need? (hours)"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 707,
+                                lineNumber: 710,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2418,7 +2421,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 "aria-label": "Service duration (auto-calculated)"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 708,
+                                lineNumber: 711,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2426,13 +2429,13 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 children: "Duration is automatically calculated based on your selections"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 715,
+                                lineNumber: 718,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 706,
+                        lineNumber: 709,
                         columnNumber: 11
                     }, this),
                     formData.serviceTime && isCarpetCleaning && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2443,7 +2446,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 children: "How long do you need? (hours)"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 722,
+                                lineNumber: 725,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -2457,12 +2460,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                             placeholder: "Select duration"
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 728,
+                                            lineNumber: 731,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 727,
+                                        lineNumber: 730,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -2490,30 +2493,30 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                 ]
                                             }, duration, true, {
                                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                lineNumber: 732,
+                                                lineNumber: 735,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                        lineNumber: 730,
+                                        lineNumber: 733,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 723,
+                                lineNumber: 726,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 721,
+                        lineNumber: 724,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 611,
+                lineNumber: 614,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2524,7 +2527,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                         children: "Special Instructions"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 744,
+                        lineNumber: 747,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -2536,13 +2539,13 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                             })
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                        lineNumber: 745,
+                        lineNumber: 748,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 743,
+                lineNumber: 746,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"], {
@@ -2562,7 +2565,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                     children: "Time Slot Unavailable"
                                 }, void 0, false, {
                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                    lineNumber: 765,
+                                    lineNumber: 768,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogDescription"], {
@@ -2582,13 +2585,13 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                     }, void 0, true) : 'This time slot is currently unavailable. Our cleaners are fully booked for this time.'
                                 }, void 0, false, {
                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                    lineNumber: 766,
+                                    lineNumber: 769,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                            lineNumber: 764,
+                            lineNumber: 767,
                             columnNumber: 11
                         }, this),
                         formData.serviceDate && Object.keys(slotAvailability).length > 0 && (()=>{
@@ -2624,7 +2627,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 815,
+                                            lineNumber: 818,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2642,12 +2645,12 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                                     children: slot.displayTime
                                                 }, slot.time, false, {
                                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                                    lineNumber: 820,
+                                                    lineNumber: 823,
                                                     columnNumber: 23
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 818,
+                                            lineNumber: 821,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2655,13 +2658,13 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                             children: "Click on an available time slot to select it, or choose a different date."
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 834,
+                                            lineNumber: 837,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                    lineNumber: 814,
+                                    lineNumber: 817,
                                     columnNumber: 17
                                 }, this);
                             } else {
@@ -2677,7 +2680,7 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 842,
+                                            lineNumber: 845,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2685,13 +2688,13 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                             children: "Please select a different date to see available time slots."
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                            lineNumber: 845,
+                                            lineNumber: 848,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                    lineNumber: 841,
+                                    lineNumber: 844,
                                     columnNumber: 17
                                 }, this);
                             }
@@ -2703,23 +2706,23 @@ function Step1ServiceDetails({ formData, updateFormData, pricingRules = [] }) {
                                 children: "Close"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                                lineNumber: 854,
+                                lineNumber: 857,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                            lineNumber: 853,
+                            lineNumber: 856,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                    lineNumber: 763,
+                    lineNumber: 766,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/booking/book/components/Step1ServiceDetails.tsx",
-                lineNumber: 754,
+                lineNumber: 757,
                 columnNumber: 7
             }, this)
         ]

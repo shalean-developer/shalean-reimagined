@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Generate a unique booking number
  * Format: SHL followed by numbers only (e.g., SHL20250115123456)
  */

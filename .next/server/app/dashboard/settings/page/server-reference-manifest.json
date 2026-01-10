@@ -1,4 +1,35 @@
 {
-  "node": {},
+  "node": {
+    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
+      "workers": {
+        "app/dashboard/settings/page": {
+          "moduleId": 28008,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/settings/page": "action-browser"
+      },
+      "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "60c4adeb47106fed443dcb57029de610afc3c196ee": {
+      "workers": {
+        "app/dashboard/settings/page": {
+          "moduleId": 28008,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/settings/page": "action-browser"
+      },
+      "exportedName": "getCustomerProfile",
+      "filename": "app/dashboard/actions.ts"
+    }
+  },
   "edge": {}
 }

@@ -1,5 +1,35 @@
 {
   "node": {
+    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
+      "workers": {
+        "app/dashboard/bookings/[id]/page": {
+          "moduleId": 51664,
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/[id]/page": "action-browser"
+      },
+      "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "60c4adeb47106fed443dcb57029de610afc3c196ee": {
+      "workers": {
+        "app/dashboard/bookings/[id]/page": {
+          "moduleId": 51664,
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/[id]/page": "action-browser"
+      },
+      "exportedName": "getCustomerProfile",
+      "filename": "app/dashboard/actions.ts"
+    },
     "40359be6e74c1eba27b6679754c2af2a5285e493ca": {
       "workers": {
         "app/dashboard/bookings/[id]/page": {
