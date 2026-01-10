@@ -260,15 +260,56 @@ function BookingSubmitPageWithSlugContent() {
       const bookingIds = draftResult.bookingIds || (draftResult.bookingId ? [draftResult.bookingId] : []);
       setCurrentBookingId(bookingIds[0]);
 
+      // If user wants to use credits, deduct them first
+      if (formData.useCredits && formData.creditsAmount && formData.creditsAmount > 0) {
+        try {
+          const creditsResponse = await fetch('/api/bookings/use-credits', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              bookingIds,
+              creditsAmount: formData.creditsAmount,
+            }),
+          });
+
+          const creditsData = await creditsResponse.json();
+
+          if (!creditsResponse.ok || !creditsData.success) {
+            toast.error(creditsData.error || 'Failed to use ShaleanCred');
+            setIsProcessing(false);
+            return;
+          }
+
+          toast.success(`Applied R${formData.creditsAmount.toFixed(2)} ShaleanCred to your booking`);
+        } catch (error) {
+          console.error('Error using credits:', error);
+          toast.error('Failed to use ShaleanCred. Please try again.');
+          setIsProcessing(false);
+          return;
+        }
+      }
+
       // Initialize payment (pass array or single ID)
+      // This will check for credits_used and handle full/partial payment accordingly
       const paymentResult = await initializePaymentForBooking(bookingIds.length > 1 ? bookingIds : bookingIds[0]);
 
-      if (!paymentResult.success || !paymentResult.authorizationUrl) {
+      if (!paymentResult.success) {
         toast.error(paymentResult.error || 'Failed to initialize payment');
         setIsProcessing(false);
         return;
       }
 
+      // If no authorization URL, payment is fully covered by credits - redirect to success
+      if (!paymentResult.authorizationUrl) {
+        toast.success('Booking confirmed! Payment completed with ShaleanCred.');
+        // Redirect to booking confirmation
+        router.push(`/booking/confirmation/${bookingIds[0]}`);
+        return;
+      }
+
+      // Partial or full Paystack payment needed - redirect to Paystack
       window.location.href = paymentResult.authorizationUrl;
     } catch (error) {
       console.error('Error processing payment:', error);

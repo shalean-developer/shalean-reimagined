@@ -12,23 +12,32 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$head
 ;
 ;
 async function createClient() {
-    const cookieStore = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cookies"])();
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createServerClient$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createServerClient"])(("TURBOPACK compile-time value", "https://orrmzbaztgajftxytduk.supabase.co"), ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ycm16YmF6dGdhamZ0eHl0ZHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczODkyMTgsImV4cCI6MjA4Mjk2NTIxOH0.ei-T1BLhgmaYwxxd1YQqKkvv-mgXovrY2KpPPompHPw"), {
-        cookies: {
-            getAll () {
-                return cookieStore.getAll();
-            },
-            setAll (cookiesToSet) {
-                try {
-                    cookiesToSet.forEach(({ name, value, options })=>cookieStore.set(name, value, options));
-                } catch  {
-                // The `setAll` method was called from a Server Component.
-                // This can be ignored if you have middleware refreshing
-                // user sessions.
+    const supabaseUrl = ("TURBOPACK compile-time value", "https://orrmzbaztgajftxytduk.supabase.co");
+    const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ycm16YmF6dGdhamZ0eHl0ZHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczODkyMTgsImV4cCI6MjA4Mjk2NTIxOH0.ei-T1BLhgmaYwxxd1YQqKkvv-mgXovrY2KpPPompHPw");
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    try {
+        const cookieStore = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cookies"])();
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createServerClient$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createServerClient"])(supabaseUrl, supabaseAnonKey, {
+            cookies: {
+                getAll () {
+                    return cookieStore.getAll();
+                },
+                setAll (cookiesToSet) {
+                    try {
+                        cookiesToSet.forEach(({ name, value, options })=>cookieStore.set(name, value, options));
+                    } catch  {
+                    // The `setAll` method was called from a Server Component.
+                    // This can be ignored if you have middleware refreshing
+                    // user sessions.
+                    }
                 }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error('Error creating Supabase client:', error);
+        throw error;
+    }
 }
 }),
 "[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
@@ -1309,7 +1318,8 @@ async function createBookingDraft(formData) {
                 parent_booking_id: null,
                 is_recurring: isRecurring,
                 recurrence_status: isRecurring ? 'active' : undefined,
-                next_booking_date: i === 0 && isRecurring && nextBookingDate ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$recurring$2d$dates$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatDateForDB"])(nextBookingDate) : null
+                next_booking_date: i === 0 && isRecurring && nextBookingDate ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$recurring$2d$dates$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatDateForDB"])(nextBookingDate) : null,
+                credits_used: 0
             };
             bookingsToCreate.push(bookingInput);
         }
@@ -1409,15 +1419,43 @@ async function initializePaymentForBooking(bookingIdOrIds) {
             // Tip is already included in total_amount (new bookings)
             return sum + bookingTotal;
         }, 0);
+        // Calculate total credits used across all bookings
+        const totalCreditsUsed = bookings.reduce((sum, booking)=>{
+            return sum + (Number(booking.credits_used) || 0);
+        }, 0);
+        // Calculate remaining amount after credits
+        const remainingAmount = totalAmount - totalCreditsUsed;
         // Use the first booking's email and details for payment
         const firstBooking = bookings[0];
+        // If credits fully cover the booking, mark as paid and skip Paystack
+        if (remainingAmount <= 0) {
+            // Update all bookings to mark as paid
+            const { error: updateError } = await supabase.from('bookings').update({
+                payment_status: 'paid',
+                amount_paid: totalAmount,
+                status: 'confirmed',
+                updated_at: new Date().toISOString()
+            }).in('id', bookingIds);
+            if (updateError) {
+                console.error('Error updating bookings payment status:', updateError);
+                return {
+                    success: false,
+                    error: 'Failed to update booking payment status'
+                };
+            }
+            return {
+                success: true
+            };
+        }
+        // Partial credit coverage or no credits - proceed with Paystack for remaining amount
         const reference = firstBooking.paystack_reference || `${firstBooking.booking_number}${Date.now()}`;
-        // Initialize Paystack payment with total amount
-        const paymentResponse = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$paystack$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["initializePayment"])(firstBooking.customer_email, totalAmount, reference, {
+        // Initialize Paystack payment with remaining amount (after credits)
+        const paymentResponse = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$paystack$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["initializePayment"])(firstBooking.customer_email, remainingAmount, reference, {
             booking_ids: bookingIds,
             booking_id: firstBooking.id,
             booking_number: firstBooking.booking_number,
-            customer_email: firstBooking.customer_email
+            customer_email: firstBooking.customer_email,
+            credits_used: totalCreditsUsed
         });
         if (!paymentResponse.status) {
             return {
@@ -1427,9 +1465,11 @@ async function initializePaymentForBooking(bookingIdOrIds) {
         }
         // Use the reference that Paystack actually returned (may differ from what we sent)
         const paystackReference = paymentResponse.data.reference;
-        // Update all bookings with the Paystack reference that was actually returned
+        // Update all bookings with the Paystack reference and partial payment from credits
         const { error: updateError } = await supabase.from('bookings').update({
-            paystack_reference: paystackReference
+            paystack_reference: paystackReference,
+            amount_paid: totalCreditsUsed,
+            updated_at: new Date().toISOString()
         }).in('id', bookingIds);
         if (updateError) {
             console.error('Error updating bookings with Paystack reference:', updateError);

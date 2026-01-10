@@ -1,4 +1,19 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/bookings/use-credits/route": "app/api/bookings/use-credits/route.js",
+  "/api/bookings/verify/route": "app/api/bookings/verify/route.js",
+  "/api/credit/retry/route": "app/api/credit/retry/route.js",
+  "/api/credit/transactions/route": "app/api/credit/transactions/route.js",
+  "/api/paystack/verify/route": "app/api/paystack/verify/route.js",
+  "/api/profile/balance/route": "app/api/profile/balance/route.js",
+  "/booking/confirmation/[bookingId]/page": "app/booking/confirmation/[bookingId]/page.js",
+  "/booking/details/[serviceSlug]/page": "app/booking/details/[serviceSlug]/page.js",
+  "/booking/details/page": "app/booking/details/page.js",
+  "/booking/submit/[serviceSlug]/page": "app/booking/submit/[serviceSlug]/page.js",
+  "/booking/worker/[serviceSlug]/page": "app/booking/worker/[serviceSlug]/page.js",
+  "/dashboard/bookings/page": "app/dashboard/bookings/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/page": "app/page.js"
+  "/dashboard/shaleancred/page": "app/dashboard/shaleancred/page.js",
+  "/page": "app/page.js",
+  "/payment/success/page": "app/payment/success/page.js"
 }

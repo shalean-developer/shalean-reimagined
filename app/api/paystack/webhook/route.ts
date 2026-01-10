@@ -263,7 +263,7 @@ export async function POST(request: NextRequest) {
           // Check for both pending and paid to handle webhook retries
           let { data: bookingsToUpdate, error: bookingsFetchError } = await supabase
             .from('bookings')
-            .select('id, total_amount, payment_status, paystack_transaction_id')
+            .select('id, total_amount, payment_status, paystack_transaction_id, credits_used, amount_paid')
             .eq('paystack_reference', reference)
             .in('payment_status', ['pending', 'paid']);
 
@@ -287,7 +287,7 @@ export async function POST(request: NextRequest) {
               
               const { data: bookingsByMetadata, error: metadataFetchError } = await supabase
                 .from('bookings')
-                .select('id, total_amount, payment_status, paystack_transaction_id, paystack_reference')
+                .select('id, total_amount, payment_status, paystack_transaction_id, paystack_reference, credits_used, amount_paid')
                 .in('id', bookingIds)
                 .in('payment_status', ['pending', 'paid']);
               
@@ -332,27 +332,49 @@ export async function POST(request: NextRequest) {
             if (bookingsNeedingUpdate.length > 0) {
               const bookingIds = bookingsNeedingUpdate.map(b => b.id);
               
-              // Update all bookings that need updating
-              const { error: updateError, data: updatedBookings } = await supabase
-                .from('bookings')
-                .update({
-                  payment_status: 'paid',
-                  paystack_reference: verification.data.reference,
-                  paystack_transaction_id: verification.data.id.toString(),
-                  amount_paid: paidAmount, // Total amount paid (will be same for all in a series)
-                  status: 'confirmed',
-                  updated_at: new Date().toISOString(),
-                })
-                .in('id', bookingIds)
-                .select('id, paystack_transaction_id');
+              // Calculate total credits used and total booking amounts for proportional distribution
+              const totalCreditsUsed = bookingsNeedingUpdate.reduce((sum, b) => sum + (Number(b.credits_used) || 0), 0);
+              const totalBookingAmount = bookingsNeedingUpdate.reduce((sum, b) => sum + (Number(b.total_amount) || 0), 0);
+              
+              // Update each booking individually to handle credits correctly
+              const updatePromises = bookingsNeedingUpdate.map(async (booking) => {
+                const creditsUsed = Number(booking.credits_used) || 0;
+                // Calculate Paystack amount for this booking proportionally
+                const bookingTotal = Number(booking.total_amount) || 0;
+                const proportionalPaystackAmount = totalBookingAmount > 0 
+                  ? (paidAmount * bookingTotal) / totalBookingAmount 
+                  : paidAmount / bookingsNeedingUpdate.length;
+                
+                const finalAmountPaid = creditsUsed + proportionalPaystackAmount;
 
-              if (updateError) {
-                console.error('Error updating bookings after payment:', updateError);
+                return supabase
+                  .from('bookings')
+                  .update({
+                    payment_status: 'paid',
+                    paystack_reference: verification.data.reference,
+                    paystack_transaction_id: verification.data.id.toString(),
+                    amount_paid: finalAmountPaid, // Credits + Paystack payment
+                    status: 'confirmed',
+                    updated_at: new Date().toISOString(),
+                  })
+                  .eq('id', booking.id)
+                  .select('id, paystack_transaction_id, credits_used, amount_paid')
+                  .single();
+              });
+
+              const updateResults = await Promise.all(updatePromises);
+              const updateErrors = updateResults.filter(r => r.error);
+              const updatedBookings = updateResults
+                .filter(r => !r.error && r.data)
+                .map(r => r.data);
+
+              if (updateErrors.length > 0) {
+                console.error('Error updating some bookings after payment:', updateErrors);
                 console.error('Update details:', {
                   reference,
                   transactionId: verification.data.id,
                   bookingIds,
-                  error: updateError.message,
+                  errors: updateErrors.map(e => e.error?.message),
                 });
                 // Don't fail the webhook, return success so Paystack doesn't retry
               } else {
@@ -361,6 +383,8 @@ export async function POST(request: NextRequest) {
                   bookingIds,
                   transactionId: verification.data.id.toString(),
                   reference,
+                  totalCreditsUsed,
+                  paystackAmount: paidAmount,
                 });
               }
             } else {

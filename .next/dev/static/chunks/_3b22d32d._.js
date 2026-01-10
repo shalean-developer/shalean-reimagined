@@ -93,7 +93,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function PaymentSuccessPage() {
+function PaymentSuccessContent() {
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"])();
@@ -102,7 +102,7 @@ function PaymentSuccessPage() {
     const [paymentData, setPaymentData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "PaymentSuccessPage.useEffect": ()=>{
+        "PaymentSuccessContent.useEffect": ()=>{
             if (!reference) {
                 setError('Payment reference is missing');
                 setLoading(false);
@@ -110,7 +110,7 @@ function PaymentSuccessPage() {
             }
             // Verify payment with Paystack
             const verifyPayment = {
-                "PaymentSuccessPage.useEffect.verifyPayment": async ()=>{
+                "PaymentSuccessContent.useEffect.verifyPayment": async ()=>{
                     try {
                         // Check if this is a voucher purchase based on reference prefix
                         const isVoucherPurchase = reference?.startsWith('VOUCHER_');
@@ -135,8 +135,8 @@ function PaymentSuccessPage() {
                                 // If payment is still pending, wait and retry
                                 if (data.data && data.data.status === 'pending' && attempt < 2) {
                                     await new Promise({
-                                        "PaymentSuccessPage.useEffect.verifyPayment": (resolve)=>setTimeout(resolve, 2000)
-                                    }["PaymentSuccessPage.useEffect.verifyPayment"]); // Wait 2 seconds
+                                        "PaymentSuccessContent.useEffect.verifyPayment": (resolve)=>setTimeout(resolve, 2000)
+                                    }["PaymentSuccessContent.useEffect.verifyPayment"]); // Wait 2 seconds
                                     continue;
                                 }
                                 break;
@@ -144,8 +144,8 @@ function PaymentSuccessPage() {
                                 console.error(`Verification attempt ${attempt + 1} failed:`, fetchError);
                                 if (attempt < 2) {
                                     await new Promise({
-                                        "PaymentSuccessPage.useEffect.verifyPayment": (resolve)=>setTimeout(resolve, 2000)
-                                    }["PaymentSuccessPage.useEffect.verifyPayment"]); // Wait 2 seconds before retry
+                                        "PaymentSuccessContent.useEffect.verifyPayment": (resolve)=>setTimeout(resolve, 2000)
+                                    }["PaymentSuccessContent.useEffect.verifyPayment"]); // Wait 2 seconds before retry
                                     continue;
                                 }
                             }
@@ -317,10 +317,10 @@ function PaymentSuccessPage() {
                         setLoading(false);
                     }
                 }
-            }["PaymentSuccessPage.useEffect.verifyPayment"];
+            }["PaymentSuccessContent.useEffect.verifyPayment"];
             verifyPayment();
         }
-    }["PaymentSuccessPage.useEffect"], [
+    }["PaymentSuccessContent.useEffect"], [
         reference
     ]);
     const handleClose = ()=>{
@@ -635,15 +635,61 @@ function PaymentSuccessPage() {
         columnNumber: 5
     }, this);
 }
-_s(PaymentSuccessPage, "AFe5vcQF7CEw4bcO7f3uFUZp0D8=", false, function() {
+_s(PaymentSuccessContent, "AFe5vcQF7CEw4bcO7f3uFUZp0D8=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"]
     ];
 });
-_c = PaymentSuccessPage;
-var _c;
-__turbopack_context__.k.register(_c, "PaymentSuccessPage");
+_c = PaymentSuccessContent;
+function PaymentSuccessPage() {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
+        fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "min-h-screen bg-gray-100 flex items-center justify-center p-4",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "bg-white rounded-lg p-8 shadow-lg text-center",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"
+                    }, void 0, false, {
+                        fileName: "[project]/app/payment/success/page.tsx",
+                        lineNumber: 370,
+                        columnNumber: 11
+                    }, void 0),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-gray-600",
+                        children: "Loading..."
+                    }, void 0, false, {
+                        fileName: "[project]/app/payment/success/page.tsx",
+                        lineNumber: 371,
+                        columnNumber: 11
+                    }, void 0)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/payment/success/page.tsx",
+                lineNumber: 369,
+                columnNumber: 9
+            }, void 0)
+        }, void 0, false, {
+            fileName: "[project]/app/payment/success/page.tsx",
+            lineNumber: 368,
+            columnNumber: 7
+        }, void 0),
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(PaymentSuccessContent, {}, void 0, false, {
+            fileName: "[project]/app/payment/success/page.tsx",
+            lineNumber: 375,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/app/payment/success/page.tsx",
+        lineNumber: 367,
+        columnNumber: 5
+    }, this);
+}
+_c1 = PaymentSuccessPage;
+var _c, _c1;
+__turbopack_context__.k.register(_c, "PaymentSuccessContent");
+__turbopack_context__.k.register(_c1, "PaymentSuccessPage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

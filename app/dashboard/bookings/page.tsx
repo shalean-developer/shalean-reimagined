@@ -1,52 +1,39 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
 import { BookingCard } from '../components/BookingCard';
 import { BookingFilters } from '../components/BookingFilters';
-import { getCustomerBookings } from '../actions';
+import { getCustomerBookings, getAuthenticatedUser } from '../actions';
 import { Booking } from '@/types/booking';
 import { Loader2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 export default function BookingsPage() {
-  const searchParams = useSearchParams();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState<'all' | 'upcoming' | 'completed' | 'cancelled'>('all');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [userEmail, setUserEmail] = useState<string | null>(null);
 
-  // Get email/phone from URL params or localStorage
-  useEffect(() => {
-    const urlEmail = searchParams.get('email');
-    const urlPhone = searchParams.get('phone');
-    const storedEmail = localStorage.getItem('dashboard_email');
-    const storedPhone = localStorage.getItem('dashboard_phone');
+  // Get authenticated user's email
+  useQuery({
+    queryKey: ['authenticated-user'],
+    queryFn: async () => {
+      const result = await getAuthenticatedUser();
+      if (result.success && result.email) {
+        setUserEmail(result.email);
+        return result.email;
+      }
+      return null;
+    },
+    staleTime: 5 * 60 * 1000,
+  });
 
-    const customerEmail = urlEmail || storedEmail || '';
-    const customerPhone = urlPhone || storedPhone || '';
-
-    if (customerEmail || customerPhone) {
-      setEmail(customerEmail);
-      setPhone(customerPhone);
-      loadBookings(customerEmail, customerPhone || undefined);
-    }
-  }, [searchParams]);
-
-  useEffect(() => {
-    if (email || phone) {
-      loadBookings(email, phone || undefined);
-    }
-  }, [filter, email, phone]);
-
-  const loadBookings = async (customerEmail: string, customerPhone?: string) => {
-    if (!customerEmail && !customerPhone) return;
-    
+  const loadBookings = async (customerEmail: string) => {
     try {
       setLoading(true);
-      const result = await getCustomerBookings(customerEmail, customerPhone, filter);
+      const result = await getCustomerBookings(customerEmail, undefined, filter);
       if (result.success && result.bookings) {
         setBookings(result.bookings);
       }
@@ -57,13 +44,13 @@ export default function BookingsPage() {
     }
   };
 
-  const filteredBookings = bookings.filter((booking) => {
-    if (filter === 'all') return true;
-    if (filter === 'upcoming') {
-      return booking.status === 'pending' || booking.status === 'confirmed';
+  // Load bookings when user email is available or filter changes
+  useEffect(() => {
+    if (userEmail) {
+      loadBookings(userEmail);
     }
-    return booking.status === filter;
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userEmail, filter]);
 
   return (
     <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-x-hidden">
@@ -76,16 +63,20 @@ export default function BookingsPage() {
       </div>
 
       {/* Filters */}
-      {bookings.length > 0 && (
+      {userEmail && (
         <BookingFilters filter={filter} onFilterChange={setFilter} />
       )}
 
       {/* Bookings List */}
-      {loading ? (
+      {!userEmail ? (
         <div className="flex items-center justify-center py-8 sm:py-12">
           <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-primary" />
         </div>
-      ) : filteredBookings.length === 0 ? (
+      ) : loading ? (
+        <div className="flex items-center justify-center py-8 sm:py-12">
+          <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-primary" />
+        </div>
+      ) : bookings.length === 0 ? (
         <Card className="w-full max-w-full overflow-hidden">
           <CardHeader className="px-4 py-4 sm:px-6 sm:py-6">
             <CardTitle className="text-lg sm:text-xl">No Bookings Found</CardTitle>
@@ -103,7 +94,7 @@ export default function BookingsPage() {
         </Card>
       ) : (
         <div className="grid gap-3 sm:gap-4">
-          {filteredBookings.map((booking) => (
+          {bookings.map((booking) => (
             <BookingCard key={booking.id} booking={booking} />
           ))}
         </div>

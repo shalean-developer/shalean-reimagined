@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { User, Mail, Phone, MapPin, Calendar, Clock, Pencil, Lock, Home, Users, Package, Sparkles } from 'lucide-react';
+import { User, Mail, Phone, MapPin, Calendar, Clock, Pencil, Lock, Home, Users, Package, Sparkles, Coins } from 'lucide-react';
 import { BookingFormData, PriceBreakdown } from '@/types/booking';
 import { format } from 'date-fns';
 import { getServices, getAdditionalServices } from '../../quote/actions';
@@ -33,6 +33,37 @@ export function Step3ContactReview({
 }: Step3ContactReviewProps) {
   const [discountCodeInput, setDiscountCodeInput] = useState(formData.discountCode || '');
   const [isValidatingDiscount, setIsValidatingDiscount] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  // Check authentication status
+  useEffect(() => {
+    const checkAuth = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      setIsAuthenticated(!!user);
+    };
+    checkAuth();
+  }, []);
+
+  // Fetch user's credit balance (only if authenticated)
+  const { data: creditBalance = 0 } = useQuery({
+    queryKey: ['credit-balance'],
+    queryFn: async () => {
+      try {
+        const response = await fetch('/api/profile/balance');
+        if (response.ok) {
+          const data = await response.json();
+          return data.success ? (data.balance || 0) : 0;
+        }
+        return 0;
+      } catch (error) {
+        console.error('Error fetching credit balance:', error);
+        return 0;
+      }
+    },
+    enabled: isAuthenticated,
+    staleTime: 30 * 1000, // Refresh every 30 seconds
+  });
   
   // Fetch services and additional services
   const { data: services = [] } = useQuery({
@@ -111,6 +142,21 @@ export function Step3ContactReview({
       recurringTotal = priceBreakdown.totalAmount + tipAmount;
     }
   }
+
+  // Calculate credits usage
+  const totalBookingAmount = shouldCalculateRecurringTotal ? recurringTotal : (priceBreakdown.totalAmount + tipAmount);
+  const useCredits = formData.useCredits || false;
+  // Round values to avoid floating point precision issues
+  const roundedTotalAmount = Math.round(totalBookingAmount * 100) / 100;
+  const roundedCreditBalance = Math.round(creditBalance * 100) / 100;
+  const roundedFormCredits = Math.round((formData.creditsAmount || 0) * 100) / 100;
+  
+  const creditsAmount = useCredits ? Math.min(
+    roundedFormCredits,
+    roundedCreditBalance,
+    roundedTotalAmount
+  ) : 0;
+  const remainingAfterCredits = Math.max(0, Math.round((roundedTotalAmount - creditsAmount) * 100) / 100);
 
   // Get frequency label for display
   const getFrequencyLabel = () => {
@@ -476,9 +522,14 @@ export function Step3ContactReview({
             </p>
           </div>
           <div className="text-right">
-            <p className="text-2xl font-bold text-primary">
+            <p className={`text-2xl font-bold ${useCredits && creditsAmount > 0 ? 'line-through text-muted-foreground' : 'text-primary'}`}>
               R{shouldCalculateRecurringTotal ? recurringTotal.toFixed(2) : (priceBreakdown.totalAmount + tipAmount).toFixed(2)}
             </p>
+            {useCredits && creditsAmount > 0 && (
+              <p className="text-2xl font-bold text-primary mt-1">
+                R{remainingAfterCredits.toFixed(2)}
+              </p>
+            )}
           </div>
         </div>
         {shouldCalculateRecurringTotal && numberOfBookingsInMonth > 1 && (
@@ -527,6 +578,94 @@ export function Step3ContactReview({
             </Button>
           </div>
         </div>
+
+        {/* ShaleanCred Section - Only show if authenticated and has credits */}
+        {isAuthenticated && creditBalance > 0 && (
+          <div className="mb-3 p-3 bg-secondary/50 rounded-lg border border-border">
+            <div className="flex items-center gap-2 mb-2">
+              <Coins className="w-4 h-4 text-primary" />
+              <Label className="text-sm font-medium">Use ShaleanCred</Label>
+            </div>
+            <p className="text-xs text-muted-foreground mb-2">
+              You have <span className="font-semibold text-primary">R{creditBalance.toFixed(2)}</span> ShaleanCred available
+            </p>
+            <div className="flex items-center gap-2 mb-2">
+              <input
+                type="checkbox"
+                id="use-credits"
+                checked={useCredits}
+                onChange={(e) => {
+                  const use = e.target.checked;
+                  updateFormData({ 
+                    useCredits: use,
+                    creditsAmount: use ? Math.min(creditBalance, totalBookingAmount) : 0
+                  });
+                }}
+                className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+              />
+              <label htmlFor="use-credits" className="text-sm cursor-pointer">
+                Use ShaleanCred for this booking
+              </label>
+            </div>
+            {useCredits && (
+              <div className="mt-2">
+                <Label className="mb-1.5 block text-xs">Amount to use (max R{Math.min(creditBalance, totalBookingAmount).toFixed(2)})</Label>
+                <Input
+                  type="number"
+                  min="0"
+                  max={Math.min(creditBalance, totalBookingAmount)}
+                  step="0.01"
+                  value={creditsAmount > 0 ? creditsAmount.toFixed(2) : ''}
+                  onChange={(e) => {
+                    // Replace comma with period for consistent parsing
+                    const cleanValue = e.target.value.replace(',', '.');
+                    const value = parseFloat(cleanValue) || 0;
+                    // Round to 2 decimal places and cap at available balance and booking total
+                    const roundedValue = Math.round(value * 100) / 100;
+                    const maxAllowed = Math.min(creditBalance, totalBookingAmount);
+                    const cappedValue = Math.min(
+                      Math.max(0, roundedValue),
+                      maxAllowed
+                    );
+                    // Round again to ensure 2 decimal places
+                    const finalValue = Math.round(cappedValue * 100) / 100;
+                    updateFormData({ creditsAmount: finalValue });
+                  }}
+                  onBlur={(e) => {
+                    // Ensure value is properly formatted on blur
+                    if (creditsAmount > 0) {
+                      const roundedValue = Math.round(creditsAmount * 100) / 100;
+                      const maxAllowed = Math.min(creditBalance, totalBookingAmount);
+                      const finalValue = Math.min(roundedValue, maxAllowed);
+                      updateFormData({ creditsAmount: finalValue });
+                    }
+                  }}
+                  className="h-9 text-sm"
+                  placeholder="0.00"
+                />
+                {creditsAmount > 0 && (
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Remaining to pay: <span className="font-semibold">R{remainingAfterCredits.toFixed(2)}</span>
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Updated total display if credits are used */}
+        {useCredits && creditsAmount > 0 && (
+          <div className="mb-3 p-2 bg-primary/10 rounded border border-primary/20">
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-muted-foreground">After ShaleanCred:</span>
+              <span className="font-bold text-primary">R{remainingAfterCredits.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between items-center text-xs text-muted-foreground mt-1">
+              <span>Credits applied:</span>
+              <span>-R{creditsAmount.toFixed(2)}</span>
+            </div>
+          </div>
+        )}
 
         <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
           <Lock className="w-3.5 h-3.5" />

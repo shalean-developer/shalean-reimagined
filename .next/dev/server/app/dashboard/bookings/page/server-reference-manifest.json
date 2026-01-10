@@ -1,5 +1,35 @@
 {
   "node": {
+    "00d62cc413d9b16ce2ea0ff37e9486d3704f49d049": {
+      "workers": {
+        "app/dashboard/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAuthenticatedUser",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/page": "action-browser"
+      },
+      "exportedName": "getAuthenticatedUser",
+      "filename": "app/dashboard/actions.ts"
+    },
+    "60d1908fde86ac220eb7a80a2be1b3941c55a8b34b": {
+      "workers": {
+        "app/dashboard/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCustomerProfile",
+          "filename": "app/dashboard/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/bookings/page": "action-browser"
+      },
+      "exportedName": "getCustomerProfile",
+      "filename": "app/dashboard/actions.ts"
+    },
     "70caa94967fdb96320fe4ad03b796848c625ec7638": {
       "workers": {
         "app/dashboard/bookings/page": {

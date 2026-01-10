@@ -12,23 +12,32 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$head
 ;
 ;
 async function createClient() {
-    const cookieStore = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cookies"])();
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createServerClient$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createServerClient"])(("TURBOPACK compile-time value", "https://orrmzbaztgajftxytduk.supabase.co"), ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ycm16YmF6dGdhamZ0eHl0ZHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczODkyMTgsImV4cCI6MjA4Mjk2NTIxOH0.ei-T1BLhgmaYwxxd1YQqKkvv-mgXovrY2KpPPompHPw"), {
-        cookies: {
-            getAll () {
-                return cookieStore.getAll();
-            },
-            setAll (cookiesToSet) {
-                try {
-                    cookiesToSet.forEach(({ name, value, options })=>cookieStore.set(name, value, options));
-                } catch  {
-                // The `setAll` method was called from a Server Component.
-                // This can be ignored if you have middleware refreshing
-                // user sessions.
+    const supabaseUrl = ("TURBOPACK compile-time value", "https://orrmzbaztgajftxytduk.supabase.co");
+    const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ycm16YmF6dGdhamZ0eHl0ZHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczODkyMTgsImV4cCI6MjA4Mjk2NTIxOH0.ei-T1BLhgmaYwxxd1YQqKkvv-mgXovrY2KpPPompHPw");
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    try {
+        const cookieStore = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$headers$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cookies"])();
+        return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createServerClient$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createServerClient"])(supabaseUrl, supabaseAnonKey, {
+            cookies: {
+                getAll () {
+                    return cookieStore.getAll();
+                },
+                setAll (cookiesToSet) {
+                    try {
+                        cookiesToSet.forEach(({ name, value, options })=>cookieStore.set(name, value, options));
+                    } catch  {
+                    // The `setAll` method was called from a Server Component.
+                    // This can be ignored if you have middleware refreshing
+                    // user sessions.
+                    }
                 }
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error('Error creating Supabase client:', error);
+        throw error;
+    }
 }
 }),
 "[project]/app/dashboard/layout-client.tsx [app-rsc] (client reference proxy) <module evaluation>", ((__turbopack_context__) => {
@@ -84,19 +93,31 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$dashboard$2f$layout$2
 ;
 ;
 async function DashboardLayout({ children }) {
-    // Server-side authentication check (backup protection)
-    const supabase = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$server$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createClient"])();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
+    try {
+        // Server-side authentication check (backup protection)
+        const supabase = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$server$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createClient"])();
+        const { data: { user }, error } = await supabase.auth.getUser();
+        if (error) {
+            console.error('Error getting user in dashboard layout:', error.message);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])('/login?redirect=/dashboard');
+        }
+        if (!user) {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])('/login?redirect=/dashboard');
+        }
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$dashboard$2f$layout$2d$client$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["DashboardLayoutClient"], {
+            children: children
+        }, void 0, false, {
+            fileName: "[project]/app/dashboard/layout.tsx",
+            lineNumber: 28,
+            columnNumber: 12
+        }, this);
+    } catch (error) {
+        // Handle errors from createClient or other operations
+        console.error('Error in dashboard layout:', error);
+        // redirect() throws internally, which Next.js handles
+        // This catch prevents the error from bubbling up as an unhandled exception
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["redirect"])('/login?redirect=/dashboard');
     }
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$dashboard$2f$layout$2d$client$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["DashboardLayoutClient"], {
-        children: children
-    }, void 0, false, {
-        fileName: "[project]/app/dashboard/layout.tsx",
-        lineNumber: 20,
-        columnNumber: 10
-    }, this);
 }
 }),
 ];

@@ -2,10 +2,11 @@
 
 import { useEffect, useState, Suspense } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { Loader2, CheckCircle2, Calendar, Clock, MapPin, ArrowRight } from 'lucide-react';
+import { Loader2, CheckCircle2, Calendar, Clock, MapPin, ArrowRight, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getBooking } from '../../book/actions';
 import { format } from 'date-fns';
+import { createClient } from '@/lib/supabase/client';
 
 function BookingConfirmationContent() {
   const params = useParams();
@@ -17,8 +18,18 @@ function BookingConfirmationContent() {
   const [booking, setBooking] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
+    // Check authentication status
+    const checkAuth = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      setIsAuthenticated(!!user);
+    };
+    checkAuth();
+
+    // Load booking data
     if (bookingId) {
       getBooking(bookingId).then((result) => {
         if (result.success && result.booking) {
@@ -30,6 +41,14 @@ function BookingConfirmationContent() {
       });
     }
   }, [bookingId]);
+
+  const handleViewDashboard = () => {
+    if (isAuthenticated) {
+      router.push('/dashboard');
+    } else {
+      router.push('/login?redirect=/dashboard');
+    }
+  };
 
   if (loading) {
     return (
@@ -122,11 +141,20 @@ function BookingConfirmationContent() {
               </div>
             </div>
 
-            {/* Action Button */}
-            <div className="pt-4">
+            {/* Action Buttons */}
+            <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button onClick={() => router.push('/')} variant="hero" size="lg" className="w-full sm:w-auto">
                 Return to Home
                 <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <Button 
+                onClick={handleViewDashboard} 
+                variant="outline" 
+                size="lg" 
+                className="w-full sm:w-auto"
+              >
+                <LayoutDashboard className="mr-2 w-4 h-4" />
+                View Dashboard
               </Button>
             </div>
           </div>

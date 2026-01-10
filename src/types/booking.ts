@@ -34,6 +34,9 @@ export interface BookingFormData {
   tipAmount: number;
   discountCode: string;
   referralCode: string;
+  // ShaleanCred usage
+  useCredits?: boolean;
+  creditsAmount?: number;
 }
 
 export type PaymentStatus = 'pending' | 'paid' | 'failed' | 'refunded';
@@ -88,6 +91,7 @@ export interface Booking {
   recurrence_status?: 'active' | 'paused' | 'cancelled';
   next_booking_date?: string | null;
   recurrence_end_date?: string | null;
+  credits_used?: number;
   created_at: string;
   updated_at: string;
 }
@@ -140,6 +144,7 @@ export interface BookingCreateInput {
   recurrence_status?: 'active' | 'paused' | 'cancelled';
   next_booking_date?: string | null;
   recurrence_end_date?: string | null;
+  credits_used?: number;
 }
 
 export interface WorkingHour {
