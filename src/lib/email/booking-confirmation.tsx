@@ -11,7 +11,6 @@ import {
   Hr,
 } from '@react-email/components';
 import React from 'react';
-import * as React from 'react';
 
 interface BookingConfirmationEmailProps {
   bookingNumber: string;
