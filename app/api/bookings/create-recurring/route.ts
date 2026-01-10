@@ -162,8 +162,6 @@ export async function GET(request: NextRequest) {
             base_price: priceBreakdown.basePrice,
             additional_services_price: priceBreakdown.additionalServicesPrice,
             equipment_supply_price: priceBreakdown.equipmentSupplyPrice,
-            number_of_cleaners: (parentBooking as any).number_of_cleaners || 1,
-            additional_cleaners_price: priceBreakdown.additionalCleanersPrice,
             frequency_discount_percent: priceBreakdown.frequencyDiscountPercent,
             frequency_discount_amount: priceBreakdown.frequencyDiscountAmount,
             subtotal: priceBreakdown.subtotal,
