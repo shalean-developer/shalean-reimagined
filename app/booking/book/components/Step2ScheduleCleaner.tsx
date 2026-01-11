@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
@@ -13,7 +13,8 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { sortCleanersByCriteria, formatReliabilityScore, SortCriteria } from '@/lib/utils/cleaner-utils';
 import { getServices } from '../../quote/actions';
-import { supportsRecurringBookings, getAvailableFrequencies, isValidFrequencyForService } from '@/lib/utils/service-validation';
+import { supportsRecurringBookings, getAvailableFrequencies, isValidFrequencyForService, requiresTeamBooking } from '@/lib/utils/service-validation';
+import { checkTeamAvailabilityForDateClient } from '../actions-client';
 
 interface Step2ScheduleCleanerProps {
   formData: BookingFormData;
@@ -32,6 +33,12 @@ export function Step2ScheduleCleaner({ formData, updateFormData }: Step2Schedule
   const [loading, setLoading] = useState(true);
   const [sortCriteria, setSortCriteria] = useState<SortCriteria>('best-match');
   const [mounted, setMounted] = useState(false);
+  const [teamAvailability, setTeamAvailability] = useState<{
+    availableTeams: number[];
+    bookedTeams: number[];
+    allTeamsBooked: boolean;
+  } | null>(null);
+  const [loadingTeams, setLoadingTeams] = useState(false);
 
   // Fetch services to get service name
   const { data: services = [] } = useQuery({
@@ -41,10 +48,18 @@ export function Step2ScheduleCleaner({ formData, updateFormData }: Step2Schedule
   });
 
   // Get selected service
-  const selectedService = services.find(s => s.id === formData.serviceId);
-  const serviceName = selectedService?.name || '';
-  const supportsRecurring = supportsRecurringBookings(serviceName);
-  const availableFrequencies = getAvailableFrequencies(serviceName);
+  const selectedService = useMemo(() => 
+    services.find(s => s.id === formData.serviceId), 
+    [services, formData.serviceId]
+  );
+  const serviceName = useMemo(() => selectedService?.name || '', [selectedService]);
+  const supportsRecurring = useMemo(() => supportsRecurringBookings(serviceName), [serviceName]);
+  const availableFrequencies = useMemo(() => getAvailableFrequencies(serviceName), [serviceName]);
+  
+  // Check if service requires team booking - default to false if service name is not yet available
+  const isTeamBooking = useMemo(() => {
+    return serviceName ? requiresTeamBooking(serviceName) : false;
+  }, [serviceName]);
 
   // Ensure component is mounted before rendering Select to avoid hydration mismatch
   useEffect(() => {
@@ -58,8 +73,46 @@ export function Step2ScheduleCleaner({ formData, updateFormData }: Step2Schedule
     }
   }, [serviceName, formData.cleaningFrequency, updateFormData]);
 
+  // Fetch team availability for team-based services
+  useEffect(() => {
+    async function fetchTeamAvailability() {
+      if (!isTeamBooking || !formData.serviceDate || !serviceName) {
+        setTeamAvailability(null);
+        return;
+      }
+
+      setLoadingTeams(true);
+      try {
+        const availability = await checkTeamAvailabilityForDateClient(
+          formData.serviceDate,
+          serviceName
+        );
+        setTeamAvailability(availability);
+      } catch (error) {
+        console.error('Error fetching team availability:', error);
+        setTeamAvailability({
+          availableTeams: [1, 2, 3],
+          bookedTeams: [],
+          allTeamsBooked: false,
+        });
+      } finally {
+        setLoadingTeams(false);
+      }
+    }
+
+    fetchTeamAvailability();
+  }, [isTeamBooking, formData.serviceDate, serviceName]);
+
+  // Fetch cleaners for regular services
   useEffect(() => {
     async function fetchCleaners() {
+      // Skip fetching cleaners for team-based services
+      if (isTeamBooking) {
+        setCleaners([]);
+        setLoading(false);
+        return;
+      }
+
       setLoading(true);
       try {
         const result = await getAvailableCleanersWithCriteriaClient({
@@ -87,7 +140,7 @@ export function Step2ScheduleCleaner({ formData, updateFormData }: Step2Schedule
     }
 
     fetchCleaners();
-  }, [formData.serviceSuburb, formData.serviceDate, formData.serviceTime, formData.serviceDuration, sortCriteria]);
+  }, [isTeamBooking, formData.serviceSuburb, formData.serviceDate, formData.serviceTime, formData.serviceDuration, sortCriteria]);
 
   return (
     <div className="space-y-6">
@@ -140,22 +193,29 @@ export function Step2ScheduleCleaner({ formData, updateFormData }: Step2Schedule
         </div>
       </div>
 
-      {/* Cleaner Selection */}
+      {/* Team or Cleaner Selection */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg font-semibold">
-              {formData.numberOfCleaners > 1 
+              {isTeamBooking
+                ? 'Select a team'
+                : formData.numberOfCleaners > 1 
                 ? `Select ${formData.numberOfCleaners} cleaners`
                 : 'Select your preferred cleaner'}
             </h3>
-            {formData.numberOfCleaners > 1 && (
+            {isTeamBooking && formData.serviceDate && (
+              <p className="text-sm text-muted-foreground">
+                Each team can be booked once per day. Teams work for the entire day.
+              </p>
+            )}
+            {!isTeamBooking && formData.numberOfCleaners > 1 && (
               <p className="text-sm text-muted-foreground">
                 {(formData.preferredCleanerIds || []).length} of {formData.numberOfCleaners} selected
               </p>
             )}
           </div>
-          {mounted && (
+          {mounted && !isTeamBooking && (
             <div className="flex items-center gap-2">
               <Label htmlFor="sort-criteria" className="text-sm text-muted-foreground">Sort by:</Label>
               <Select value={sortCriteria} onValueChange={(value) => setSortCriteria(value as SortCriteria)}>
@@ -172,7 +232,92 @@ export function Step2ScheduleCleaner({ formData, updateFormData }: Step2Schedule
             </div>
           )}
         </div>
-        {loading ? (
+        {isTeamBooking ? (
+          // Team Selection UI
+          loadingTeams ? (
+            <div className="text-center py-8 text-muted-foreground">Loading team availability...</div>
+          ) : !formData.serviceDate ? (
+            <div className="text-center py-8 text-muted-foreground">
+              Please select a date first to see team availability
+            </div>
+          ) : teamAvailability?.allTeamsBooked ? (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground mb-2">All teams are booked for this date.</p>
+              <p className="text-sm text-muted-foreground">Please select a different date.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[1, 2, 3].map((teamNumber) => {
+                const isAvailable = teamAvailability?.availableTeams.includes(teamNumber) ?? false;
+                const isBooked = teamAvailability?.bookedTeams.includes(teamNumber) ?? false;
+                const isSelected = formData.teamNumber === teamNumber;
+                const isDisabled = isBooked;
+
+                const handleTeamClick = () => {
+                  if (isDisabled) return;
+                  updateFormData({
+                    teamNumber: isSelected ? null : teamNumber,
+                    preferredCleanerIds: [], // Clear cleaner selection for team bookings
+                  });
+                };
+
+                return (
+                  <button
+                    key={teamNumber}
+                    type="button"
+                    onClick={handleTeamClick}
+                    disabled={isDisabled}
+                    className={`relative p-6 rounded-xl border-2 transition-all text-center ${
+                      isSelected
+                        ? 'border-primary bg-primary/5'
+                        : isDisabled
+                        ? 'border-destructive/50 bg-muted/50 opacity-60 cursor-not-allowed'
+                        : 'border-border hover:border-primary/50 bg-background'
+                    }`}
+                  >
+                    {isSelected && (
+                      <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center z-10">
+                        <CheckCircle2 className="w-3 h-3 text-primary-foreground" />
+                      </div>
+                    )}
+
+                    {isAvailable && !isBooked && (
+                      <Badge
+                        variant="default"
+                        className="absolute top-2 left-2 text-xs bg-green-500 hover:bg-green-600"
+                      >
+                        <CheckCircle2 className="w-3 h-3 mr-1" />
+                        Available
+                      </Badge>
+                    )}
+
+                    {isBooked && (
+                      <Badge
+                        variant="destructive"
+                        className="absolute top-2 left-2 text-xs"
+                      >
+                        <XCircle className="w-3 h-3 mr-1" />
+                        Booked
+                      </Badge>
+                    )}
+
+                    <div className="flex flex-col items-center gap-3 mt-6">
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                        <span className="text-2xl font-bold text-primary">Team {teamNumber}</span>
+                      </div>
+                      <div className="text-center">
+                        <p className="font-semibold">Team {teamNumber}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {isBooked ? 'Already booked' : 'Available for booking'}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          )
+        ) : loading ? (
           <div className="text-center py-8 text-muted-foreground">Loading cleaners...</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -360,14 +505,19 @@ export function Step2ScheduleCleaner({ formData, updateFormData }: Step2Schedule
             })}
           </div>
         )}
-        {formData.numberOfCleaners > 1 && (formData.preferredCleanerIds || []).length >= formData.numberOfCleaners && (
+        {!isTeamBooking && formData.numberOfCleaners > 1 && (formData.preferredCleanerIds || []).length >= formData.numberOfCleaners && (
           <p className="text-sm text-muted-foreground text-center">
             You've selected {formData.numberOfCleaners} cleaners. You can deselect any cleaner to choose a different one.
           </p>
         )}
-        {formData.numberOfCleaners > 1 && (formData.preferredCleanerIds || []).length < formData.numberOfCleaners && cleaners.length > 0 && (
+        {!isTeamBooking && formData.numberOfCleaners > 1 && (formData.preferredCleanerIds || []).length < formData.numberOfCleaners && cleaners.length > 0 && (
           <p className="text-sm text-muted-foreground text-center">
             Please select {formData.numberOfCleaners - (formData.preferredCleanerIds || []).length} more cleaner{formData.numberOfCleaners - (formData.preferredCleanerIds || []).length > 1 ? 's' : ''}.
+          </p>
+        )}
+        {isTeamBooking && !formData.teamNumber && formData.serviceDate && !teamAvailability?.allTeamsBooked && (
+          <p className="text-sm text-muted-foreground text-center">
+            Please select a team to continue
           </p>
         )}
       </div>

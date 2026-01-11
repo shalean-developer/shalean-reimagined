@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/27825/shalean-v2/shalean-reimagined/app/cleaner/layout.tsx"],"sourcesContent":["// Root layout for /cleaner routes - pass-through for login, auth handled in (dashboard) layout\r\nexport default function CleanerRootLayout({\r\n  children,\r\n}: {\r\n  children: React.ReactNode;\r\n}) {\r\n  // This is a pass-through layout - no auth checks here\r\n  // Login page at /cleaner/login will use this (no auth required)\r\n  // Dashboard pages in (dashboard) route group will use (dashboard)/layout.tsx (with auth)\r\n  return <>{children}</>;\r\n}\r\n"],"names":[],"mappings":"AAAA,+FAA+F;;;;;;;AAChF,SAAS,kBAAkB,EACxC,QAAQ,EAGT;IACC,sDAAsD;IACtD,gEAAgE;IAChE,yFAAyF;IACzF,qBAAO;kBAAG;;AACZ"}}]
+}

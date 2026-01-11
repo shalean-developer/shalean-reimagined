@@ -73,6 +73,14 @@
       "namedRegex": "^/booking/worker/(?<nxtPserviceSlug>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/cleaner/bookings/[id]",
+      "regex": "^/cleaner/bookings/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/cleaner/bookings/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/dashboard/bookings/[id]",
       "regex": "^/dashboard/bookings/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -101,6 +109,12 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/admin/create-cleaner",
+      "regex": "^/admin/create\\-cleaner(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/create\\-cleaner(?:/)?$"
+    },
+    {
       "page": "/admin/discount-codes",
       "regex": "^/admin/discount\\-codes(?:/)?$",
       "routeKeys": {},
@@ -119,6 +133,12 @@
       "namedRegex": "^/admin/fix\\-referral(?:/)?$"
     },
     {
+      "page": "/api/admin/create-cleaner",
+      "regex": "^/api/admin/create\\-cleaner(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/create\\-cleaner(?:/)?$"
+    },
+    {
       "page": "/api/admin/fix-duplicate-codes",
       "regex": "^/api/admin/fix\\-duplicate\\-codes(?:/)?$",
       "routeKeys": {},
@@ -131,6 +151,12 @@
       "namedRegex": "^/api/bookings/create\\-recurring(?:/)?$"
     },
     {
+      "page": "/api/bookings/use-credits",
+      "regex": "^/api/bookings/use\\-credits(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/bookings/use\\-credits(?:/)?$"
+    },
+    {
       "page": "/api/bookings/verify",
       "regex": "^/api/bookings/verify(?:/)?$",
       "routeKeys": {},
@@ -141,6 +167,18 @@
       "regex": "^/api/bookings/verify\\-payments(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/bookings/verify\\-payments(?:/)?$"
+    },
+    {
+      "page": "/api/cleaner/report-lateness",
+      "regex": "^/api/cleaner/report\\-lateness(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/cleaner/report\\-lateness(?:/)?$"
+    },
+    {
+      "page": "/api/cleaner/update-booking-status",
+      "regex": "^/api/cleaner/update\\-booking\\-status(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/cleaner/update\\-booking\\-status(?:/)?$"
     },
     {
       "page": "/api/credit/initialize",
@@ -273,6 +311,42 @@
       "regex": "^/booking/worker(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/booking/worker(?:/)?$"
+    },
+    {
+      "page": "/cleaner",
+      "regex": "^/cleaner(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cleaner(?:/)?$"
+    },
+    {
+      "page": "/cleaner/bookings",
+      "regex": "^/cleaner/bookings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cleaner/bookings(?:/)?$"
+    },
+    {
+      "page": "/cleaner/earnings",
+      "regex": "^/cleaner/earnings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cleaner/earnings(?:/)?$"
+    },
+    {
+      "page": "/cleaner/login",
+      "regex": "^/cleaner/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cleaner/login(?:/)?$"
+    },
+    {
+      "page": "/cleaner/profile",
+      "regex": "^/cleaner/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cleaner/profile(?:/)?$"
+    },
+    {
+      "page": "/cleaner/schedule",
+      "regex": "^/cleaner/schedule(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/cleaner/schedule(?:/)?$"
     },
     {
       "page": "/dashboard",

@@ -105,10 +105,21 @@ function PaymentSuccessContent() {
                   status: true,
                   data: {
                     status: 'success',
-                    amount: bookingResult.paidAmount * 100, // Convert to cents
+                    amount: (bookingResult.paidAmount || 0) * 100, // Convert to cents, default to 0 if missing
                     currency: 'ZAR',
                   }
                 };
+              } else {
+                // Log detailed error information for fallback verification
+                const errorMessage = bookingResult.error || bookingResult.message || 'Unknown error';
+                const errorDetails = bookingResult.details ? ` Details: ${bookingResult.details}` : '';
+                console.warn('Booking verification fallback failed:', {
+                  success: bookingResult.success,
+                  error: errorMessage,
+                  details: bookingResult.details,
+                  status: bookingResponse.status,
+                  fullResponse: bookingResult
+                });
               }
             } catch (bookingError) {
               console.error('Booking verification fallback also failed:', bookingError);
@@ -212,9 +223,25 @@ function PaymentSuccessContent() {
                   const firstBookingId = bookingResult.bookingIds[0];
                   router.push(`/booking/confirmation/${firstBookingId}?payment=success`);
                   return;
+                } else if (bookingResult.alreadyVerified && bookingResult.bookingIds && bookingResult.bookingIds.length > 0) {
+                  // Booking was already verified, redirect to confirmation
+                  const firstBookingId = bookingResult.bookingIds[0];
+                  router.push(`/booking/confirmation/${firstBookingId}?payment=success`);
+                  return;
                 }
               } else {
-                console.error('Booking verification failed:', bookingResult);
+                // Log detailed error information
+                const errorMessage = bookingResult.error || bookingResult.message || 'Unknown error';
+                const errorDetails = bookingResult.details ? ` Details: ${bookingResult.details}` : '';
+                console.error('Booking verification failed:', {
+                  success: bookingResult.success,
+                  error: errorMessage,
+                  details: bookingResult.details,
+                  status: bookingResponse.status,
+                  fullResponse: bookingResult
+                });
+                // Don't fail the payment success page - payment was successful, verification just failed
+                // The webhook should handle the verification, so we'll show success anyway
               }
             } catch (bookingError) {
               console.error('Error verifying booking:', bookingError);

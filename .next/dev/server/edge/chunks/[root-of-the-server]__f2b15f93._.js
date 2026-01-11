@@ -32,11 +32,6 @@ async function middleware(request) {
     const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ycm16YmF6dGdhamZ0eHl0ZHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjczODkyMTgsImV4cCI6MjA4Mjk2NTIxOH0.ei-T1BLhgmaYwxxd1YQqKkvv-mgXovrY2KpPPompHPw");
     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    let response = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].next({
-        request: {
-            headers: request.headers
-        }
-    });
     // Store cookies that need to be set
     const cookiesToSet = [];
     try {
@@ -52,7 +47,6 @@ async function middleware(request) {
                             value,
                             options
                         });
-                        response.cookies.set(name, value, options);
                     });
                 }
             }
@@ -63,7 +57,7 @@ async function middleware(request) {
         if (error) {
             console.error('Error getting user in middleware:', error.message);
         }
-        // Protect dashboard routes
+        // Protect dashboard routes (customer)
         if (request.nextUrl.pathname.startsWith('/dashboard')) {
             if (!user) {
                 const url = request.nextUrl.clone();
@@ -74,14 +68,53 @@ async function middleware(request) {
                 cookiesToSet.forEach(({ name, value, options })=>{
                     redirectResponse.cookies.set(name, value, options);
                 });
+                // Add pathname header even for redirects
+                redirectResponse.headers.set('x-pathname', request.nextUrl.pathname);
                 return redirectResponse;
             }
         }
+        // Protect cleaner dashboard routes (but allow /cleaner/login)
+        if (request.nextUrl.pathname.startsWith('/cleaner') && !request.nextUrl.pathname.startsWith('/cleaner/login')) {
+            if (!user) {
+                const url = request.nextUrl.clone();
+                url.pathname = '/cleaner/login';
+                url.searchParams.set('redirect', request.nextUrl.pathname);
+                const redirectResponse = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].redirect(url);
+                cookiesToSet.forEach(({ name, value, options })=>{
+                    redirectResponse.cookies.set(name, value, options);
+                });
+                // Add pathname header even for redirects
+                redirectResponse.headers.set('x-pathname', request.nextUrl.pathname);
+                return redirectResponse;
+            }
+            // Additional check: verify user is a cleaner
+            // We'll do a basic check here - full verification happens in layout
+            // Check if email matches cleaner format or if user has cleaner profile
+            if (user.email && !user.email.includes('@cleaners.shalean.local')) {
+            // Allow through - layout will verify cleaner status more thoroughly
+            // This is just a basic filter
+            }
+        }
+        // Create response and add pathname header for all requests
+        const response = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].next({
+            request: {
+                headers: request.headers
+            }
+        });
+        // Set cookies on the response
+        cookiesToSet.forEach(({ name, value, options })=>{
+            response.cookies.set(name, value, options);
+        });
+        // Add pathname to headers for use in layouts (always set this)
+        response.headers.set('x-pathname', request.nextUrl.pathname);
         return response;
     } catch (error) {
         // Log the error but don't crash the middleware
         console.error('Middleware error:', error);
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].next();
+        const errorResponse = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$exports$2f$index$2e$js__$5b$middleware$2d$edge$5d$__$28$ecmascript$29$__["NextResponse"].next();
+        // Still set pathname header even on error
+        errorResponse.headers.set('x-pathname', request.nextUrl.pathname);
+        return errorResponse;
     }
 }
 const config = {

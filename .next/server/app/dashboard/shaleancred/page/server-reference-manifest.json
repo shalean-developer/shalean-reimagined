@@ -1,6 +1,6 @@
 {
   "node": {
-    "007ae27d199cf53fb689e175ab48f42148ebb8360a": {
+    "006434c97c3044593734d2467ca4ab71d2aa8a91e5": {
       "workers": {
         "app/dashboard/shaleancred/page": {
           "moduleId": 73114,
@@ -15,7 +15,7 @@
       "exportedName": "getAuthenticatedUser",
       "filename": "app/dashboard/actions.ts"
     },
-    "60c4adeb47106fed443dcb57029de610afc3c196ee": {
+    "60807cfd74cfd1cbb01dfd2d0381be86a68ba78a4c": {
       "workers": {
         "app/dashboard/shaleancred/page": {
           "moduleId": 73114,

@@ -187,6 +187,7 @@ async function POST(request) {
         const { reference } = body;
         if (!reference) {
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                success: false,
                 error: 'Missing payment reference'
             }, {
                 status: 400
@@ -196,6 +197,7 @@ async function POST(request) {
         const verification = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$paystack$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["verifyPayment"])(reference);
         if (!verification.status || verification.data.status !== 'success') {
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                success: false,
                 error: 'Payment not successful or not verified'
             }, {
                 status: 400
@@ -209,19 +211,21 @@ async function POST(request) {
         const isVoucherPurchase = metadata.transaction_type === 'voucher_purchase' || reference?.startsWith('VOUCHER_');
         if (isCreditPurchase || isVoucherPurchase) {
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                success: false,
                 error: 'This is not a booking payment transaction'
             }, {
                 status: 400
             });
         }
         // Find bookings by reference
-        let { data: bookings, error: fetchError } = await supabase.from('bookings').select('id, payment_status, paystack_transaction_id').eq('paystack_reference', reference).in('payment_status', [
+        let { data: bookings, error: fetchError } = await supabase.from('bookings').select('id, payment_status, paystack_transaction_id, credits_used, total_amount, amount_paid').eq('paystack_reference', reference).in('payment_status', [
             'pending',
             'paid'
         ]);
         if (fetchError) {
             console.error('Error fetching bookings:', fetchError);
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                success: false,
                 error: 'Failed to fetch bookings',
                 details: fetchError.message
             }, {
@@ -234,7 +238,7 @@ async function POST(request) {
                 metadata.booking_id
             ] : []);
             if (bookingIds.length > 0) {
-                const { data: bookingsByMetadata, error: metadataError } = await supabase.from('bookings').select('id, payment_status, paystack_transaction_id').in('id', bookingIds).in('payment_status', [
+                const { data: bookingsByMetadata, error: metadataError } = await supabase.from('bookings').select('id, payment_status, paystack_transaction_id, credits_used, total_amount, amount_paid').in('id', bookingIds).in('payment_status', [
                     'pending',
                     'paid'
                 ]);
@@ -246,7 +250,7 @@ async function POST(request) {
                     }).in('id', bookingIdsToUpdate);
                     if (!updateRefError) {
                         // Retry the query
-                        const { data: retryBookings } = await supabase.from('bookings').select('id, payment_status, paystack_transaction_id').eq('paystack_reference', reference).in('payment_status', [
+                        const { data: retryBookings } = await supabase.from('bookings').select('id, payment_status, paystack_transaction_id, credits_used, total_amount, amount_paid').eq('paystack_reference', reference).in('payment_status', [
                             'pending',
                             'paid'
                         ]);
@@ -258,6 +262,7 @@ async function POST(request) {
             }
             if (!bookings || bookings.length === 0) {
                 return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                    success: false,
                     error: 'No bookings found for this reference'
                 }, {
                     status: 404
@@ -275,22 +280,54 @@ async function POST(request) {
             });
         }
         const bookingIds = bookingsNeedingUpdate.map((b)=>b.id);
-        // Update all bookings that need updating
-        const { error: updateError, data: updatedBookings } = await supabase.from('bookings').update({
-            payment_status: 'paid',
-            paystack_reference: verification.data.reference,
-            paystack_transaction_id: verification.data.id.toString(),
-            amount_paid: paidAmount,
-            status: 'confirmed',
-            updated_at: new Date().toISOString()
-        }).in('id', bookingIds).select('id, payment_status, paystack_transaction_id');
-        if (updateError) {
-            console.error('Error updating bookings:', updateError);
+        // Calculate amount_paid for each booking (credits_used + Paystack amount)
+        // For multiple bookings, distribute Paystack amount proportionally
+        const totalCreditsUsed = bookingsNeedingUpdate.reduce((sum, b)=>sum + (Number(b.credits_used) || 0), 0);
+        const totalBookingAmount = bookingsNeedingUpdate.reduce((sum, b)=>sum + (Number(b.total_amount) || 0), 0);
+        const creditsPerBooking = totalCreditsUsed / bookingsNeedingUpdate.length; // Simple distribution
+        // Update each booking individually to handle credits correctly
+        const updatePromises = bookingsNeedingUpdate.map(async (booking)=>{
+            const creditsUsed = Number(booking.credits_used) || 0;
+            // Calculate Paystack amount for this booking proportionally
+            const bookingTotal = Number(booking.total_amount) || 0;
+            const proportionalPaystackAmount = totalBookingAmount > 0 ? paidAmount * bookingTotal / totalBookingAmount : paidAmount / bookingsNeedingUpdate.length;
+            const finalAmountPaid = creditsUsed + proportionalPaystackAmount;
+            return supabase.from('bookings').update({
+                payment_status: 'paid',
+                paystack_reference: verification.data.reference,
+                paystack_transaction_id: verification.data.id.toString(),
+                amount_paid: finalAmountPaid,
+                status: 'confirmed',
+                updated_at: new Date().toISOString()
+            }).eq('id', booking.id).select('id, payment_status, paystack_transaction_id, credits_used, amount_paid').single();
+        });
+        const updateResults = await Promise.all(updatePromises);
+        const updateErrors = updateResults.filter((r)=>r.error);
+        const updatedBookings = updateResults.filter((r)=>!r.error && r.data).map((r)=>r.data);
+        if (updateErrors.length > 0) {
+            console.error('Error updating some bookings:', updateErrors);
+            // Return partial success if some updates succeeded
+            if (updatedBookings.length === 0) {
+                return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                    success: false,
+                    error: 'Failed to update bookings',
+                    details: updateErrors[0].error?.message
+                }, {
+                    status: 500
+                });
+            }
+            // If some updates succeeded, return partial success
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                error: 'Failed to update bookings',
-                details: updateError.message
-            }, {
-                status: 500
+                success: true,
+                message: 'Some bookings verified successfully',
+                updatedCount: updatedBookings.length,
+                bookingIds: updatedBookings.map((b)=>b.id),
+                paidAmount,
+                paystackReference: reference,
+                paystackTransactionId: verification.data.id.toString(),
+                warnings: [
+                    `Failed to update ${updateErrors.length} booking(s)`
+                ]
             });
         }
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
@@ -305,6 +342,7 @@ async function POST(request) {
     } catch (error) {
         console.error('Error verifying booking payment:', error);
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+            success: false,
             error: 'Failed to verify booking payment',
             message: error instanceof Error ? error.message : 'Unknown error'
         }, {

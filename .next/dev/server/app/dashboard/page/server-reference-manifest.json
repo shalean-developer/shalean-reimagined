@@ -1,6 +1,6 @@
 {
   "node": {
-    "00d62cc413d9b16ce2ea0ff37e9486d3704f49d049": {
+    "00da829db98b48f76f8c20deeb0a1e9b7c5c4da4a4": {
       "workers": {
         "app/dashboard/page": {
           "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -15,7 +15,7 @@
       "exportedName": "getAuthenticatedUser",
       "filename": "app/dashboard/actions.ts"
     },
-    "60d1908fde86ac220eb7a80a2be1b3941c55a8b34b": {
+    "6084cd10c62845228da5e5be538409d2395dd8d958": {
       "workers": {
         "app/dashboard/page": {
           "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -30,7 +30,7 @@
       "exportedName": "getCustomerProfile",
       "filename": "app/dashboard/actions.ts"
     },
-    "70caa94967fdb96320fe4ad03b796848c625ec7638": {
+    "7093d29892f58552085907602a876b8ef7768b8a0c": {
       "workers": {
         "app/dashboard/page": {
           "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -45,7 +45,7 @@
       "exportedName": "getCustomerBookings",
       "filename": "app/dashboard/actions.ts"
     },
-    "00f6a41d53889140d7e9eb8567bc58b1384742947f": {
+    "00fc6971a6ccb01a8598c6ab12d37e043db8936f77": {
       "workers": {
         "app/dashboard/page": {
           "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",

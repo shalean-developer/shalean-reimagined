@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
 
     if (!reference) {
       return NextResponse.json(
-        { error: 'Missing payment reference' },
+        { success: false, error: 'Missing payment reference' },
         { status: 400 }
       );
     }
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
 
     if (!verification.status || verification.data.status !== 'success') {
       return NextResponse.json(
-        { error: 'Payment not successful or not verified' },
+        { success: false, error: 'Payment not successful or not verified' },
         { status: 400 }
       );
     }
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     if (isCreditPurchase || isVoucherPurchase) {
       return NextResponse.json(
-        { error: 'This is not a booking payment transaction' },
+        { success: false, error: 'This is not a booking payment transaction' },
         { status: 400 }
       );
     }
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
     if (fetchError) {
       console.error('Error fetching bookings:', fetchError);
       return NextResponse.json(
-        { error: 'Failed to fetch bookings', details: fetchError.message },
+        { success: false, error: 'Failed to fetch bookings', details: fetchError.message },
         { status: 500 }
       );
     }
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
 
       if (!bookings || bookings.length === 0) {
         return NextResponse.json(
-          { error: 'No bookings found for this reference' },
+          { success: false, error: 'No bookings found for this reference' },
           { status: 404 }
         );
       }
@@ -162,18 +162,25 @@ export async function POST(request: NextRequest) {
       // Return partial success if some updates succeeded
       if (updatedBookings.length === 0) {
         return NextResponse.json(
-          { error: 'Failed to update bookings', details: updateErrors[0].error?.message },
+          { 
+            success: false,
+            error: 'Failed to update bookings', 
+            details: updateErrors[0].error?.message 
+          },
           { status: 500 }
         );
       }
-    }
-
-    if (updateError) {
-      console.error('Error updating bookings:', updateError);
-      return NextResponse.json(
-        { error: 'Failed to update bookings', details: updateError.message },
-        { status: 500 }
-      );
+      // If some updates succeeded, return partial success
+      return NextResponse.json({
+        success: true,
+        message: 'Some bookings verified successfully',
+        updatedCount: updatedBookings.length,
+        bookingIds: updatedBookings.map(b => b.id),
+        paidAmount,
+        paystackReference: reference,
+        paystackTransactionId: verification.data.id.toString(),
+        warnings: [`Failed to update ${updateErrors.length} booking(s)`],
+      });
     }
 
     return NextResponse.json({
@@ -189,6 +196,7 @@ export async function POST(request: NextRequest) {
     console.error('Error verifying booking payment:', error);
     return NextResponse.json(
       {
+        success: false,
         error: 'Failed to verify booking payment',
         message: error instanceof Error ? error.message : 'Unknown error',
       },

@@ -19,6 +19,30 @@ function BookingConfirmationContent() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [totalAmountPaid, setTotalAmountPaid] = useState<number | null>(null);
+
+  // Function to calculate total amount from all bookings with same paystack_reference
+  const calculateTotalAmountPaid = async (booking: any): Promise<number> => {
+    if (!booking.paystack_reference) {
+      // No shared payment, return single booking total
+      return booking.total_amount || 0;
+    }
+    
+    // Find all bookings with the same payment reference
+    const supabase = createClient();
+    const { data: relatedBookings } = await supabase
+      .from('bookings')
+      .select('total_amount')
+      .eq('paystack_reference', booking.paystack_reference)
+      .in('payment_status', ['paid', 'pending']);
+    
+    if (!relatedBookings || relatedBookings.length <= 1) {
+      return booking.total_amount || 0;
+    }
+    
+    // Sum all related bookings' total amounts
+    return relatedBookings.reduce((sum, b) => sum + (Number(b.total_amount) || 0), 0);
+  };
 
   useEffect(() => {
     // Check authentication status
@@ -29,11 +53,15 @@ function BookingConfirmationContent() {
     };
     checkAuth();
 
-    // Load booking data
+    // Load booking data and calculate total amount paid
     if (bookingId) {
-      getBooking(bookingId).then((result) => {
+      getBooking(bookingId).then(async (result) => {
         if (result.success && result.booking) {
           setBooking(result.booking);
+          
+          // Calculate total amount paid (includes all bookings with same payment reference)
+          const totalAmount = await calculateTotalAmountPaid(result.booking);
+          setTotalAmountPaid(totalAmount);
         } else {
           setError(result.error || 'Booking not found');
         }
@@ -136,7 +164,9 @@ function BookingConfirmationContent() {
                 </div>
                 <div className="flex justify-between items-center mt-2">
                   <span className="font-semibold text-foreground">Total Paid</span>
-                  <span className="text-lg font-bold text-primary">R{booking.total_amount.toFixed(2)}</span>
+                  <span className="text-lg font-bold text-primary">
+                    R{(totalAmountPaid ?? booking.total_amount).toFixed(2)}
+                  </span>
                 </div>
               </div>
             </div>

@@ -47,6 +47,7 @@ const defaultFormData: BookingFormData = {
   serviceSuburb: '',
   serviceCity: '',
   preferredCleanerIds: [],
+  teamNumber: null,
   cleaningFrequency: 'one-time',
   
   // Step 3
@@ -236,8 +237,16 @@ export function useBookingForm() {
       errors.push('Please enter city');
     }
 
-    // Validate cleaner selection count
-    if (formData.numberOfCleaners > 1) {
+    // Validate team selection if teamNumber is set
+    if (formData.teamNumber !== null && formData.teamNumber !== undefined) {
+      if (formData.teamNumber < 1 || formData.teamNumber > 3) {
+        errors.push('Team number must be 1, 2, or 3');
+      }
+    }
+
+    // Validate cleaner selection count (only for non-team bookings)
+    // Team bookings use teamNumber instead of preferredCleanerIds
+    if (!formData.teamNumber && formData.numberOfCleaners > 1) {
       const selectedCleaners = formData.preferredCleanerIds || [];
       if (selectedCleaners.length !== formData.numberOfCleaners) {
         errors.push(`Please select exactly ${formData.numberOfCleaners} cleaners`);

@@ -8,7 +8,7 @@ import { initializePayment } from '@/lib/paystack/client';
 import { revalidatePath } from 'next/cache';
 import { calculateReliabilityScore, calculateCompletionRate, calculateOnTimeRate } from '@/lib/utils/cleaner-utils';
 import { calculateBookingDatesForMonth, calculateNextBookingDate, formatDateForDB } from '@/lib/utils/recurring-dates';
-import { isValidFrequencyForService } from '@/lib/utils/service-validation';
+import { isValidFrequencyForService, requiresTeamBooking } from '@/lib/utils/service-validation';
 
 /**
  * Get available working hours (30-minute interval start times)
@@ -98,12 +98,14 @@ export async function checkCleanerAvailabilityForSlot(
     // Query bookings for the specified date that might overlap
     // We need to check for bookings where:
     // (booking_start_time < new_end_time) AND (booking_end_time > new_start_time)
-    // Only consider pending or confirmed bookings (exclude cancelled/completed)
+    // Only consider paid and confirmed bookings (exclude pending/unpaid, cancelled/completed)
+    // Cleaners should only be marked as booked when booking is paid and created
     const { data: bookings, error: bookingsError } = await supabase
       .from('bookings')
       .select('service_time, service_duration, preferred_cleaner_id, preferred_cleaner_ids, number_of_cleaners')
       .eq('service_date', serviceDate)
-      .in('status', ['pending', 'confirmed']);
+      .eq('payment_status', 'paid')
+      .eq('status', 'confirmed');
 
     if (bookingsError) {
       console.error('Error checking bookings:', bookingsError);
@@ -200,21 +202,113 @@ export async function checkCleanerAvailabilityForSlot(
 }
 
 /**
+ * Check team availability for a specific date for team-based services
+ * Returns which teams (1, 2, or 3) are available and which are booked
+ */
+export async function checkTeamAvailabilityForDate(
+  serviceDate: string,
+  serviceType: string
+): Promise<{
+  availableTeams: number[];
+  bookedTeams: number[];
+  allTeamsBooked: boolean;
+}> {
+  try {
+    const supabase = await createClient();
+
+    // Only check for team-based services (Deep Cleaning and Move In/Out)
+    if (!requiresTeamBooking(serviceType)) {
+      return {
+        availableTeams: [],
+        bookedTeams: [],
+        allTeamsBooked: false,
+      };
+    }
+
+    // Query bookings for the specified date and service type
+    // Only consider paid and confirmed bookings (exclude pending/unpaid bookings)
+    // Teams should only be marked as booked when booking is paid and created
+    const { data: bookings, error: bookingsError } = await supabase
+      .from('bookings')
+      .select('team_number')
+      .eq('service_date', serviceDate)
+      .eq('service_type', serviceType)
+      .not('team_number', 'is', null)
+      .eq('payment_status', 'paid')
+      .eq('status', 'confirmed');
+
+    if (bookingsError) {
+      console.error('Error checking team bookings:', bookingsError);
+      // If we can't check bookings, assume all teams available (optimistic approach)
+      return {
+        availableTeams: [1, 2, 3],
+        bookedTeams: [],
+        allTeamsBooked: false,
+      };
+    }
+
+    // Extract booked team numbers
+    const bookedTeams = (bookings || [])
+      .map((booking) => booking.team_number)
+      .filter((teamNumber): teamNumber is number => teamNumber !== null && teamNumber >= 1 && teamNumber <= 3);
+
+    // Get unique booked teams (in case of duplicates)
+    const bookedTeamsSet = new Set(bookedTeams);
+
+    // Calculate available teams (1, 2, 3 minus booked teams)
+    const allTeams = [1, 2, 3];
+    const availableTeams = allTeams.filter((team) => !bookedTeamsSet.has(team));
+
+    return {
+      availableTeams,
+      bookedTeams: Array.from(bookedTeamsSet),
+      allTeamsBooked: availableTeams.length === 0,
+    };
+  } catch (error) {
+    console.error('Unexpected error checking team availability:', error);
+    // On error, assume all teams available for safety (let database constraint catch duplicates)
+    return {
+      availableTeams: [1, 2, 3],
+      bookedTeams: [],
+      allTeamsBooked: false,
+    };
+  }
+}
+
+/**
  * Check availability for all time slots for a given date
  */
 export async function checkAvailabilityForAllSlots(
   serviceDate: string,
   workingHours: WorkingHour[],
-  serviceDuration: number
+  serviceDuration: number,
+  serviceType?: string
 ): Promise<Record<string, TimeSlotAvailability>> {
   const availability: Record<string, TimeSlotAvailability> = {};
 
-  // Check availability for each time slot in parallel
-  // Use the service duration provided (either from form data or calculated)
+  // If service requires team booking, check team availability instead
+  if (serviceType && requiresTeamBooking(serviceType)) {
+    const teamAvailability = await checkTeamAvailabilityForDate(serviceDate, serviceType);
+    
+    // For team-based services, availability is day-based, not time-based
+    // If all teams are booked, all slots are unavailable
+    // Otherwise, slots are available (but we'll show team selection in UI)
+    const slotsAvailable = !teamAvailability.allTeamsBooked;
+    const availableTeamsCount = teamAvailability.availableTeams.length;
+    
+    // Set same availability for all time slots
+    workingHours.forEach((hour) => {
+      availability[hour.start_time] = {
+        available: slotsAvailable,
+        availableCleanersCount: availableTeamsCount,
+      };
+    });
+
+    return availability;
+  }
+
+  // For regular services, check individual cleaner availability per time slot
   const promises = workingHours.map(async (hour) => {
-    // Use the provided service duration, not the working hour's duration
-    // The working hour duration is just the slot length, but the actual booking
-    // will use the service duration from the form
     const slotAvailability = await checkCleanerAvailabilityForSlot(
       serviceDate,
       hour.start_time,
@@ -338,6 +432,46 @@ export async function createBookingDraft(formData: BookingFormData): Promise<{
       };
     }
 
+    // Check if service requires team booking
+    const isTeamBooking = requiresTeamBooking(service.name);
+
+    // Validate team booking requirements
+    if (isTeamBooking) {
+      if (!formData.teamNumber || (formData.teamNumber < 1 || formData.teamNumber > 3)) {
+        return {
+          success: false,
+          error: 'Please select a team (1, 2, or 3) for this service',
+        };
+      }
+
+      // Check team availability for each booking date
+      const startDate = new Date(formData.serviceDate);
+      const bookingDates = calculateBookingDatesForMonth(startDate, formData.cleaningFrequency);
+      
+      for (const bookingDate of bookingDates) {
+        const teamAvailability = await checkTeamAvailabilityForDate(
+          formatDateForDB(bookingDate),
+          service.name
+        );
+        
+        if (!teamAvailability.availableTeams.includes(formData.teamNumber!)) {
+          const dateStr = formatDateForDB(bookingDate);
+          return {
+            success: false,
+            error: `Team ${formData.teamNumber} is already booked for ${dateStr}. Please select a different team or date.`,
+          };
+        }
+      }
+    } else {
+      // For non-team bookings, ensure teamNumber is not set
+      if (formData.teamNumber !== null && formData.teamNumber !== undefined) {
+        return {
+          success: false,
+          error: 'Team selection is only available for Deep Cleaning and Move In/Out services',
+        };
+      }
+    }
+
     // Calculate pricing
     const priceBreakdown = await calculatePrice({
       serviceId: formData.serviceId,
@@ -377,6 +511,8 @@ export async function createBookingDraft(formData: BookingFormData): Promise<{
     });
 
     // Determine if this is a recurring booking
+    // Note: Team-based services (Deep Cleaning and Move In/Out) don't support recurring bookings
+    // but we'll handle it gracefully if somehow a recurring frequency is selected
     const isRecurring = formData.cleaningFrequency !== 'one-time';
 
     // Calculate booking dates based on frequency
@@ -412,12 +548,17 @@ export async function createBookingDraft(formData: BookingFormData): Promise<{
         bathrooms: formData.bathrooms,
         additional_services: formData.additionalServices,
         cleaning_equipment: formData.cleaningEquipment,
-        preferred_cleaner_ids: formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0 
-          ? formData.preferredCleanerIds 
-          : null,
-        preferred_cleaner_id: formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0 
-          ? formData.preferredCleanerIds[0] 
-          : null, // Backward compatibility: set to first cleaner
+        preferred_cleaner_ids: isTeamBooking 
+          ? null // Team bookings don't have preferred cleaners
+          : (formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0 
+            ? formData.preferredCleanerIds 
+            : null),
+        preferred_cleaner_id: isTeamBooking
+          ? null // Team bookings don't have preferred cleaners
+          : (formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0 
+            ? formData.preferredCleanerIds[0] 
+            : null), // Backward compatibility: set to first cleaner
+        team_number: isTeamBooking && formData.teamNumber ? formData.teamNumber : null,
         cleaning_frequency: formData.cleaningFrequency,
         service_date: formatDateForDB(bookingDate),
         service_time: formData.serviceTime,
@@ -607,7 +748,8 @@ export async function initializePaymentForBooking(
     }
 
     // Partial credit coverage or no credits - proceed with Paystack for remaining amount
-    const reference = firstBooking.paystack_reference || `${firstBooking.booking_number}${Date.now()}`;
+    // Always generate a new unique reference for Paystack (references must be unique and can only be used once)
+    const reference = `${firstBooking.booking_number}${Date.now()}${Math.random().toString(36).substring(2, 9)}`;
     
     // Initialize Paystack payment with remaining amount (after credits)
     const paymentResponse = await initializePayment(
@@ -786,12 +928,15 @@ export async function checkCleanerBookingConflict(
     const supabase = await createClient();
 
     // Query bookings for this cleaner on the specified date
+    // Only consider paid and confirmed bookings (exclude pending/unpaid bookings)
+    // Cleaners should only be marked as booked when booking is paid and created
     const { data: bookings, error } = await supabase
       .from('bookings')
       .select('service_time, service_duration')
       .eq('preferred_cleaner_id', cleanerId)
       .eq('service_date', serviceDate)
-      .in('status', ['pending', 'confirmed']);
+      .eq('payment_status', 'paid')
+      .eq('status', 'confirmed');
 
     if (error) {
       console.error('Error checking booking conflicts:', error);

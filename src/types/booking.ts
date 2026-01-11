@@ -24,6 +24,7 @@ export interface BookingFormData {
   serviceSuburb: string;
   serviceCity: string;
   preferredCleanerIds: string[]; // Array of cleaner IDs. Empty array = "no preference"
+  teamNumber?: number | null; // Team number (1, 2, or 3) for team-based services (Deep Cleaning and Move In/Out)
   cleaningFrequency: 'one-time' | 'weekly' | 'bi-weekly' | 'monthly';
   
   // Step 3: Contact & Review
@@ -40,7 +41,7 @@ export interface BookingFormData {
 }
 
 export type PaymentStatus = 'pending' | 'paid' | 'failed' | 'refunded';
-export type BookingStatus = 'pending' | 'confirmed' | 'completed' | 'cancelled';
+export type BookingStatus = 'pending' | 'confirmed' | 'on_my_way' | 'started' | 'completed' | 'cancelled';
 
 export interface Booking {
   id: string;
@@ -57,6 +58,7 @@ export interface Booking {
   cleaning_equipment: string;
   preferred_cleaner_id: string | null; // Kept for backward compatibility
   preferred_cleaner_ids: string[] | null; // Array of preferred cleaner IDs
+  team_number?: number | null; // Team number (1, 2, or 3) for team-based services
   cleaning_frequency: string;
   service_date: string;
   service_time: string;
@@ -92,6 +94,8 @@ export interface Booking {
   next_booking_date?: string | null;
   recurrence_end_date?: string | null;
   credits_used?: number;
+  expected_arrival_time?: string | null;
+  lateness_reason?: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -110,6 +114,7 @@ export interface BookingCreateInput {
   cleaning_equipment: string;
   preferred_cleaner_id?: string | null; // Kept for backward compatibility
   preferred_cleaner_ids?: string[] | null; // Array of preferred cleaner IDs
+  team_number?: number | null; // Team number (1, 2, or 3) for team-based services
   cleaning_frequency: string;
   service_date: string;
   service_time: string;
@@ -145,6 +150,8 @@ export interface BookingCreateInput {
   next_booking_date?: string | null;
   recurrence_end_date?: string | null;
   credits_used?: number;
+  expected_arrival_time?: string | null;
+  lateness_reason?: string | null;
 }
 
 export interface WorkingHour {
@@ -213,6 +220,7 @@ export interface Cleaner {
   hire_date?: string | null;
   email?: string | null;
   phone?: string | null;
+  auth_user_id?: string | null;
   reliability_score?: number | null;
   total_bookings?: number | null;
   completed_bookings?: number | null;

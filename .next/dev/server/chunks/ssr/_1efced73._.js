@@ -166,10 +166,21 @@ function PaymentSuccessContent() {
                                     status: true,
                                     data: {
                                         status: 'success',
-                                        amount: bookingResult.paidAmount * 100,
+                                        amount: (bookingResult.paidAmount || 0) * 100,
                                         currency: 'ZAR'
                                     }
                                 };
+                            } else {
+                                // Log detailed error information for fallback verification
+                                const errorMessage = bookingResult.error || bookingResult.message || 'Unknown error';
+                                const errorDetails = bookingResult.details ? ` Details: ${bookingResult.details}` : '';
+                                console.warn('Booking verification fallback failed:', {
+                                    success: bookingResult.success,
+                                    error: errorMessage,
+                                    details: bookingResult.details,
+                                    status: bookingResponse.status,
+                                    fullResponse: bookingResult
+                                });
                             }
                         } catch (bookingError) {
                             console.error('Booking verification fallback also failed:', bookingError);
@@ -266,9 +277,25 @@ function PaymentSuccessContent() {
                                     const firstBookingId = bookingResult.bookingIds[0];
                                     router.push(`/booking/confirmation/${firstBookingId}?payment=success`);
                                     return;
+                                } else if (bookingResult.alreadyVerified && bookingResult.bookingIds && bookingResult.bookingIds.length > 0) {
+                                    // Booking was already verified, redirect to confirmation
+                                    const firstBookingId = bookingResult.bookingIds[0];
+                                    router.push(`/booking/confirmation/${firstBookingId}?payment=success`);
+                                    return;
                                 }
                             } else {
-                                console.error('Booking verification failed:', bookingResult);
+                                // Log detailed error information
+                                const errorMessage = bookingResult.error || bookingResult.message || 'Unknown error';
+                                const errorDetails = bookingResult.details ? ` Details: ${bookingResult.details}` : '';
+                                console.error('Booking verification failed:', {
+                                    success: bookingResult.success,
+                                    error: errorMessage,
+                                    details: bookingResult.details,
+                                    status: bookingResponse.status,
+                                    fullResponse: bookingResult
+                                });
+                            // Don't fail the payment success page - payment was successful, verification just failed
+                            // The webhook should handle the verification, so we'll show success anyway
                             }
                         } catch (bookingError) {
                             console.error('Error verifying booking:', bookingError);
@@ -323,7 +350,7 @@ function PaymentSuccessContent() {
                         className: "w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 268,
+                        lineNumber: 295,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -331,18 +358,18 @@ function PaymentSuccessContent() {
                         children: "Verifying payment..."
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 269,
+                        lineNumber: 296,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/payment/success/page.tsx",
-                lineNumber: 267,
+                lineNumber: 294,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/payment/success/page.tsx",
-            lineNumber: 266,
+            lineNumber: 293,
             columnNumber: 7
         }, this);
     }
@@ -358,12 +385,12 @@ function PaymentSuccessContent() {
                             className: "w-10 h-10 text-red-600"
                         }, void 0, false, {
                             fileName: "[project]/app/payment/success/page.tsx",
-                            lineNumber: 280,
+                            lineNumber: 307,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 279,
+                        lineNumber: 306,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -371,7 +398,7 @@ function PaymentSuccessContent() {
                         children: "Payment Error"
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 282,
+                        lineNumber: 309,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -379,7 +406,7 @@ function PaymentSuccessContent() {
                         children: error || 'Unable to verify payment'
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 283,
+                        lineNumber: 310,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -387,18 +414,18 @@ function PaymentSuccessContent() {
                         children: "Return to Home"
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 284,
+                        lineNumber: 311,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/payment/success/page.tsx",
-                lineNumber: 278,
+                lineNumber: 305,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/payment/success/page.tsx",
-            lineNumber: 277,
+            lineNumber: 304,
             columnNumber: 7
         }, this);
     }
@@ -416,12 +443,12 @@ function PaymentSuccessContent() {
                             className: "w-5 h-5"
                         }, void 0, false, {
                             fileName: "[project]/app/payment/success/page.tsx",
-                            lineNumber: 300,
+                            lineNumber: 327,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 295,
+                        lineNumber: 322,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -433,12 +460,12 @@ function PaymentSuccessContent() {
                                     className: "w-12 h-12 text-green-600"
                                 }, void 0, false, {
                                     fileName: "[project]/app/payment/success/page.tsx",
-                                    lineNumber: 307,
+                                    lineNumber: 334,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/payment/success/page.tsx",
-                                lineNumber: 306,
+                                lineNumber: 333,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -446,7 +473,7 @@ function PaymentSuccessContent() {
                                 children: paymentData.isCreditPurchase ? 'ShaleanCred Purchase Successful' : 'Payment Successful'
                             }, void 0, false, {
                                 fileName: "[project]/app/payment/success/page.tsx",
-                                lineNumber: 311,
+                                lineNumber: 338,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -461,13 +488,13 @@ function PaymentSuccessContent() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/payment/success/page.tsx",
-                                            lineNumber: 319,
+                                            lineNumber: 346,
                                             columnNumber: 44
                                         }, this),
                                         " ShaleanCred.",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                             fileName: "[project]/app/payment/success/page.tsx",
-                                            lineNumber: 320,
+                                            lineNumber: 347,
                                             columnNumber: 17
                                         }, this),
                                         "Your credits have been added to your account."
@@ -483,7 +510,7 @@ function PaymentSuccessContent() {
                                 }, void 0, true)
                             }, void 0, false, {
                                 fileName: "[project]/app/payment/success/page.tsx",
-                                lineNumber: 316,
+                                lineNumber: 343,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -499,12 +526,12 @@ function PaymentSuccessContent() {
                                                 children: "View ShaleanCred"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/payment/success/page.tsx",
-                                                lineNumber: 335,
+                                                lineNumber: 362,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/payment/success/page.tsx",
-                                            lineNumber: 334,
+                                            lineNumber: 361,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -516,12 +543,12 @@ function PaymentSuccessContent() {
                                                 children: "Go to Dashboard"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/payment/success/page.tsx",
-                                                lineNumber: 338,
+                                                lineNumber: 365,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/payment/success/page.tsx",
-                                            lineNumber: 337,
+                                            lineNumber: 364,
                                             columnNumber: 17
                                         }, this)
                                     ]
@@ -536,12 +563,12 @@ function PaymentSuccessContent() {
                                                 children: "View Dashboard"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/payment/success/page.tsx",
-                                                lineNumber: 344,
+                                                lineNumber: 371,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/payment/success/page.tsx",
-                                            lineNumber: 343,
+                                            lineNumber: 370,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -553,31 +580,31 @@ function PaymentSuccessContent() {
                                                 children: "Go back to home"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/payment/success/page.tsx",
-                                                lineNumber: 347,
+                                                lineNumber: 374,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/payment/success/page.tsx",
-                                            lineNumber: 346,
+                                            lineNumber: 373,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true)
                             }, void 0, false, {
                                 fileName: "[project]/app/payment/success/page.tsx",
-                                lineNumber: 331,
+                                lineNumber: 358,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 304,
+                        lineNumber: 331,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/payment/success/page.tsx",
-                lineNumber: 293,
+                lineNumber: 320,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -587,14 +614,14 @@ function PaymentSuccessContent() {
                         className: "w-4 h-4"
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 357,
+                        lineNumber: 384,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         children: "Secured by"
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 358,
+                        lineNumber: 385,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -602,19 +629,19 @@ function PaymentSuccessContent() {
                         children: "paystack"
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 359,
+                        lineNumber: 386,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/payment/success/page.tsx",
-                lineNumber: 356,
+                lineNumber: 383,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/payment/success/page.tsx",
-        lineNumber: 291,
+        lineNumber: 318,
         columnNumber: 5
     }, this);
 }
@@ -629,7 +656,7 @@ function PaymentSuccessPage() {
                         className: "w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 370,
+                        lineNumber: 397,
                         columnNumber: 11
                     }, void 0),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -637,28 +664,28 @@ function PaymentSuccessPage() {
                         children: "Loading..."
                     }, void 0, false, {
                         fileName: "[project]/app/payment/success/page.tsx",
-                        lineNumber: 371,
+                        lineNumber: 398,
                         columnNumber: 11
                     }, void 0)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/payment/success/page.tsx",
-                lineNumber: 369,
+                lineNumber: 396,
                 columnNumber: 9
             }, void 0)
         }, void 0, false, {
             fileName: "[project]/app/payment/success/page.tsx",
-            lineNumber: 368,
+            lineNumber: 395,
             columnNumber: 7
         }, void 0),
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(PaymentSuccessContent, {}, void 0, false, {
             fileName: "[project]/app/payment/success/page.tsx",
-            lineNumber: 375,
+            lineNumber: 402,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/payment/success/page.tsx",
-        lineNumber: 367,
+        lineNumber: 394,
         columnNumber: 5
     }, this);
 }

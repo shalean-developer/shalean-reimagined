@@ -3,6 +3,7 @@
 import { createClient } from '@/lib/supabase/client';
 import { PricingRule, Cleaner, CleanerWithAvailability } from '@/types/booking';
 import { calculateReliabilityScore, calculateCompletionRate, calculateOnTimeRate } from '@/lib/utils/cleaner-utils';
+import { requiresTeamBooking } from '@/lib/utils/service-validation';
 
 /**
  * Client-side action to fetch pricing rules
@@ -105,12 +106,15 @@ export async function checkCleanerBookingConflictClient(
     const supabase = createClient();
 
     // Query bookings for this cleaner on the specified date
+    // Only consider paid and confirmed bookings (exclude pending/unpaid bookings)
+    // Cleaners should only be marked as booked when booking is paid and created
     const { data: bookings, error } = await supabase
       .from('bookings')
       .select('service_time, service_duration')
       .eq('preferred_cleaner_id', cleanerId)
       .eq('service_date', serviceDate)
-      .in('status', ['pending', 'confirmed']);
+      .eq('payment_status', 'paid')
+      .eq('status', 'confirmed');
 
     if (error) {
       console.error('Error checking booking conflicts:', error);
@@ -295,6 +299,80 @@ export async function getAvailableCleanersWithCriteriaClient(params: {
     return {
       success: false,
       error: error instanceof Error ? error.message : 'An unexpected error occurred',
+    };
+  }
+}
+
+/**
+ * Check team availability for a specific date for team-based services (client-side)
+ * Returns which teams (1, 2, or 3) are available and which are booked
+ */
+export async function checkTeamAvailabilityForDateClient(
+  serviceDate: string,
+  serviceType: string
+): Promise<{
+  availableTeams: number[];
+  bookedTeams: number[];
+  allTeamsBooked: boolean;
+}> {
+  try {
+    const supabase = createClient();
+
+    // Only check for team-based services (Deep Cleaning and Move In/Out)
+    if (!requiresTeamBooking(serviceType)) {
+      return {
+        availableTeams: [],
+        bookedTeams: [],
+        allTeamsBooked: false,
+      };
+    }
+
+    // Query bookings for the specified date and service type
+    // Only consider paid and confirmed bookings (exclude pending/unpaid bookings)
+    // Teams should only be marked as booked when booking is paid and created
+    const { data: bookings, error: bookingsError } = await supabase
+      .from('bookings')
+      .select('team_number')
+      .eq('service_date', serviceDate)
+      .eq('service_type', serviceType)
+      .not('team_number', 'is', null)
+      .eq('payment_status', 'paid')
+      .eq('status', 'confirmed');
+
+    if (bookingsError) {
+      console.error('Error checking team bookings:', bookingsError);
+      // If we can't check bookings, assume all teams available (optimistic approach)
+      return {
+        availableTeams: [1, 2, 3],
+        bookedTeams: [],
+        allTeamsBooked: false,
+      };
+    }
+
+    // Extract booked team numbers
+    const bookedTeams = (bookings || [])
+      .map((booking) => booking.team_number)
+      .filter((teamNumber): teamNumber is number => teamNumber !== null && teamNumber >= 1 && teamNumber <= 3);
+
+    // Get unique booked teams (in case of duplicates)
+    const bookedTeamsSet = new Set(bookedTeams);
+
+    // Calculate available teams (1, 2, 3 minus booked teams)
+    const allTeams = [1, 2, 3];
+    const availableTeams = allTeams.filter((team) => !bookedTeamsSet.has(team));
+
+    return {
+      availableTeams,
+      bookedTeams: Array.from(bookedTeamsSet),
+      allTeamsBooked: availableTeams.length === 0,
+    };
+  } catch (error) {
+    console.error('Unexpected error checking team availability:', error);
+    // On error, assume all teams available for safety (let database constraint catch duplicates)
+    return {
+      availableTeams: [1, 2, 3],
+      bookedTeams: [],
+      allTeamsBooked: false,
     };
   }
 }

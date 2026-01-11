@@ -12,6 +12,7 @@ import { getServices, getAdditionalServices } from '../../quote/actions';
 import { getPricingRulesClient } from '../../book/actions-client';
 import { calculatePriceBreakdownClient } from '@/lib/pricing/calculator-client';
 import { findServiceBySlug } from '@/lib/utils/slug';
+import { requiresTeamBooking } from '@/lib/utils/service-validation';
 import { toast } from 'sonner';
 import { PriceBreakdown } from '@/types/booking';
 
@@ -243,6 +244,23 @@ function BookingSubmitPageWithSlugContent() {
     if (!validation.valid) {
       validation.errors.forEach((error) => toast.error(error));
       return;
+    }
+
+    // Additional validation: Check if team selection is required for team bookings
+    if (selectedService) {
+      const isTeamBooking = requiresTeamBooking(selectedService.name);
+      if (isTeamBooking) {
+        if (!formData.teamNumber || formData.teamNumber < 1 || formData.teamNumber > 3) {
+          toast.error('Please select a team (1, 2, or 3) for this service');
+          return;
+        }
+      } else {
+        // For non-team bookings, ensure teamNumber is not set
+        if (formData.teamNumber !== null && formData.teamNumber !== undefined) {
+          toast.error('Team selection is only available for Deep Cleaning and Move In/Out services');
+          return;
+        }
+      }
     }
 
     setIsProcessing(true);

@@ -43,7 +43,7 @@ async function createClient() {
 "[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"00d1405999e1046495476b3d80637183450821bfc0":"getCleaningEquipment","00f6a41d53889140d7e9eb8567bc58b1384742947f":"getServices","40504fbb7d25638dc4dfc5e6955689cad2084e9a62":"getQuotesByEmail","405ff48f2a3cbbdf419a7345e619dd1aab33494c6a":"getQuoteDraft","4064366348e3635d7d32c5f8e580ee61d31c234f51":"getHomeDetailOptions","40ba270d5bde2a8477c429febb815e3168fe1f680c":"getAdditionalServices","60205aad0eeb90ebe115b92a245d9b8b744446bd6c":"submitQuote","6029a1e453009ca60580c931994c4bbfdd2618eab7":"saveQuoteDraft"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"0021634062cd96c1456de274e1e4cb9bdb22c0005b":"getCleaningEquipment","00fc6971a6ccb01a8598c6ab12d37e043db8936f77":"getServices","403c32958a961e5aa8c3d3ca4e97daa1ade43825da":"getHomeDetailOptions","406015e2758827c594502325e52d94d06f4df9298f":"getAdditionalServices","40d3cbb576311a8971dac6f8d1a1dac0402a616de4":"getQuotesByEmail","40e29c53148bc07a6493a46527017a7993ffccb11d":"getQuoteDraft","608cb0c93803deee64c24543ee839c955b2374c81b":"saveQuoteDraft","60f63c16be1c62ef8ee9bc5f4b64ed8f8e09704209":"submitQuote"},"",""] */ __turbopack_context__.s([
     "getAdditionalServices",
     ()=>getAdditionalServices,
     "getCleaningEquipment",
@@ -318,19 +318,19 @@ async function getCleaningEquipment() {
     getHomeDetailOptions,
     getCleaningEquipment
 ]);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(saveQuoteDraft, "6029a1e453009ca60580c931994c4bbfdd2618eab7", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getQuoteDraft, "405ff48f2a3cbbdf419a7345e619dd1aab33494c6a", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getQuotesByEmail, "40504fbb7d25638dc4dfc5e6955689cad2084e9a62", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(submitQuote, "60205aad0eeb90ebe115b92a245d9b8b744446bd6c", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getServices, "00f6a41d53889140d7e9eb8567bc58b1384742947f", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAdditionalServices, "40ba270d5bde2a8477c429febb815e3168fe1f680c", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getHomeDetailOptions, "4064366348e3635d7d32c5f8e580ee61d31c234f51", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getCleaningEquipment, "00d1405999e1046495476b3d80637183450821bfc0", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(saveQuoteDraft, "608cb0c93803deee64c24543ee839c955b2374c81b", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getQuoteDraft, "40e29c53148bc07a6493a46527017a7993ffccb11d", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getQuotesByEmail, "40d3cbb576311a8971dac6f8d1a1dac0402a616de4", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(submitQuote, "60f63c16be1c62ef8ee9bc5f4b64ed8f8e09704209", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getServices, "00fc6971a6ccb01a8598c6ab12d37e043db8936f77", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAdditionalServices, "406015e2758827c594502325e52d94d06f4df9298f", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getHomeDetailOptions, "403c32958a961e5aa8c3d3ca4e97daa1ade43825da", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getCleaningEquipment, "0021634062cd96c1456de274e1e4cb9bdb22c0005b", null);
 }),
 "[project]/src/lib/pricing/rules.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"005e7f39f4547f8e49bdea5173442110fef677c335":"getPricingRules","006570b92fa578ce3e8f6e1c6bdbf2b0513ad42302":"getServiceFeePercentage","00a3b45825b40f5e3021fa6a07cd26094b56d7a452":"getLooseCarpetPrice","00d2e34f88fb438ead4ff93040af36f5fe3ebd732f":"getFittedRoomPrice","409a78e9a212e1fcf91b8526b06319acd204e3670a":"getBedroomPrice","40b4f6cf729849de7ca6bf9450500d75f427527910":"getFrequencyDiscount","40c50eb105579ac7e6daca9df69af937fcaf76f9a2":"getAdditionalServicePrice","40cbc96be732552f7279fb9d285c6c5da39c126bf2":"getBathroomPrice","40d88e088ec7044fed7a047b0bb3e34be439deeec7":"getBasePrice"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"000db7a269f50cae8583065b1ddc90c15bfce8c3ca":"getServiceFeePercentage","00bba8a0ef74167457b0a936686e8409a8a83d19b4":"getFittedRoomPrice","00d5b819f29899b0636b43b918cfbbebc145e52936":"getLooseCarpetPrice","00e8abb81d07c4a6422d74121cad00d77fad5d03d8":"getPricingRules","405d31fc973b816c8a418370f6cd93eaa97bb0fb1e":"getBedroomPrice","409b8418eaf74e7ab4345146fce337e2dae2237c2b":"getFrequencyDiscount","40b674c9a511aad78dc862471d71d2dd4e2728d982":"getAdditionalServicePrice","40ee8e9a70dc974076f0a4d840cbfc782a7cbc9263":"getBasePrice","40fa83cf7d45d93d981b437ffa066d1a4295ce63fb":"getBathroomPrice"},"",""] */ __turbopack_context__.s([
     "getAdditionalServicePrice",
     ()=>getAdditionalServicePrice,
     "getBasePrice",
@@ -423,15 +423,15 @@ async function getLooseCarpetPrice() {
     getFittedRoomPrice,
     getLooseCarpetPrice
 ]);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getPricingRules, "005e7f39f4547f8e49bdea5173442110fef677c335", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getBasePrice, "40d88e088ec7044fed7a047b0bb3e34be439deeec7", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getBedroomPrice, "409a78e9a212e1fcf91b8526b06319acd204e3670a", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getBathroomPrice, "40cbc96be732552f7279fb9d285c6c5da39c126bf2", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAdditionalServicePrice, "40c50eb105579ac7e6daca9df69af937fcaf76f9a2", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getServiceFeePercentage, "006570b92fa578ce3e8f6e1c6bdbf2b0513ad42302", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getFrequencyDiscount, "40b4f6cf729849de7ca6bf9450500d75f427527910", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getFittedRoomPrice, "00d2e34f88fb438ead4ff93040af36f5fe3ebd732f", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getLooseCarpetPrice, "00a3b45825b40f5e3021fa6a07cd26094b56d7a452", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getPricingRules, "00e8abb81d07c4a6422d74121cad00d77fad5d03d8", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getBasePrice, "40ee8e9a70dc974076f0a4d840cbfc782a7cbc9263", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getBedroomPrice, "405d31fc973b816c8a418370f6cd93eaa97bb0fb1e", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getBathroomPrice, "40fa83cf7d45d93d981b437ffa066d1a4295ce63fb", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAdditionalServicePrice, "40b674c9a511aad78dc862471d71d2dd4e2728d982", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getServiceFeePercentage, "000db7a269f50cae8583065b1ddc90c15bfce8c3ca", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getFrequencyDiscount, "409b8418eaf74e7ab4345146fce337e2dae2237c2b", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getFittedRoomPrice, "00bba8a0ef74167457b0a936686e8409a8a83d19b4", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getLooseCarpetPrice, "00d5b819f29899b0636b43b918cfbbebc145e52936", null);
 }),
 "[project]/src/lib/utils/service-validation.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -450,6 +450,8 @@ async function getLooseCarpetPrice() {
     ()=>getAvailableFrequencies,
     "isValidFrequencyForService",
     ()=>isValidFrequencyForService,
+    "requiresTeamBooking",
+    ()=>requiresTeamBooking,
     "supportsRecurringBookings",
     ()=>supportsRecurringBookings
 ]);
@@ -485,11 +487,28 @@ function isValidFrequencyForService(serviceName, frequency) {
     const availableFrequencies = getAvailableFrequencies(serviceName);
     return availableFrequencies.includes(frequency);
 }
+function requiresTeamBooking(serviceName) {
+    if (!serviceName) return false;
+    const normalizedName = serviceName.toLowerCase().trim();
+    // Deep Cleaning requires team booking
+    if (normalizedName.includes('deep')) {
+        return true;
+    }
+    // Move In/Out requires team booking
+    // Check for "move" and ("in/out" or "in out" or "inout")
+    if (normalizedName.includes('move')) {
+        if (normalizedName.includes('in/out') || normalizedName.includes('in out') || normalizedName.includes('inout')) {
+            return true;
+        }
+    }
+    // All other services use individual cleaners
+    return false;
+}
 }),
 "[project]/src/lib/pricing/calculator.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"40ca7bfb06820eaa692407118398f0af3495d1c063":"calculatePrice","7fd51976f15a35c2e52b2cba13de917ef28ea1e1e5":"calculatePriceBreakdown"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"40160a02d3753dace5be96eaeb9f1f0bfe25148693":"calculatePrice","7f6ca93adbfe881952fa6ce55eadb044711f2317c4":"calculatePriceBreakdown"},"",""] */ __turbopack_context__.s([
     "calculatePrice",
     ()=>calculatePrice,
     "calculatePriceBreakdown",
@@ -609,8 +628,8 @@ async function calculatePriceBreakdown(serviceId, bedrooms, bathrooms, additiona
     calculatePrice,
     calculatePriceBreakdown
 ]);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(calculatePrice, "40ca7bfb06820eaa692407118398f0af3495d1c063", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(calculatePriceBreakdown, "7fd51976f15a35c2e52b2cba13de917ef28ea1e1e5", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(calculatePrice, "40160a02d3753dace5be96eaeb9f1f0bfe25148693", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(calculatePriceBreakdown, "7f6ca93adbfe881952fa6ce55eadb044711f2317c4", null);
 }),
 "[project]/src/lib/utils/booking-number.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -922,7 +941,7 @@ function formatDateForDB(date) {
 "[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"0019532f868a94df6c0122768d799c068359648554":"getWorkingHours","00c3eb366471dc28d2ba12ca24c27104c719562fe7":"getWorkingHoursFromOptions","4004ef63ef40de34adde504db020ada1e9af75afca":"initializePaymentForBooking","405439e548f8e7946c6cbfeff181132ab54954e27a":"calculateCleanerReliabilityScore","4098304d6da17afd1440f886eab2afb7318f095f37":"getBooking","409cf8bad0be74ee2ea0c720288951da2dd87f0e8a":"getAvailableCleaners","40b99760ebe17e833319604a37a0206c7744325008":"getAvailableCleanersWithCriteria","40c2908ef6bc319a05bff5b585be617bf443ecd7ca":"createBookingDraft","6032851b340efffaaf8481b8a029fe4852b0729a39":"isCleanerAvailableForDay","60552b54902c256ccf98e190f63fd8748b7384ea5f":"validateDiscountCode","70224e7123073e27cf69bb4a223c03dc5fd2434dce":"checkCleanerAvailabilityForSlot","70aa5452687b8d50280a60de82263c1c523830b083":"checkAvailabilityForAllSlots","780fcc9e3f44fb70df2ae6596a56222d6b1bd805c8":"checkCleanerBookingConflict"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"0034316469aa8c8ec2cb4e83eda347ee4382a5cc26":"getWorkingHoursFromOptions","00a1ca88359d58fd0af32ce951035da7370074eb17":"getWorkingHours","40076bfb9338cc2818be359d6f4842d7232f4e98b7":"calculateCleanerReliabilityScore","4010e6c8d10272f46c969c74cdea1116f8233a9738":"getAvailableCleanersWithCriteria","405ad80f2be77879cf1910cba26c89cc91597b527b":"initializePaymentForBooking","409c4af1f6a00b1435a4325bc8ebb4a81f732cf0f9":"getBooking","40a40651665af2f7ac8eb712a7212a90429dbba698":"createBookingDraft","40c15da46bc8ff218066c11f046171d400bc9340b9":"getAvailableCleaners","60128b95072b749847c870234662fd3d61de64e813":"checkTeamAvailabilityForDate","6030831853743ef6f07fbb1dc55d04873c2416bbc2":"isCleanerAvailableForDay","609833cce0ce4794dfef5417b3c8bab6d4dcfe264b":"validateDiscountCode","709fa2f3becdc0e0bf72104d4a43ec363e5a354d00":"checkCleanerAvailabilityForSlot","7855f31b6258bff55424266a8aebafe5fcf74b3f1b":"checkCleanerBookingConflict","78cc7191970ba404b03c57202cb05f8cd6b0267354":"checkAvailabilityForAllSlots"},"",""] */ __turbopack_context__.s([
     "calculateCleanerReliabilityScore",
     ()=>calculateCleanerReliabilityScore,
     "checkAvailabilityForAllSlots",
@@ -931,6 +950,8 @@ function formatDateForDB(date) {
     ()=>checkCleanerAvailabilityForSlot,
     "checkCleanerBookingConflict",
     ()=>checkCleanerBookingConflict,
+    "checkTeamAvailabilityForDate",
+    ()=>checkTeamAvailabilityForDate,
     "createBookingDraft",
     ()=>createBookingDraft,
     "getAvailableCleaners",
@@ -1026,11 +1047,9 @@ async function checkCleanerAvailabilityForSlot(serviceDate, serviceTime, service
         // Query bookings for the specified date that might overlap
         // We need to check for bookings where:
         // (booking_start_time < new_end_time) AND (booking_end_time > new_start_time)
-        // Only consider pending or confirmed bookings (exclude cancelled/completed)
-        const { data: bookings, error: bookingsError } = await supabase.from('bookings').select('service_time, service_duration, preferred_cleaner_id, preferred_cleaner_ids, number_of_cleaners').eq('service_date', serviceDate).in('status', [
-            'pending',
-            'confirmed'
-        ]);
+        // Only consider paid and confirmed bookings (exclude pending/unpaid, cancelled/completed)
+        // Cleaners should only be marked as booked when booking is paid and created
+        const { data: bookings, error: bookingsError } = await supabase.from('bookings').select('service_time, service_duration, preferred_cleaner_id, preferred_cleaner_ids, number_of_cleaners').eq('service_date', serviceDate).eq('payment_status', 'paid').eq('status', 'confirmed');
         if (bookingsError) {
             console.error('Error checking bookings:', bookingsError);
             // If we can't check bookings, assume available (optimistic approach)
@@ -1113,14 +1132,85 @@ async function checkCleanerAvailabilityForSlot(serviceDate, serviceTime, service
         };
     }
 }
-async function checkAvailabilityForAllSlots(serviceDate, workingHours, serviceDuration) {
+async function checkTeamAvailabilityForDate(serviceDate, serviceType) {
+    try {
+        const supabase = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$server$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createClient"])();
+        // Only check for team-based services (Deep Cleaning and Move In/Out)
+        if (!(0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$service$2d$validation$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["requiresTeamBooking"])(serviceType)) {
+            return {
+                availableTeams: [],
+                bookedTeams: [],
+                allTeamsBooked: false
+            };
+        }
+        // Query bookings for the specified date and service type
+        // Only consider paid and confirmed bookings (exclude pending/unpaid bookings)
+        // Teams should only be marked as booked when booking is paid and created
+        const { data: bookings, error: bookingsError } = await supabase.from('bookings').select('team_number').eq('service_date', serviceDate).eq('service_type', serviceType).not('team_number', 'is', null).eq('payment_status', 'paid').eq('status', 'confirmed');
+        if (bookingsError) {
+            console.error('Error checking team bookings:', bookingsError);
+            // If we can't check bookings, assume all teams available (optimistic approach)
+            return {
+                availableTeams: [
+                    1,
+                    2,
+                    3
+                ],
+                bookedTeams: [],
+                allTeamsBooked: false
+            };
+        }
+        // Extract booked team numbers
+        const bookedTeams = (bookings || []).map((booking)=>booking.team_number).filter((teamNumber)=>teamNumber !== null && teamNumber >= 1 && teamNumber <= 3);
+        // Get unique booked teams (in case of duplicates)
+        const bookedTeamsSet = new Set(bookedTeams);
+        // Calculate available teams (1, 2, 3 minus booked teams)
+        const allTeams = [
+            1,
+            2,
+            3
+        ];
+        const availableTeams = allTeams.filter((team)=>!bookedTeamsSet.has(team));
+        return {
+            availableTeams,
+            bookedTeams: Array.from(bookedTeamsSet),
+            allTeamsBooked: availableTeams.length === 0
+        };
+    } catch (error) {
+        console.error('Unexpected error checking team availability:', error);
+        // On error, assume all teams available for safety (let database constraint catch duplicates)
+        return {
+            availableTeams: [
+                1,
+                2,
+                3
+            ],
+            bookedTeams: [],
+            allTeamsBooked: false
+        };
+    }
+}
+async function checkAvailabilityForAllSlots(serviceDate, workingHours, serviceDuration, serviceType) {
     const availability = {};
-    // Check availability for each time slot in parallel
-    // Use the service duration provided (either from form data or calculated)
+    // If service requires team booking, check team availability instead
+    if (serviceType && (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$service$2d$validation$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["requiresTeamBooking"])(serviceType)) {
+        const teamAvailability = await checkTeamAvailabilityForDate(serviceDate, serviceType);
+        // For team-based services, availability is day-based, not time-based
+        // If all teams are booked, all slots are unavailable
+        // Otherwise, slots are available (but we'll show team selection in UI)
+        const slotsAvailable = !teamAvailability.allTeamsBooked;
+        const availableTeamsCount = teamAvailability.availableTeams.length;
+        // Set same availability for all time slots
+        workingHours.forEach((hour)=>{
+            availability[hour.start_time] = {
+                available: slotsAvailable,
+                availableCleanersCount: availableTeamsCount
+            };
+        });
+        return availability;
+    }
+    // For regular services, check individual cleaner availability per time slot
     const promises = workingHours.map(async (hour)=>{
-        // Use the provided service duration, not the working hour's duration
-        // The working hour duration is just the slot length, but the actual booking
-        // will use the service duration from the form
         const slotAvailability = await checkCleanerAvailabilityForSlot(serviceDate, hour.start_time, serviceDuration);
         return {
             time: hour.start_time,
@@ -1224,6 +1314,38 @@ async function createBookingDraft(formData) {
                 error: `Recurring bookings are only available for Standard Cleaning and Airbnb Cleaning services. Selected service: ${service.name}`
             };
         }
+        // Check if service requires team booking
+        const isTeamBooking = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$service$2d$validation$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["requiresTeamBooking"])(service.name);
+        // Validate team booking requirements
+        if (isTeamBooking) {
+            if (!formData.teamNumber || formData.teamNumber < 1 || formData.teamNumber > 3) {
+                return {
+                    success: false,
+                    error: 'Please select a team (1, 2, or 3) for this service'
+                };
+            }
+            // Check team availability for each booking date
+            const startDate = new Date(formData.serviceDate);
+            const bookingDates = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$recurring$2d$dates$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["calculateBookingDatesForMonth"])(startDate, formData.cleaningFrequency);
+            for (const bookingDate of bookingDates){
+                const teamAvailability = await checkTeamAvailabilityForDate((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$recurring$2d$dates$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatDateForDB"])(bookingDate), service.name);
+                if (!teamAvailability.availableTeams.includes(formData.teamNumber)) {
+                    const dateStr = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$recurring$2d$dates$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatDateForDB"])(bookingDate);
+                    return {
+                        success: false,
+                        error: `Team ${formData.teamNumber} is already booked for ${dateStr}. Please select a different team or date.`
+                    };
+                }
+            }
+        } else {
+            // For non-team bookings, ensure teamNumber is not set
+            if (formData.teamNumber !== null && formData.teamNumber !== undefined) {
+                return {
+                    success: false,
+                    error: 'Team selection is only available for Deep Cleaning and Move In/Out services'
+                };
+            }
+        }
         // Calculate pricing
         const priceBreakdown = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$pricing$2f$calculator$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["calculatePrice"])({
             serviceId: formData.serviceId,
@@ -1257,6 +1379,8 @@ async function createBookingDraft(formData) {
             numberOfCleaners: formData.numberOfCleaners || 1
         });
         // Determine if this is a recurring booking
+        // Note: Team-based services (Deep Cleaning and Move In/Out) don't support recurring bookings
+        // but we'll handle it gracefully if somehow a recurring frequency is selected
         const isRecurring = formData.cleaningFrequency !== 'one-time';
         // Calculate booking dates based on frequency
         const startDate = new Date(formData.serviceDate);
@@ -1286,8 +1410,11 @@ async function createBookingDraft(formData) {
                 bathrooms: formData.bathrooms,
                 additional_services: formData.additionalServices,
                 cleaning_equipment: formData.cleaningEquipment,
-                preferred_cleaner_ids: formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0 ? formData.preferredCleanerIds : null,
-                preferred_cleaner_id: formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0 ? formData.preferredCleanerIds[0] : null,
+                preferred_cleaner_ids: isTeamBooking ? null // Team bookings don't have preferred cleaners
+                 : formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0 ? formData.preferredCleanerIds : null,
+                preferred_cleaner_id: isTeamBooking ? null // Team bookings don't have preferred cleaners
+                 : formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0 ? formData.preferredCleanerIds[0] : null,
+                team_number: isTeamBooking && formData.teamNumber ? formData.teamNumber : null,
                 cleaning_frequency: formData.cleaningFrequency,
                 service_date: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$recurring$2d$dates$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["formatDateForDB"])(bookingDate),
                 service_time: formData.serviceTime,
@@ -1448,7 +1575,8 @@ async function initializePaymentForBooking(bookingIdOrIds) {
             };
         }
         // Partial credit coverage or no credits - proceed with Paystack for remaining amount
-        const reference = firstBooking.paystack_reference || `${firstBooking.booking_number}${Date.now()}`;
+        // Always generate a new unique reference for Paystack (references must be unique and can only be used once)
+        const reference = `${firstBooking.booking_number}${Date.now()}${Math.random().toString(36).substring(2, 9)}`;
         // Initialize Paystack payment with remaining amount (after credits)
         const paymentResponse = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$paystack$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["initializePayment"])(firstBooking.customer_email, remainingAmount, reference, {
             booking_ids: bookingIds,
@@ -1580,10 +1708,9 @@ async function checkCleanerBookingConflict(cleanerId, serviceDate, serviceTime, 
     try {
         const supabase = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$server$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createClient"])();
         // Query bookings for this cleaner on the specified date
-        const { data: bookings, error } = await supabase.from('bookings').select('service_time, service_duration').eq('preferred_cleaner_id', cleanerId).eq('service_date', serviceDate).in('status', [
-            'pending',
-            'confirmed'
-        ]);
+        // Only consider paid and confirmed bookings (exclude pending/unpaid bookings)
+        // Cleaners should only be marked as booked when booking is paid and created
+        const { data: bookings, error } = await supabase.from('bookings').select('service_time, service_duration').eq('preferred_cleaner_id', cleanerId).eq('service_date', serviceDate).eq('payment_status', 'paid').eq('status', 'confirmed');
         if (error) {
             console.error('Error checking booking conflicts:', error);
             return false; // Assume no conflict on error
@@ -1743,6 +1870,7 @@ async function getAvailableCleanersWithCriteria(params) {
     getWorkingHours,
     getWorkingHoursFromOptions,
     checkCleanerAvailabilityForSlot,
+    checkTeamAvailabilityForDate,
     checkAvailabilityForAllSlots,
     validateDiscountCode,
     createBookingDraft,
@@ -1754,19 +1882,20 @@ async function getAvailableCleanersWithCriteria(params) {
     calculateCleanerReliabilityScore,
     getAvailableCleanersWithCriteria
 ]);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getWorkingHours, "0019532f868a94df6c0122768d799c068359648554", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getWorkingHoursFromOptions, "00c3eb366471dc28d2ba12ca24c27104c719562fe7", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(checkCleanerAvailabilityForSlot, "70224e7123073e27cf69bb4a223c03dc5fd2434dce", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(checkAvailabilityForAllSlots, "70aa5452687b8d50280a60de82263c1c523830b083", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(validateDiscountCode, "60552b54902c256ccf98e190f63fd8748b7384ea5f", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createBookingDraft, "40c2908ef6bc319a05bff5b585be617bf443ecd7ca", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(initializePaymentForBooking, "4004ef63ef40de34adde504db020ada1e9af75afca", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getBooking, "4098304d6da17afd1440f886eab2afb7318f095f37", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAvailableCleaners, "409cf8bad0be74ee2ea0c720288951da2dd87f0e8a", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(isCleanerAvailableForDay, "6032851b340efffaaf8481b8a029fe4852b0729a39", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(checkCleanerBookingConflict, "780fcc9e3f44fb70df2ae6596a56222d6b1bd805c8", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(calculateCleanerReliabilityScore, "405439e548f8e7946c6cbfeff181132ab54954e27a", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAvailableCleanersWithCriteria, "40b99760ebe17e833319604a37a0206c7744325008", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getWorkingHours, "00a1ca88359d58fd0af32ce951035da7370074eb17", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getWorkingHoursFromOptions, "0034316469aa8c8ec2cb4e83eda347ee4382a5cc26", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(checkCleanerAvailabilityForSlot, "709fa2f3becdc0e0bf72104d4a43ec363e5a354d00", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(checkTeamAvailabilityForDate, "60128b95072b749847c870234662fd3d61de64e813", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(checkAvailabilityForAllSlots, "78cc7191970ba404b03c57202cb05f8cd6b0267354", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(validateDiscountCode, "609833cce0ce4794dfef5417b3c8bab6d4dcfe264b", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createBookingDraft, "40a40651665af2f7ac8eb712a7212a90429dbba698", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(initializePaymentForBooking, "405ad80f2be77879cf1910cba26c89cc91597b527b", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getBooking, "409c4af1f6a00b1435a4325bc8ebb4a81f732cf0f9", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAvailableCleaners, "40c15da46bc8ff218066c11f046171d400bc9340b9", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(isCleanerAvailableForDay, "6030831853743ef6f07fbb1dc55d04873c2416bbc2", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(checkCleanerBookingConflict, "7855f31b6258bff55424266a8aebafe5fcf74b3f1b", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(calculateCleanerReliabilityScore, "40076bfb9338cc2818be359d6f4842d7232f4e98b7", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getAvailableCleanersWithCriteria, "4010e6c8d10272f46c969c74cdea1116f8233a9738", null);
 }),
 "[project]/.next-internal/server/app/booking/details/[serviceSlug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript) <locals>", ((__turbopack_context__) => {
 "use strict";
@@ -1786,19 +1915,19 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$ac
 "use strict";
 
 __turbopack_context__.s([
-    "0019532f868a94df6c0122768d799c068359648554",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getWorkingHours"],
-    "00c3eb366471dc28d2ba12ca24c27104c719562fe7",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getWorkingHoursFromOptions"],
-    "00d1405999e1046495476b3d80637183450821bfc0",
+    "0021634062cd96c1456de274e1e4cb9bdb22c0005b",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getCleaningEquipment"],
-    "00f6a41d53889140d7e9eb8567bc58b1384742947f",
+    "0034316469aa8c8ec2cb4e83eda347ee4382a5cc26",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getWorkingHoursFromOptions"],
+    "00a1ca88359d58fd0af32ce951035da7370074eb17",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getWorkingHours"],
+    "00fc6971a6ccb01a8598c6ab12d37e043db8936f77",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getServices"],
-    "4064366348e3635d7d32c5f8e580ee61d31c234f51",
+    "403c32958a961e5aa8c3d3ca4e97daa1ade43825da",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getHomeDetailOptions"],
-    "40ba270d5bde2a8477c429febb815e3168fe1f680c",
+    "406015e2758827c594502325e52d94d06f4df9298f",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getAdditionalServices"],
-    "70aa5452687b8d50280a60de82263c1c523830b083",
+    "78cc7191970ba404b03c57202cb05f8cd6b0267354",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["checkAvailabilityForAllSlots"]
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$booking$2f$details$2f5b$serviceSlug$5d2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$app$2f$booking$2f$quote$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29222c$__ACTIONS_MODULE1__$3d3e$__$225b$project$5d2f$app$2f$booking$2f$book$2f$actions$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i('[project]/.next-internal/server/app/booking/details/[serviceSlug]/page/actions.js { ACTIONS_MODULE0 => "[project]/app/booking/quote/actions.ts [app-rsc] (ecmascript)", ACTIONS_MODULE1 => "[project]/app/booking/book/actions.ts [app-rsc] (ecmascript)" } [app-rsc] (server actions loader, ecmascript) <locals>');

@@ -162,10 +162,14 @@ export function Step1ServiceDetails({ formData, updateFormData, pricingRules = [
       // Use the current service duration, or default to 3.5 hours
       const durationToUse = formData.serviceDuration > 0 ? formData.serviceDuration : 3.5;
       
+      // Get service type for team availability checking
+      const serviceType = selectedService?.name || undefined;
+      
       const availability = await checkAvailabilityForAllSlots(
         date,
         workingHours,
-        durationToUse
+        durationToUse,
+        serviceType
       );
       setSlotAvailability(availability);
       

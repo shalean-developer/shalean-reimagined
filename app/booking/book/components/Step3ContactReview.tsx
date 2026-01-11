@@ -12,7 +12,7 @@ import { getServices, getAdditionalServices } from '../../quote/actions';
 import { AdditionalService } from '@/types/quote';
 import { createClient } from '@/lib/supabase/client';
 import { calculateBookingDatesForMonth } from '@/lib/utils/recurring-dates';
-import { supportsRecurringBookings } from '@/lib/utils/service-validation';
+import { supportsRecurringBookings, requiresTeamBooking } from '@/lib/utils/service-validation';
 
 interface Step3ContactReviewProps {
   formData: BookingFormData;
@@ -43,18 +43,34 @@ export function Step3ContactReview({
       setIsAuthenticated(!!user);
     };
     checkAuth();
+    
+    // Listen for auth state changes
+    const supabase = createClient();
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setIsAuthenticated(!!session?.user);
+    });
+    
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   // Fetch user's credit balance (only if authenticated)
-  const { data: creditBalance = 0 } = useQuery({
-    queryKey: ['credit-balance'],
+  const { data: creditBalance = 0, isLoading: isLoadingBalance } = useQuery({
+    queryKey: ['credit-balance', isAuthenticated],
     queryFn: async () => {
       try {
         const response = await fetch('/api/profile/balance');
+        if (response.status === 401) {
+          // Unauthorized - user is not actually authenticated
+          setIsAuthenticated(false);
+          return 0;
+        }
         if (response.ok) {
           const data = await response.json();
           return data.success ? (data.balance || 0) : 0;
         }
+        console.warn('Failed to fetch credit balance:', response.status, response.statusText);
         return 0;
       } catch (error) {
         console.error('Error fetching credit balance:', error);
@@ -63,6 +79,7 @@ export function Step3ContactReview({
     },
     enabled: isAuthenticated,
     staleTime: 30 * 1000, // Refresh every 30 seconds
+    retry: false, // Don't retry on error to avoid unnecessary API calls
   });
   
   // Fetch services and additional services
@@ -85,13 +102,16 @@ export function Step3ContactReview({
   
   // Check if selected service is carpet cleaning
   const isCarpetCleaning = serviceName?.toLowerCase().includes('carpet') ?? false;
+  
+  // Check if service requires team booking
+  const isTeamBooking = requiresTeamBooking(serviceName);
 
   // Get selected additional services
   const selectedAdditionalServices = formData.additionalServices
     .map((id) => additionalServices.find((s) => s.id === id))
     .filter((s): s is AdditionalService => s !== undefined);
 
-  // Fetch selected cleaners
+  // Fetch selected cleaners (only for non-team bookings)
   const { data: cleaners = [] } = useQuery({
     queryKey: ['cleaners', JSON.stringify(formData.preferredCleanerIds)],
     queryFn: async () => {
@@ -107,7 +127,7 @@ export function Step3ContactReview({
         .in('id', formData.preferredCleanerIds);
       return data || [];
     },
-    enabled: formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0,
+    enabled: !isTeamBooking && formData.preferredCleanerIds && formData.preferredCleanerIds.length > 0,
     staleTime: 5 * 60 * 1000,
   });
 
@@ -198,17 +218,23 @@ export function Step3ContactReview({
         <p className="text-sm text-muted-foreground">Please review your booking details before confirming.</p>
       </div>
 
-      {/* Cleaner */}
+      {/* Cleaner or Team */}
       <div className="bg-white rounded-xl p-4 border border-border">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-lg font-semibold">Cleaner</h3>
+          <h3 className="text-lg font-semibold">{isTeamBooking ? 'Team' : 'Cleaner'}</h3>
           <button type="button" className="text-primary">
             <Pencil className="w-4 h-4" />
           </button>
         </div>
         <div className="bg-primary text-primary-foreground rounded-lg p-3 mb-3">
           <p className="text-xs mb-1">An upfront tip for</p>
-          {cleaners.length > 0 ? (
+          {isTeamBooking ? (
+            formData.teamNumber ? (
+              <p className="font-bold text-base">Team {formData.teamNumber}</p>
+            ) : (
+              <p className="font-bold text-base">No team selected</p>
+            )
+          ) : cleaners.length > 0 ? (
             <div className="space-y-1">
               {cleaners.map((cleaner) => (
                 <p key={cleaner.id} className="font-bold text-base">
@@ -579,8 +605,8 @@ export function Step3ContactReview({
           </div>
         </div>
 
-        {/* ShaleanCred Section - Only show if authenticated and has credits */}
-        {isAuthenticated && creditBalance > 0 && (
+        {/* ShaleanCred Section - Show if authenticated */}
+        {isAuthenticated && (
           <div className="mb-3 p-3 bg-secondary/50 rounded-lg border border-border">
             <div className="flex items-center gap-2 mb-2">
               <Coins className="w-4 h-4 text-primary" />
@@ -594,17 +620,32 @@ export function Step3ContactReview({
                 type="checkbox"
                 id="use-credits"
                 checked={useCredits}
+                disabled={isLoadingBalance || creditBalance <= 0}
                 onChange={(e) => {
+                  if (isLoadingBalance || creditBalance <= 0) return;
                   const use = e.target.checked;
                   updateFormData({ 
                     useCredits: use,
                     creditsAmount: use ? Math.min(creditBalance, totalBookingAmount) : 0
                   });
                 }}
-                className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
               />
-              <label htmlFor="use-credits" className="text-sm cursor-pointer">
+              <label 
+                htmlFor="use-credits" 
+                className={`text-sm ${!isLoadingBalance && creditBalance > 0 ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}
+              >
                 Use ShaleanCred for this booking
+                {isLoadingBalance && (
+                  <span className="text-xs text-muted-foreground block mt-1">
+                    Loading balance...
+                  </span>
+                )}
+                {!isLoadingBalance && creditBalance <= 0 && (
+                  <span className="text-xs text-muted-foreground block mt-1">
+                    No ShaleanCred available
+                  </span>
+                )}
               </label>
             </div>
             {useCredits && (

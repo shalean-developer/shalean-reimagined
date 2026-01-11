@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get user's profile and current balance
-    const { data: profile, error: profileError } = await supabase
+    let { data: profile, error: profileError } = await supabase
       .from('profiles')
       .select('id, credit_balance')
       .eq('email', email)
@@ -60,11 +60,29 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Create profile if it doesn't exist
     if (!profile) {
-      return NextResponse.json(
-        { error: 'Profile not found' },
-        { status: 404 }
-      );
+      // Create a basic profile using existing user info
+      const { data: newProfile, error: createError } = await supabase
+        .from('profiles')
+        .insert({
+          email,
+          credit_balance: 0,
+          first_name: user.user_metadata?.first_name || '',
+          last_name: user.user_metadata?.last_name || '',
+        })
+        .select('id, credit_balance')
+        .single();
+
+      if (createError || !newProfile) {
+        console.error('Error creating profile:', createError);
+        return NextResponse.json(
+          { error: 'Failed to create profile', details: createError?.message },
+          { status: 500 }
+        );
+      }
+      
+      profile = newProfile;
     }
 
     const balanceBefore = profile.credit_balance || 0;

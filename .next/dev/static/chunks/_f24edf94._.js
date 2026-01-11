@@ -546,11 +546,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$a
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/badge.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$progress$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/progress.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$cleaner$2d$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/utils/cleaner-utils.ts [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$data$3a$efce58__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__ = __turbopack_context__.i("[project]/app/booking/quote/data:efce58 [app-client] (ecmascript) <text/javascript>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$data$3a$ebd3d2__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__ = __turbopack_context__.i("[project]/app/booking/quote/data:ebd3d2 [app-client] (ecmascript) <text/javascript>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$service$2d$validation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/utils/service-validation.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
+;
 ;
 ;
 ;
@@ -600,19 +601,48 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [sortCriteria, setSortCriteria] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('best-match');
     const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [teamAvailability, setTeamAvailability] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [loadingTeams, setLoadingTeams] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     // Fetch services to get service name
     const { data: services = [] } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQuery"])({
         queryKey: [
             'services'
         ],
-        queryFn: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$data$3a$efce58__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__["getServices"],
+        queryFn: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$data$3a$ebd3d2__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__["getServices"],
         staleTime: 5 * 60 * 1000
     });
     // Get selected service
-    const selectedService = services.find((s)=>s.id === formData.serviceId);
-    const serviceName = selectedService?.name || '';
-    const supportsRecurring = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$service$2d$validation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supportsRecurringBookings"])(serviceName);
-    const availableFrequencies = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$service$2d$validation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAvailableFrequencies"])(serviceName);
+    const selectedService = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "Step2ScheduleCleaner.useMemo[selectedService]": ()=>services.find({
+                "Step2ScheduleCleaner.useMemo[selectedService]": (s)=>s.id === formData.serviceId
+            }["Step2ScheduleCleaner.useMemo[selectedService]"])
+    }["Step2ScheduleCleaner.useMemo[selectedService]"], [
+        services,
+        formData.serviceId
+    ]);
+    const serviceName = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "Step2ScheduleCleaner.useMemo[serviceName]": ()=>selectedService?.name || ''
+    }["Step2ScheduleCleaner.useMemo[serviceName]"], [
+        selectedService
+    ]);
+    const supportsRecurring = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "Step2ScheduleCleaner.useMemo[supportsRecurring]": ()=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$service$2d$validation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supportsRecurringBookings"])(serviceName)
+    }["Step2ScheduleCleaner.useMemo[supportsRecurring]"], [
+        serviceName
+    ]);
+    const availableFrequencies = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "Step2ScheduleCleaner.useMemo[availableFrequencies]": ()=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$service$2d$validation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAvailableFrequencies"])(serviceName)
+    }["Step2ScheduleCleaner.useMemo[availableFrequencies]"], [
+        serviceName
+    ]);
+    // Check if service requires team booking - default to false if service name is not yet available
+    const isTeamBooking = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "Step2ScheduleCleaner.useMemo[isTeamBooking]": ()=>{
+            return serviceName ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$service$2d$validation$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["requiresTeamBooking"])(serviceName) : false;
+        }
+    }["Step2ScheduleCleaner.useMemo[isTeamBooking]"], [
+        serviceName
+    ]);
     // Ensure component is mounted before rendering Select to avoid hydration mismatch
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Step2ScheduleCleaner.useEffect": ()=>{
@@ -633,9 +663,50 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
         formData.cleaningFrequency,
         updateFormData
     ]);
+    // Fetch team availability for team-based services
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Step2ScheduleCleaner.useEffect": ()=>{
+            async function fetchTeamAvailability() {
+                if (!isTeamBooking || !formData.serviceDate || !serviceName) {
+                    setTeamAvailability(null);
+                    return;
+                }
+                setLoadingTeams(true);
+                try {
+                    const availability = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$actions$2d$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["checkTeamAvailabilityForDateClient"])(formData.serviceDate, serviceName);
+                    setTeamAvailability(availability);
+                } catch (error) {
+                    console.error('Error fetching team availability:', error);
+                    setTeamAvailability({
+                        availableTeams: [
+                            1,
+                            2,
+                            3
+                        ],
+                        bookedTeams: [],
+                        allTeamsBooked: false
+                    });
+                } finally{
+                    setLoadingTeams(false);
+                }
+            }
+            fetchTeamAvailability();
+        }
+    }["Step2ScheduleCleaner.useEffect"], [
+        isTeamBooking,
+        formData.serviceDate,
+        serviceName
+    ]);
+    // Fetch cleaners for regular services
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Step2ScheduleCleaner.useEffect": ()=>{
             async function fetchCleaners() {
+                // Skip fetching cleaners for team-based services
+                if (isTeamBooking) {
+                    setCleaners([]);
+                    setLoading(false);
+                    return;
+                }
                 setLoading(true);
                 try {
                     const result = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$actions$2d$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getAvailableCleanersWithCriteriaClient"])({
@@ -664,6 +735,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
             fetchCleaners();
         }
     }["Step2ScheduleCleaner.useEffect"], [
+        isTeamBooking,
         formData.serviceSuburb,
         formData.serviceDate,
         formData.serviceTime,
@@ -680,7 +752,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                         children: "Schedule & Cleaner"
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 95,
+                        lineNumber: 148,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -688,13 +760,13 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                         children: "Choose your preferred date and time."
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 96,
+                        lineNumber: 149,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                lineNumber: 94,
+                lineNumber: 147,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -707,7 +779,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                 className: "w-5 h-5 text-primary"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 102,
+                                lineNumber: 155,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -715,13 +787,13 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                 children: "Service Address"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 103,
+                                lineNumber: 156,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 101,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -737,7 +809,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                 children: "Street Address *"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 161,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -748,13 +820,13 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 109,
+                                                lineNumber: 162,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 160,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -764,7 +836,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                 children: "Apt / Unit"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 116,
+                                                lineNumber: 169,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -775,19 +847,19 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 117,
+                                                lineNumber: 170,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 115,
+                                        lineNumber: 168,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 106,
+                                lineNumber: 159,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -800,7 +872,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                 children: "Suburb *"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 126,
+                                                lineNumber: 179,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -810,13 +882,13 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 127,
+                                                lineNumber: 180,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 125,
+                                        lineNumber: 178,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -826,7 +898,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                 children: "City *"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 133,
+                                                lineNumber: 186,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -836,31 +908,31 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 134,
+                                                lineNumber: 187,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 132,
+                                        lineNumber: 185,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 124,
+                                lineNumber: 177,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 105,
+                        lineNumber: 158,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                lineNumber: 100,
+                lineNumber: 153,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -874,13 +946,21 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                         className: "text-lg font-semibold",
-                                        children: formData.numberOfCleaners > 1 ? `Select ${formData.numberOfCleaners} cleaners` : 'Select your preferred cleaner'
+                                        children: isTeamBooking ? 'Select a team' : formData.numberOfCleaners > 1 ? `Select ${formData.numberOfCleaners} cleaners` : 'Select your preferred cleaner'
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 147,
+                                        lineNumber: 200,
                                         columnNumber: 13
                                     }, this),
-                                    formData.numberOfCleaners > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    isTeamBooking && formData.serviceDate && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-sm text-muted-foreground",
+                                        children: "Each team can be booked once per day. Teams work for the entire day."
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                        lineNumber: 208,
+                                        columnNumber: 15
+                                    }, this),
+                                    !isTeamBooking && formData.numberOfCleaners > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground",
                                         children: [
                                             (formData.preferredCleanerIds || []).length,
@@ -890,16 +970,16 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 153,
+                                        lineNumber: 213,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 146,
+                                lineNumber: 199,
                                 columnNumber: 11
                             }, this),
-                            mounted && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            mounted && !isTeamBooking && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex items-center gap-2",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -908,7 +988,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                         children: "Sort by:"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 160,
+                                        lineNumber: 220,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -920,12 +1000,12 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                 className: "w-[180px]",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 163,
+                                                    lineNumber: 223,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 162,
+                                                lineNumber: 222,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -935,7 +1015,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                         children: "Best Match"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                        lineNumber: 166,
+                                                        lineNumber: 226,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -943,7 +1023,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                         children: "Highest Rated"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                        lineNumber: 167,
+                                                        lineNumber: 227,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -951,7 +1031,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                         children: "Most Reliable"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                        lineNumber: 168,
+                                                        lineNumber: 228,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -959,39 +1039,218 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                         children: "Most Experienced"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                        lineNumber: 169,
+                                                        lineNumber: 229,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 165,
+                                                lineNumber: 225,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 161,
+                                        lineNumber: 221,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 159,
+                                lineNumber: 219,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 145,
+                        lineNumber: 198,
                         columnNumber: 9
                     }, this),
-                    loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    isTeamBooking ? // Team Selection UI
+                    loadingTeams ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center py-8 text-muted-foreground",
+                        children: "Loading team availability..."
+                    }, void 0, false, {
+                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                        lineNumber: 238,
+                        columnNumber: 13
+                    }, this) : !formData.serviceDate ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center py-8 text-muted-foreground",
+                        children: "Please select a date first to see team availability"
+                    }, void 0, false, {
+                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                        lineNumber: 240,
+                        columnNumber: 13
+                    }, this) : teamAvailability?.allTeamsBooked ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center py-8",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-muted-foreground mb-2",
+                                children: "All teams are booked for this date."
+                            }, void 0, false, {
+                                fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                lineNumber: 245,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-sm text-muted-foreground",
+                                children: "Please select a different date."
+                            }, void 0, false, {
+                                fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                lineNumber: 246,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                        lineNumber: 244,
+                        columnNumber: 13
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "grid grid-cols-1 md:grid-cols-3 gap-4",
+                        children: [
+                            1,
+                            2,
+                            3
+                        ].map((teamNumber)=>{
+                            const isAvailable = teamAvailability?.availableTeams.includes(teamNumber) ?? false;
+                            const isBooked = teamAvailability?.bookedTeams.includes(teamNumber) ?? false;
+                            const isSelected = formData.teamNumber === teamNumber;
+                            const isDisabled = isBooked;
+                            const handleTeamClick = ()=>{
+                                if (isDisabled) return;
+                                updateFormData({
+                                    teamNumber: isSelected ? null : teamNumber,
+                                    preferredCleanerIds: []
+                                });
+                            };
+                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                type: "button",
+                                onClick: handleTeamClick,
+                                disabled: isDisabled,
+                                className: `relative p-6 rounded-xl border-2 transition-all text-center ${isSelected ? 'border-primary bg-primary/5' : isDisabled ? 'border-destructive/50 bg-muted/50 opacity-60 cursor-not-allowed' : 'border-border hover:border-primary/50 bg-background'}`,
+                                children: [
+                                    isSelected && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute top-2 right-2 w-5 h-5 rounded-full bg-primary flex items-center justify-center z-10",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
+                                            className: "w-3 h-3 text-primary-foreground"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                            lineNumber: 280,
+                                            columnNumber: 25
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                        lineNumber: 279,
+                                        columnNumber: 23
+                                    }, this),
+                                    isAvailable && !isBooked && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
+                                        variant: "default",
+                                        className: "absolute top-2 left-2 text-xs bg-green-500 hover:bg-green-600",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
+                                                className: "w-3 h-3 mr-1"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                                lineNumber: 289,
+                                                columnNumber: 25
+                                            }, this),
+                                            "Available"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                        lineNumber: 285,
+                                        columnNumber: 23
+                                    }, this),
+                                    isBooked && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
+                                        variant: "destructive",
+                                        className: "absolute top-2 left-2 text-xs",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__XCircle$3e$__["XCircle"], {
+                                                className: "w-3 h-3 mr-1"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                                lineNumber: 299,
+                                                columnNumber: 25
+                                            }, this),
+                                            "Booked"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                        lineNumber: 295,
+                                        columnNumber: 23
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex flex-col items-center gap-3 mt-6",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-2xl font-bold text-primary",
+                                                    children: [
+                                                        "Team ",
+                                                        teamNumber
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                                    lineNumber: 306,
+                                                    columnNumber: 25
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                                lineNumber: 305,
+                                                columnNumber: 23
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "text-center",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "font-semibold",
+                                                        children: [
+                                                            "Team ",
+                                                            teamNumber
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                                        lineNumber: 309,
+                                                        columnNumber: 25
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-xs text-muted-foreground mt-1",
+                                                        children: isBooked ? 'Already booked' : 'Available for booking'
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                                        lineNumber: 310,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                                lineNumber: 308,
+                                                columnNumber: 23
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                        lineNumber: 304,
+                                        columnNumber: 21
+                                    }, this)
+                                ]
+                            }, teamNumber, true, {
+                                fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                                lineNumber: 265,
+                                columnNumber: 19
+                            }, this);
+                        })
+                    }, void 0, false, {
+                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                        lineNumber: 249,
+                        columnNumber: 13
+                    }, this) : loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-center py-8 text-muted-foreground",
                         children: "Loading cleaners..."
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 176,
+                        lineNumber: 321,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
@@ -1009,12 +1268,12 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                             className: "w-3 h-3 text-primary-foreground"
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                            lineNumber: 192,
+                                            lineNumber: 337,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 191,
+                                        lineNumber: 336,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1027,12 +1286,12 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     children: "?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 197,
+                                                    lineNumber: 342,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 196,
+                                                lineNumber: 341,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1043,7 +1302,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                         children: "No preference"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                        lineNumber: 200,
+                                                        lineNumber: 345,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1051,25 +1310,25 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                         children: "Best available"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                        lineNumber: 201,
+                                                        lineNumber: 346,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 199,
+                                                lineNumber: 344,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 195,
+                                        lineNumber: 340,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 181,
+                                lineNumber: 326,
                                 columnNumber: 15
                             }, this),
                             cleaners.map((cleaner)=>{
@@ -1123,12 +1382,12 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                 className: "w-3 h-3 text-primary-foreground"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                lineNumber: 261,
+                                                lineNumber: 406,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                            lineNumber: 260,
+                                            lineNumber: 405,
                                             columnNumber: 21
                                         }, this),
                                         !hasConflict && isAvailable && formData.serviceDate && formData.serviceTime && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1139,14 +1398,14 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     className: "w-3 h-3 mr-1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 271,
+                                                    lineNumber: 416,
                                                     columnNumber: 23
                                                 }, this),
                                                 "Available"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                            lineNumber: 267,
+                                            lineNumber: 412,
                                             columnNumber: 21
                                         }, this),
                                         hasConflict && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1157,14 +1416,14 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     className: "w-3 h-3 mr-1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 280,
+                                                    lineNumber: 425,
                                                     columnNumber: 23
                                                 }, this),
                                                 "Booked"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                            lineNumber: 276,
+                                            lineNumber: 421,
                                             columnNumber: 21
                                         }, this),
                                         isHighReliability && !hasConflict && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1175,14 +1434,14 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     className: "w-3 h-3 mr-1"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 291,
+                                                    lineNumber: 436,
                                                     columnNumber: 23
                                                 }, this),
                                                 "High Reliability"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                            lineNumber: 287,
+                                            lineNumber: 432,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1199,20 +1458,20 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                     alt: cleaner.name
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                    lineNumber: 300,
+                                                                    lineNumber: 445,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AvatarFallback"], {
                                                                     children: cleaner.name.charAt(0)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                    lineNumber: 301,
+                                                                    lineNumber: 446,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                            lineNumber: 299,
+                                                            lineNumber: 444,
                                                             columnNumber: 25
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "w-14 h-14 rounded-full bg-muted flex items-center justify-center",
@@ -1221,12 +1480,12 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                 children: cleaner.name.charAt(0)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                lineNumber: 305,
+                                                                lineNumber: 450,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                            lineNumber: 304,
+                                                            lineNumber: 449,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1243,7 +1502,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                                 children: cleaner.name
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                                lineNumber: 313,
+                                                                                lineNumber: 458,
                                                                                 columnNumber: 38
                                                                             }, this);
                                                                         }
@@ -1256,7 +1515,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                                     children: firstName
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                                    lineNumber: 319,
+                                                                                    lineNumber: 464,
                                                                                     columnNumber: 33
                                                                                 }, this),
                                                                                 surname && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1267,7 +1526,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                                    lineNumber: 320,
+                                                                                    lineNumber: 465,
                                                                                     columnNumber: 45
                                                                                 }, this)
                                                                             ]
@@ -1275,7 +1534,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                     })()
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                    lineNumber: 309,
+                                                                    lineNumber: 454,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 cleaner.rating && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1285,7 +1544,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                             className: "w-3 h-3 fill-yellow-400 text-yellow-400"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                            lineNumber: 327,
+                                                                            lineNumber: 472,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1293,25 +1552,25 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                             children: cleaner.rating.toFixed(1)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                            lineNumber: 328,
+                                                                            lineNumber: 473,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                    lineNumber: 326,
+                                                                    lineNumber: 471,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                            lineNumber: 308,
+                                                            lineNumber: 453,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 297,
+                                                    lineNumber: 442,
                                                     columnNumber: 21
                                                 }, this),
                                                 reliabilityScore > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1325,7 +1584,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                     children: "Reliability"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                    lineNumber: 338,
+                                                                    lineNumber: 483,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1333,13 +1592,13 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                                     children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$cleaner$2d$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["formatReliabilityScore"])(reliabilityScore)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                                    lineNumber: 339,
+                                                                    lineNumber: 484,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                            lineNumber: 337,
+                                                            lineNumber: 482,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$progress$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Progress"], {
@@ -1347,13 +1606,13 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                             className: "h-2"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                            lineNumber: 341,
+                                                            lineNumber: 486,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 336,
+                                                    lineNumber: 481,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1364,7 +1623,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                             children: cleaner.specialties.slice(0, 2).join(', ')
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                            lineNumber: 348,
+                                                            lineNumber: 493,
                                                             columnNumber: 25
                                                         }, this),
                                                         cleaner.years_experience && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1376,7 +1635,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                            lineNumber: 351,
+                                                            lineNumber: 496,
                                                             columnNumber: 25
                                                         }, this),
                                                         cleaner.total_bookings !== undefined && cleaner.total_bookings > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1387,35 +1646,35 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                            lineNumber: 354,
+                                                            lineNumber: 499,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 346,
+                                                    lineNumber: 491,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                            lineNumber: 296,
+                                            lineNumber: 441,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, cleaner.id, true, {
                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                    lineNumber: 246,
+                                    lineNumber: 391,
                                     columnNumber: 17
                                 }, this);
                             })
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 178,
+                        lineNumber: 323,
                         columnNumber: 11
                     }, this),
-                    formData.numberOfCleaners > 1 && (formData.preferredCleanerIds || []).length >= formData.numberOfCleaners && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    !isTeamBooking && formData.numberOfCleaners > 1 && (formData.preferredCleanerIds || []).length >= formData.numberOfCleaners && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-sm text-muted-foreground text-center",
                         children: [
                             "You've selected ",
@@ -1424,10 +1683,10 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 364,
+                        lineNumber: 509,
                         columnNumber: 11
                     }, this),
-                    formData.numberOfCleaners > 1 && (formData.preferredCleanerIds || []).length < formData.numberOfCleaners && cleaners.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    !isTeamBooking && formData.numberOfCleaners > 1 && (formData.preferredCleanerIds || []).length < formData.numberOfCleaners && cleaners.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-sm text-muted-foreground text-center",
                         children: [
                             "Please select ",
@@ -1438,13 +1697,21 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 369,
+                        lineNumber: 514,
+                        columnNumber: 11
+                    }, this),
+                    isTeamBooking && !formData.teamNumber && formData.serviceDate && !teamAvailability?.allTeamsBooked && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-sm text-muted-foreground text-center",
+                        children: "Please select a team to continue"
+                    }, void 0, false, {
+                        fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
+                        lineNumber: 519,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                lineNumber: 144,
+                lineNumber: 197,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1458,7 +1725,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                 children: "How often do you need cleaning?"
                             }, void 0, false, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 378,
+                                lineNumber: 528,
                                 columnNumber: 11
                             }, this),
                             !supportsRecurring && serviceName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1468,7 +1735,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                         className: "w-4 h-4 text-muted-foreground cursor-help"
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 381,
+                                        lineNumber: 531,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1476,19 +1743,19 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                         children: "Recurring bookings are only available for Standard Cleaning and Airbnb Cleaning services."
                                     }, void 0, false, {
                                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                        lineNumber: 382,
+                                        lineNumber: 532,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 380,
+                                lineNumber: 530,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 377,
+                        lineNumber: 527,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1519,7 +1786,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                             className: `w-6 h-6 ${isDisabled ? 'text-muted-foreground' : 'text-primary'}`
                                         }, void 0, false, {
                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                            lineNumber: 418,
+                                            lineNumber: 568,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1530,7 +1797,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     children: option.label
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 421,
+                                                    lineNumber: 571,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1538,7 +1805,7 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     children: option.subtitle
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 422,
+                                                    lineNumber: 572,
                                                     columnNumber: 21
                                                 }, this),
                                                 option.discount && isAvailable && supportsRecurring && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1546,46 +1813,46 @@ function Step2ScheduleCleaner({ formData, updateFormData }) {
                                                     children: option.discount
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                                    lineNumber: 424,
+                                                    lineNumber: 574,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                            lineNumber: 420,
+                                            lineNumber: 570,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                    lineNumber: 416,
+                                    lineNumber: 566,
                                     columnNumber: 17
                                 }, this)
                             }, option.value, false, {
                                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                                lineNumber: 395,
+                                lineNumber: 545,
                                 columnNumber: 15
                             }, this);
                         })
                     }, void 0, false, {
                         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                        lineNumber: 388,
+                        lineNumber: 538,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-                lineNumber: 376,
+                lineNumber: 526,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/booking/book/components/Step2ScheduleCleaner.tsx",
-        lineNumber: 93,
+        lineNumber: 146,
         columnNumber: 5
     }, this);
 }
-_s(Step2ScheduleCleaner, "r4YdJcvyXZTp1VOaWXr35grdK5Y=", false, function() {
+_s(Step2ScheduleCleaner, "I/Tf3knW1ErXvtY1lZ/iFtAHwb0=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQuery"]
     ];
@@ -1612,7 +1879,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/arrow-left.js [app-client] (ecmascript) <export default as ArrowLeft>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$context$2f$BookingFormContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/booking/book/context/BookingFormContext.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$book$2f$components$2f$Step2ScheduleCleaner$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/booking/book/components/Step2ScheduleCleaner.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$data$3a$efce58__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__ = __turbopack_context__.i("[project]/app/booking/quote/data:efce58 [app-client] (ecmascript) <text/javascript>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$data$3a$ebd3d2__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__ = __turbopack_context__.i("[project]/app/booking/quote/data:ebd3d2 [app-client] (ecmascript) <text/javascript>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2f$slug$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/utils/slug.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/sonner/dist/index.mjs [app-client] (ecmascript)");
 ;
@@ -1640,7 +1907,7 @@ function BookingWorkerPageWithSlugContent() {
         queryKey: [
             'services'
         ],
-        queryFn: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$data$3a$efce58__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__["getServices"],
+        queryFn: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$booking$2f$quote$2f$data$3a$ebd3d2__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$text$2f$javascript$3e$__["getServices"],
         staleTime: 5 * 60 * 1000
     });
     // Set services in hook for slug generation

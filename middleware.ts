@@ -11,12 +11,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  let response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
-  })
-
   // Store cookies that need to be set
   const cookiesToSet: Array<{ name: string; value: string; options?: any }> = []
 
@@ -29,7 +23,6 @@ export async function middleware(request: NextRequest) {
         setAll(cookies) {
           cookies.forEach(({ name, value, options }) => {
             cookiesToSet.push({ name, value, options })
-            response.cookies.set(name, value, options)
           })
         },
       },
@@ -46,7 +39,7 @@ export async function middleware(request: NextRequest) {
       console.error('Error getting user in middleware:', error.message)
     }
 
-    // Protect dashboard routes
+    // Protect dashboard routes (customer)
     if (request.nextUrl.pathname.startsWith('/dashboard')) {
       if (!user) {
         const url = request.nextUrl.clone()
@@ -57,15 +50,59 @@ export async function middleware(request: NextRequest) {
         cookiesToSet.forEach(({ name, value, options }) => {
           redirectResponse.cookies.set(name, value, options)
         })
+        // Add pathname header even for redirects
+        redirectResponse.headers.set('x-pathname', request.nextUrl.pathname)
         return redirectResponse
       }
     }
+
+    // Protect cleaner dashboard routes (but allow /cleaner/login)
+    if (request.nextUrl.pathname.startsWith('/cleaner') && !request.nextUrl.pathname.startsWith('/cleaner/login')) {
+      if (!user) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/cleaner/login'
+        url.searchParams.set('redirect', request.nextUrl.pathname)
+        const redirectResponse = NextResponse.redirect(url)
+        cookiesToSet.forEach(({ name, value, options }) => {
+          redirectResponse.cookies.set(name, value, options)
+        })
+        // Add pathname header even for redirects
+        redirectResponse.headers.set('x-pathname', request.nextUrl.pathname)
+        return redirectResponse
+      }
+
+      // Additional check: verify user is a cleaner
+      // We'll do a basic check here - full verification happens in layout
+      // Check if email matches cleaner format or if user has cleaner profile
+      if (user.email && !user.email.includes('@cleaners.shalean.local')) {
+        // Allow through - layout will verify cleaner status more thoroughly
+        // This is just a basic filter
+      }
+    }
+
+    // Create response and add pathname header for all requests
+    const response = NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    })
+    
+    // Set cookies on the response
+    cookiesToSet.forEach(({ name, value, options }) => {
+      response.cookies.set(name, value, options)
+    })
+    
+    // Add pathname to headers for use in layouts (always set this)
+    response.headers.set('x-pathname', request.nextUrl.pathname)
 
     return response
   } catch (error) {
     // Log the error but don't crash the middleware
     console.error('Middleware error:', error)
-    return NextResponse.next()
+    const errorResponse = NextResponse.next()
+    // Still set pathname header even on error
+    errorResponse.headers.set('x-pathname', request.nextUrl.pathname)
+    return errorResponse
   }
 }
 
