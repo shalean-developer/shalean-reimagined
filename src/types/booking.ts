@@ -225,6 +225,8 @@ export interface Cleaner {
   total_bookings?: number | null;
   completed_bookings?: number | null;
   on_time_bookings?: number | null;
+  created_at?: string | null;
+  updated_at?: string | null;
 }
 
 export interface CleanerWithAvailability extends Cleaner {
