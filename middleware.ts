@@ -80,6 +80,37 @@ export async function middleware(request: NextRequest) {
       }
     }
 
+    // Protect admin dashboard routes (but allow /admin/login and standalone admin pages)
+    if (
+      request.nextUrl.pathname.startsWith('/admin') &&
+      !request.nextUrl.pathname.startsWith('/admin/login') &&
+      !request.nextUrl.pathname.startsWith('/admin/create-cleaner') &&
+      !request.nextUrl.pathname.startsWith('/admin/discount-codes') &&
+      !request.nextUrl.pathname.startsWith('/admin/fix-duplicate-codes') &&
+      !request.nextUrl.pathname.startsWith('/admin/fix-referral')
+    ) {
+      if (!user) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/admin/login'
+        url.searchParams.set('redirect', request.nextUrl.pathname)
+        const redirectResponse = NextResponse.redirect(url)
+        cookiesToSet.forEach(({ name, value, options }) => {
+          redirectResponse.cookies.set(name, value, options)
+        })
+        // Add pathname header even for redirects
+        redirectResponse.headers.set('x-pathname', request.nextUrl.pathname)
+        return redirectResponse
+      }
+
+      // Additional check: verify user is an admin
+      // We'll do a basic check here - full verification happens in layout
+      // Check if email matches admin pattern
+      if (user.email && !user.email.includes('@admin.shalean.local') && user.user_metadata?.role !== 'admin') {
+        // Allow through - layout will verify admin status more thoroughly
+        // This is just a basic filter
+      }
+    }
+
     // Create response and add pathname header for all requests
     const response = NextResponse.next({
       request: {

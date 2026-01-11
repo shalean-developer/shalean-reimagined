@@ -1,1 +1,13 @@
-{}
+{
+  "/admin/(dashboard)/bookings/page": "app/admin/(dashboard)/bookings/page.js",
+  "/admin/(dashboard)/page": "app/admin/(dashboard)/page.js",
+  "/admin/(dashboard)/reports/page": "app/admin/(dashboard)/reports/page.js",
+  "/admin/(dashboard)/settings/page": "app/admin/(dashboard)/settings/page.js",
+  "/admin/(dashboard)/users/[id]/page": "app/admin/(dashboard)/users/[id]/page.js",
+  "/admin/(dashboard)/users/page": "app/admin/(dashboard)/users/page.js",
+  "/admin/create-cleaner/page": "app/admin/create-cleaner/page.js",
+  "/admin/discount-codes/page": "app/admin/discount-codes/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/api/discount-codes/route": "app/api/discount-codes/route.js",
+  "/page": "app/page.js"
+}
