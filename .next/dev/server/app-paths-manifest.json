@@ -1,8 +1,0 @@
-{
-  "/admin/(dashboard)/users/[id]/page": "app/admin/(dashboard)/users/[id]/page.js",
-  "/api/cleaner/login/route": "app/api/cleaner/login/route.js",
-  "/cleaner/(dashboard)/bookings/page": "app/cleaner/(dashboard)/bookings/page.js",
-  "/cleaner/(dashboard)/page": "app/cleaner/(dashboard)/page.js",
-  "/cleaner/login/page": "app/cleaner/login/page.js",
-  "/page": "app/page.js"
-}
