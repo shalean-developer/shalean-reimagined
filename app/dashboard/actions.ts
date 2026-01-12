@@ -611,7 +611,7 @@ export async function updateCustomerProfile(
 
       // Create notification for admin about new customer
       try {
-        const { createNotification } = await import('@/app/notifications/actions');
+        const { createNotification } = await import('../notifications/actions');
         await createNotification({
           user_type: 'admin',
           type: 'new_user_registered',

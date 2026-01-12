@@ -16,7 +16,7 @@ import {
   markAllAsRead,
   deleteNotification,
   type Notification,
-} from '@/app/notifications/actions';
+} from '../notifications/actions';
 import { createClient } from '@/lib/supabase/client';
 import { formatDistanceToNow } from 'date-fns';
 import { toast } from 'sonner';

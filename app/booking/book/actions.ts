@@ -630,7 +630,7 @@ export async function createBookingDraft(formData: BookingFormData): Promise<{
 
     // Create notifications for new bookings
     try {
-      const { createNotification } = await import('@/app/notifications/actions');
+      const { createNotification } = await import('../../notifications/actions');
       
       // Get full booking details for notifications
       const { data: bookingDetails } = await supabase

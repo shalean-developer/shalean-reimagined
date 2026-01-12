@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getCurrentAdmin } from '@/app/admin/actions';
+import { getCurrentAdmin } from '../../admin/actions';
 import {
   getRevenueTrends,
   getRevenueByServiceType,
   getCleanerPerformanceMetrics,
   getCustomerLifetimeValue,
   getPeriodComparison,
-} from '@/app/admin/actions';
+} from '../../admin/actions';
 
 export async function POST(request: NextRequest) {
   try {

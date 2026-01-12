@@ -610,7 +610,7 @@ export async function updateBookingStatus(
 
     // Create notifications for status change
     try {
-      const { createNotification } = await import('@/app/notifications/actions');
+      const { createNotification } = await import('../notifications/actions');
       const statusMessages: Record<string, { title: string; message: string }> = {
         'confirmed': {
           title: 'Booking Confirmed',

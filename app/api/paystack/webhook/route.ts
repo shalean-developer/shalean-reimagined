@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyWebhookSignature, verifyPayment } from '@/lib/paystack/client';
 import { createClient } from '@/lib/supabase/server';
 import { generateVoucherCode } from '@/lib/utils/voucher';
-import { createNotification } from '@/app/notifications/actions';
+import { createNotification } from '../../notifications/actions';
 
 export async function POST(request: NextRequest) {
   try {
