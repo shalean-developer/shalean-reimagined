@@ -8,6 +8,7 @@ export interface Profile {
   last_name: string;
   referral_code: string | null;
   avatar_url: string | null;
+  credit_balance?: number;
   created_at: string;
   updated_at: string;
 }

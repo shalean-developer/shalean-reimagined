@@ -3,7 +3,7 @@
     "006434c97c3044593734d2467ca4ab71d2aa8a91e5": {
       "workers": {
         "app/dashboard/vouchers/page": {
-          "moduleId": 38251,
+          "moduleId": 5568,
           "async": false,
           "exportedName": "getAuthenticatedUser",
           "filename": "app/dashboard/actions.ts"
@@ -18,7 +18,7 @@
     "60807cfd74cfd1cbb01dfd2d0381be86a68ba78a4c": {
       "workers": {
         "app/dashboard/vouchers/page": {
-          "moduleId": 38251,
+          "moduleId": 5568,
           "async": false,
           "exportedName": "getCustomerProfile",
           "filename": "app/dashboard/actions.ts"
@@ -30,10 +30,70 @@
       "exportedName": "getCustomerProfile",
       "filename": "app/dashboard/actions.ts"
     },
+    "609a27fd30f765407b4f12d8c09bf5e1a49d8b26b4": {
+      "workers": {
+        "app/dashboard/vouchers/page": {
+          "moduleId": 5568,
+          "async": false,
+          "exportedName": "getNotifications",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "exportedName": "getNotifications",
+      "filename": "app/notifications/actions.ts"
+    },
+    "40232874feb8248283c7ff91c07c56fe857944eb3c": {
+      "workers": {
+        "app/dashboard/vouchers/page": {
+          "moduleId": 5568,
+          "async": false,
+          "exportedName": "getUnreadCount",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "exportedName": "getUnreadCount",
+      "filename": "app/notifications/actions.ts"
+    },
+    "60c02d4bb4ed0c4f79a18e6c326f75c4dcd177b7e1": {
+      "workers": {
+        "app/dashboard/vouchers/page": {
+          "moduleId": 5568,
+          "async": false,
+          "exportedName": "markAsRead",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "exportedName": "markAsRead",
+      "filename": "app/notifications/actions.ts"
+    },
+    "408e18910fa49d283d7ac82d822cbd0c224944b4d8": {
+      "workers": {
+        "app/dashboard/vouchers/page": {
+          "moduleId": 5568,
+          "async": false,
+          "exportedName": "markAllAsRead",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/vouchers/page": "action-browser"
+      },
+      "exportedName": "markAllAsRead",
+      "filename": "app/notifications/actions.ts"
+    },
     "709eba2d51be09c944e82cb9105efef408aa1568a4": {
       "workers": {
         "app/dashboard/vouchers/page": {
-          "moduleId": 38251,
+          "moduleId": 5568,
           "async": false,
           "exportedName": "redeemVoucher",
           "filename": "app/dashboard/actions.ts"
@@ -48,7 +108,7 @@
     "6088515a71e702a9120a07278b71ffeefdec9e4973": {
       "workers": {
         "app/dashboard/vouchers/page": {
-          "moduleId": 38251,
+          "moduleId": 5568,
           "async": false,
           "exportedName": "getVoucherRedemptions",
           "filename": "app/dashboard/actions.ts"

@@ -1478,6 +1478,75 @@ async function createBookingDraft(formData) {
             // Don't fail, but log the error
             }
         }
+        // Create notifications for new bookings
+        try {
+            const { createNotification } = await (()=>{
+                const e = new Error("Cannot find module '@/app/notifications/actions'");
+                e.code = 'MODULE_NOT_FOUND';
+                throw e;
+            })();
+            // Get full booking details for notifications
+            const { data: bookingDetails } = await supabase.from('bookings').select('id, booking_number, customer_email, preferred_cleaner_id, preferred_cleaner_ids, service_type, service_date, total_amount').in('id', insertedBookings.map((b)=>b.id));
+            if (bookingDetails && bookingDetails.length > 0) {
+                const firstBooking = bookingDetails[0];
+                // Notification for admin
+                await createNotification({
+                    user_type: 'admin',
+                    type: 'booking_created',
+                    title: 'New Booking Created',
+                    message: `New booking ${firstBooking.booking_number} created by ${formData.customerEmail}${bookingDetails.length > 1 ? ` (${bookingDetails.length} bookings)` : ''}.`,
+                    data: {
+                        booking_id: firstBooking.id,
+                        booking_number: firstBooking.booking_number,
+                        customer_email: formData.customerEmail,
+                        booking_count: bookingDetails.length
+                    }
+                });
+                // Notification for assigned cleaner(s)
+                if (firstBooking.preferred_cleaner_id) {
+                    const { data: cleaner } = await supabase.from('cleaners').select('id, email').eq('id', firstBooking.preferred_cleaner_id).single();
+                    if (cleaner) {
+                        await createNotification({
+                            user_id: cleaner.id,
+                            user_email: cleaner.email || undefined,
+                            user_type: 'cleaner',
+                            type: 'booking_assigned',
+                            title: 'New Booking Assigned',
+                            message: `You have been assigned to booking ${firstBooking.booking_number} on ${new Date(firstBooking.service_date).toLocaleDateString()}.`,
+                            data: {
+                                booking_id: firstBooking.id,
+                                booking_number: firstBooking.booking_number,
+                                service_date: firstBooking.service_date
+                            }
+                        });
+                    }
+                }
+                // Handle multiple cleaners
+                if (firstBooking.preferred_cleaner_ids && Array.isArray(firstBooking.preferred_cleaner_ids)) {
+                    const { data: cleaners } = await supabase.from('cleaners').select('id, email').in('id', firstBooking.preferred_cleaner_ids);
+                    if (cleaners) {
+                        for (const cleaner of cleaners){
+                            await createNotification({
+                                user_id: cleaner.id,
+                                user_email: cleaner.email || undefined,
+                                user_type: 'cleaner',
+                                type: 'booking_assigned',
+                                title: 'New Booking Assigned',
+                                message: `You have been assigned to booking ${firstBooking.booking_number} on ${new Date(firstBooking.service_date).toLocaleDateString()}.`,
+                                data: {
+                                    booking_id: firstBooking.id,
+                                    booking_number: firstBooking.booking_number,
+                                    service_date: firstBooking.service_date
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        } catch (notificationError) {
+            // Don't fail booking creation if notification fails
+            console.error('Error creating notifications for new booking:', notificationError);
+        }
         // Calculate total amount
         const totalAmount = insertedBookings.reduce((sum, booking)=>sum + Number(booking.total_amount), 0);
         const bookingIds = insertedBookings.map((booking)=>booking.id);
@@ -1575,7 +1644,8 @@ async function initializePaymentForBooking(bookingIdOrIds) {
             };
         }
         // Partial credit coverage or no credits - proceed with Paystack for remaining amount
-        const reference = firstBooking.paystack_reference || `${firstBooking.booking_number}${Date.now()}`;
+        // Always generate a new unique reference for Paystack (references must be unique and can only be used once)
+        const reference = `${firstBooking.booking_number}${Date.now()}${Math.random().toString(36).substring(2, 9)}`;
         // Initialize Paystack payment with remaining amount (after credits)
         const paymentResponse = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$paystack$2f$client$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["initializePayment"])(firstBooking.customer_email, remainingAmount, reference, {
             booking_ids: bookingIds,

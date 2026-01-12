@@ -96,6 +96,7 @@ export interface Booking {
   credits_used?: number;
   expected_arrival_time?: string | null;
   lateness_reason?: string | null;
+  cleaner_earnings_override?: Record<string, { baseEarnings: number; tipAmount: number; totalEarnings: number }> | null;
   created_at: string;
   updated_at: string;
 }
@@ -256,5 +257,23 @@ export interface PriceBreakdown {
 export interface TimeSlotAvailability {
   available: boolean;
   availableCleanersCount: number;
+}
+
+export interface CleanerUpdateInput {
+  name?: string;
+  email?: string | null;
+  phone?: string;
+  is_active?: boolean;
+  bio?: string | null;
+  areas?: string[];
+  specialties?: string[];
+  years_experience?: number | null;
+  available_monday?: boolean;
+  available_tuesday?: boolean;
+  available_wednesday?: boolean;
+  available_thursday?: boolean;
+  available_friday?: boolean;
+  available_saturday?: boolean;
+  available_sunday?: boolean;
 }
 

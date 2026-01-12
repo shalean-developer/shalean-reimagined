@@ -16,6 +16,6 @@ R.c("server/chunks/ssr/_b0c4d858._.js")
 R.c("server/chunks/ssr/app_cleaner_actions_ts_03142651._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_fb290741._.js")
 R.c("server/chunks/ssr/_94277900._.js")
-R.c("server/chunks/ssr/_next-internal_server_app_cleaner_(dashboard)_bookings_page_actions_e5f55372.js")
+R.c("server/chunks/ssr/_49de1b92._.js")
 R.m(68286)
 module.exports=R.m(68286).exports

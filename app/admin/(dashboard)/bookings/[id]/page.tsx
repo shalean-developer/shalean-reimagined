@@ -2,14 +2,19 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { getAllBookings } from '../../../actions';
+import { getAllBookings, getBookingWithCleaners } from '../../../actions';
 import { Booking } from '@/types/booking';
-import { Loader2, ArrowLeft, Calendar, Clock, MapPin, Mail, Phone, User, DollarSign } from 'lucide-react';
+import { Loader2, ArrowLeft, Calendar, Clock, MapPin, Mail, Phone, User, DollarSign, Edit, Users } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { format } from 'date-fns';
+import { EditBookingDialog } from '../components/EditBookingDialog';
+import { AssignCleanersDialog } from '../components/AssignCleanersDialog';
+import { StatusUpdateDropdown } from '../components/StatusUpdateDropdown';
+import { CleanerEarningsEditor } from '../components/CleanerEarningsEditor';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function AdminBookingDetailPage() {
   const params = useParams();
@@ -17,19 +22,30 @@ export default function AdminBookingDetailPage() {
   const bookingId = params.id as string;
   const [booking, setBooking] = useState<Booking | null>(null);
   const [loading, setLoading] = useState(true);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [assignCleanersDialogOpen, setAssignCleanersDialogOpen] = useState(false);
 
-  useEffect(() => {
+  const loadBooking = async () => {
     if (bookingId) {
-      getAllBookings().then((result) => {
-        if (result.success && result.bookings) {
-          const found = result.bookings.find((b) => b.id === bookingId);
+      const result = await getBookingWithCleaners(bookingId);
+      if (result.success && result.booking) {
+        setBooking(result.booking);
+      } else {
+        // Fallback to getAllBookings if getBookingWithCleaners fails
+        const allBookingsResult = await getAllBookings();
+        if (allBookingsResult.success && allBookingsResult.bookings) {
+          const found = allBookingsResult.bookings.find((b) => b.id === bookingId);
           if (found) {
             setBooking(found);
           }
         }
-        setLoading(false);
-      });
+      }
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    loadBooking();
   }, [bookingId]);
 
   if (loading) {
@@ -168,16 +184,89 @@ export default function AdminBookingDetailPage() {
         </Card>
       </div>
 
+      {/* Management Section */}
       <Card>
         <CardHeader>
-          <CardTitle>Additional Details</CardTitle>
+          <CardTitle>Booking Management</CardTitle>
+          <CardDescription>
+            Manage cleaners, status, and earnings for this booking
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">
-            More booking management features (status updates, cleaner assignment, etc.) will be available here in the future.
-          </p>
+          <Tabs defaultValue="cleaners" className="w-full">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="cleaners">Assign Cleaners</TabsTrigger>
+              <TabsTrigger value="status">Update Status</TabsTrigger>
+              <TabsTrigger value="earnings">Edit Earnings</TabsTrigger>
+            </TabsList>
+            <TabsContent value="cleaners" className="mt-4">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold">Assigned Cleaners</h3>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setAssignCleanersDialogOpen(true)}
+                  >
+                    <Users className="h-4 w-4 mr-2" />
+                    {booking.preferred_cleaner_ids && booking.preferred_cleaner_ids.length > 0
+                      ? 'Manage Cleaners'
+                      : 'Assign Cleaners'}
+                  </Button>
+                </div>
+                {booking.preferred_cleaner_ids && booking.preferred_cleaner_ids.length > 0 ? (
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">
+                      {booking.preferred_cleaner_ids.length} cleaner(s) assigned
+                    </p>
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground">No cleaners assigned yet</p>
+                )}
+              </div>
+            </TabsContent>
+            <TabsContent value="status" className="mt-4">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Booking Status</h3>
+                <StatusUpdateDropdown
+                  booking={booking}
+                  onSuccess={() => {
+                    loadBooking();
+                  }}
+                />
+              </div>
+            </TabsContent>
+            <TabsContent value="earnings" className="mt-4">
+              <CleanerEarningsEditor
+                booking={booking}
+                onSuccess={() => {
+                  loadBooking();
+                }}
+              />
+            </TabsContent>
+          </Tabs>
         </CardContent>
       </Card>
+
+      {/* Edit Booking Dialog */}
+      <EditBookingDialog
+        open={editDialogOpen}
+        onOpenChange={setEditDialogOpen}
+        booking={booking}
+        onSuccess={() => {
+          loadBooking();
+        }}
+      />
+
+      {/* Assign Cleaners Dialog */}
+      <AssignCleanersDialog
+        open={assignCleanersDialogOpen}
+        onOpenChange={setAssignCleanersDialogOpen}
+        booking={booking}
+        onSuccess={() => {
+          loadBooking();
+        }}
+      />
     </div>
   );
 }

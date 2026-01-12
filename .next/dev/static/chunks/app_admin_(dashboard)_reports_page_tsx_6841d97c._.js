@@ -1,0 +1,30 @@
+(globalThis.TURBOPACK_CHUNK_LISTS || (globalThis.TURBOPACK_CHUNK_LISTS = [])).push({
+    script: typeof document === "object" ? document.currentScript : undefined,
+    chunks: [
+  "static/chunks/app_admin_data:927db0_f24e79cd._.js",
+  "static/chunks/app_admin_components_f7bb9e54._.js",
+  "static/chunks/app_admin_data:cbb3da_7cbf8ad7._.js",
+  "static/chunks/app_admin_data:7a1656_1e778b4a._.js",
+  "static/chunks/app_admin_data:0e4795_a2f6f436._.js",
+  "static/chunks/app_admin_data:1924d3_3afb47eb._.js",
+  "static/chunks/app_admin_data:0db6b6_835c5d1e._.js",
+  "static/chunks/app_admin_(dashboard)_reports_11ae2e56._.js",
+  "static/chunks/app_admin_data:94dbfe_67035607._.js",
+  "static/chunks/app_admin_data:280406_fc9f1493._.js",
+  "static/chunks/app_admin_data:bd1742_720a8ee6._.js",
+  "static/chunks/app_admin_data:7610b2_d787c1bb._.js",
+  "static/chunks/app_admin_data:4c5327_12c7bfab._.js",
+  "static/chunks/app_admin_data:cd1bcc_68e7bc77._.js",
+  "static/chunks/app_admin_data:b10973_7c19e375._.js",
+  "static/chunks/app_admin_data:d927ed_aa54ddcd._.js",
+  "static/chunks/app_admin_data:53fa95_7ade23df._.js",
+  "static/chunks/app_admin_data:eb5d58_5330375d._.js",
+  "static/chunks/src_components_ui_95342261._.js",
+  "static/chunks/node_modules_date-fns_366b28e6._.js",
+  "static/chunks/node_modules_react-day-picker_dist_index_esm_40dd87f3.js",
+  "static/chunks/node_modules_lodash_4a69034e._.js",
+  "static/chunks/node_modules_recharts_es6_096096ce._.js",
+  "static/chunks/node_modules_981f78af._.js"
+],
+    source: "dynamic"
+});

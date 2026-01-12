@@ -127,6 +127,7 @@ export async function authenticateCleaner(
 
 /**
  * Get current authenticated cleaner
+ * Uses cookie-based session (not Supabase Auth)
  */
 export async function getCurrentCleaner(): Promise<{
   success: boolean;
@@ -134,35 +135,23 @@ export async function getCurrentCleaner(): Promise<{
   error?: string;
 }> {
   try {
-    const supabase = await createClient();
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const { cookies } = await import('next/headers');
+    const cookieStore = await cookies();
+    const cleanerId = cookieStore.get('cleaner_session')?.value;
 
-    if (authError || !user) {
+    if (!cleanerId) {
       return { success: false, error: 'Not authenticated' };
     }
 
-    // Try to find cleaner by auth_user_id first
-    let cleanerQuery = supabase
+    const supabase = await createClient();
+
+    // Fetch cleaner by ID from session cookie
+    const { data: cleaner, error: cleanerError } = await supabase
       .from('cleaners')
       .select('*')
-      .eq('auth_user_id', user.id)
+      .eq('id', cleanerId)
       .eq('is_active', true)
       .maybeSingle();
-
-    let { data: cleaner, error: cleanerError } = await cleanerQuery;
-
-    // If not found by auth_user_id, try to match by phone from email
-    if (!cleaner && !cleanerError && user.email) {
-      // Extract phone from email format: {phone}@cleaners.shalean.local
-      const phoneMatch = user.email.match(/^(.+)@cleaners\.shalean\.local$/);
-      if (phoneMatch) {
-        const phone = phoneMatch[1];
-        const phoneResult = await getCleanerByPhone(phone);
-        if (phoneResult.success && phoneResult.cleaner) {
-          cleaner = phoneResult.cleaner;
-        }
-      }
-    }
 
     if (cleanerError || !cleaner) {
       return { success: false, error: 'Cleaner profile not found' };
@@ -617,6 +606,69 @@ export async function updateBookingStatus(
     if (updateError) {
       console.error('Error updating booking status:', updateError);
       return { success: false, error: updateError.message };
+    }
+
+    // Create notifications for status change
+    try {
+      const { createNotification } = await import('@/app/notifications/actions');
+      const statusMessages: Record<string, { title: string; message: string }> = {
+        'confirmed': {
+          title: 'Booking Confirmed',
+          message: `Booking ${updatedBooking.booking_number} has been confirmed.`,
+        },
+        'on_my_way': {
+          title: 'Cleaner On The Way',
+          message: `The cleaner is on the way to your booking ${updatedBooking.booking_number}.`,
+        },
+        'started': {
+          title: 'Service Started',
+          message: `Service has started for booking ${updatedBooking.booking_number}.`,
+        },
+        'completed': {
+          title: 'Service Completed',
+          message: `Service has been completed for booking ${updatedBooking.booking_number}.`,
+        },
+        'cancelled': {
+          title: 'Booking Cancelled',
+          message: `Booking ${updatedBooking.booking_number} has been cancelled.`,
+        },
+      };
+
+      const statusInfo = statusMessages[status];
+      if (statusInfo && status !== currentStatus) {
+        // Notification for customer
+        await createNotification({
+          user_email: updatedBooking.customer_email,
+          user_type: 'customer',
+          type: 'booking_status_changed',
+          title: statusInfo.title,
+          message: statusInfo.message,
+          data: {
+            booking_id: updatedBooking.id,
+            booking_number: updatedBooking.booking_number,
+            old_status: currentStatus,
+            new_status: status,
+          },
+        });
+
+        // Notification for admin
+        await createNotification({
+          user_type: 'admin',
+          type: 'booking_status_changed',
+          title: `Booking Status Updated: ${statusInfo.title}`,
+          message: `Booking ${updatedBooking.booking_number} status changed from ${currentStatus} to ${status}.`,
+          data: {
+            booking_id: updatedBooking.id,
+            booking_number: updatedBooking.booking_number,
+            old_status: currentStatus,
+            new_status: status,
+            customer_email: updatedBooking.customer_email,
+          },
+        });
+      }
+    } catch (notificationError) {
+      // Don't fail status update if notification fails
+      console.error('Error creating notifications for status change:', notificationError);
     }
 
     return { success: true, booking: updatedBooking as Booking };

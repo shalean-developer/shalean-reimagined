@@ -5,12 +5,14 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllCustomers, getAllCleaners } from '../../actions';
 import { Profile } from '@/types/profile';
 import { Cleaner } from '@/types/booking';
-import { Loader2, Users } from 'lucide-react';
+import { Loader2, Users, Edit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { EditCleanerDialog } from './components/EditCleanerDialog';
+import { EditCustomerDialog } from './components/EditCustomerDialog';
 
 export default function UsersPage() {
   const [customers, setCustomers] = useState<Profile[]>([]);
@@ -18,6 +20,8 @@ export default function UsersPage() {
   const [customerSearch, setCustomerSearch] = useState('');
   const [cleanerSearch, setCleanerSearch] = useState('');
   const [loading, setLoading] = useState(true);
+  const [editingCleaner, setEditingCleaner] = useState<Cleaner | null>(null);
+  const [editingCustomer, setEditingCustomer] = useState<Profile | null>(null);
 
   // Get all customers
   useQuery({
@@ -143,9 +147,19 @@ export default function UsersPage() {
                                 : '—'}
                             </td>
                             <td className="p-4">
-                              <Button variant="outline" size="sm" asChild>
-                                <Link href={`/admin/users/${customer.id}`}>View</Link>
-                              </Button>
+                              <div className="flex gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => setEditingCustomer(customer)}
+                                >
+                                  <Edit className="h-4 w-4 mr-1" />
+                                  Edit
+                                </Button>
+                                <Button variant="outline" size="sm" asChild>
+                                  <Link href={`/admin/users/${customer.id}`}>View</Link>
+                                </Button>
+                              </div>
                             </td>
                           </tr>
                         ))
@@ -222,9 +236,19 @@ export default function UsersPage() {
                                 : '—'}
                             </td>
                             <td className="p-4">
-                              <Button variant="outline" size="sm" asChild>
-                                <Link href={`/admin/users/${cleaner.id}`}>View</Link>
-                              </Button>
+                              <div className="flex gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => setEditingCleaner(cleaner)}
+                                >
+                                  <Edit className="h-4 w-4 mr-1" />
+                                  Edit
+                                </Button>
+                                <Button variant="outline" size="sm" asChild>
+                                  <Link href={`/admin/users/${cleaner.id}`}>View</Link>
+                                </Button>
+                              </div>
                             </td>
                           </tr>
                         ))
@@ -237,6 +261,32 @@ export default function UsersPage() {
           </Card>
         </TabsContent>
       </Tabs>
+
+      {/* Dialogs */}
+      {editingCleaner && (
+        <EditCleanerDialog
+          open={!!editingCleaner}
+          onOpenChange={(open) => !open && setEditingCleaner(null)}
+          cleaner={editingCleaner}
+          onSuccess={() => {
+            setEditingCleaner(null);
+            // Refresh cleaners data
+            window.location.reload();
+          }}
+        />
+      )}
+      {editingCustomer && (
+        <EditCustomerDialog
+          open={!!editingCustomer}
+          onOpenChange={(open) => !open && setEditingCustomer(null)}
+          customer={editingCustomer}
+          onSuccess={() => {
+            setEditingCustomer(null);
+            // Refresh customers data
+            window.location.reload();
+          }}
+        />
+      )}
     </div>
   );
 }

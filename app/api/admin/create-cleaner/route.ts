@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/server-admin';
+import { createNotification } from '../../../notifications/actions';
+import { hashPassword } from '@/lib/utils/password';
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,42 +32,37 @@ export async function POST(request: NextRequest) {
       phoneWithPlus = `+27${normalizedPhone}`;
     }
     
-    // Format email for Supabase Auth: {phone}@cleaners.shalean.local
-    // Use the normalized phone without + for email (Supabase Auth handles emails better without +)
-    const phoneForEmail = phoneWithPlus.replace(/\+/g, '');
-    const authEmail = `${phoneForEmail}@cleaners.shalean.local`;
-
     // Create admin client (uses service role key - bypasses RLS)
     const supabaseAdmin = createAdminClient();
 
-    // Step 1: Create Supabase Auth user
-    const { data: authUser, error: authError } = await supabaseAdmin.auth.admin.createUser({
-      email: authEmail,
-      password: password,
-      email_confirm: true, // Auto-confirm email so user can login immediately
-      user_metadata: {
-        phone: phoneWithPlus,
-        name: name,
-        role: 'cleaner',
-      },
-    });
+    // Check if cleaner with this phone number already exists
+    const { data: existingCleaner } = await supabaseAdmin
+      .from('cleaners')
+      .select('id, name, phone')
+      .eq('phone', phoneWithPlus)
+      .maybeSingle();
 
-    if (authError || !authUser.user) {
-      console.error('Error creating auth user:', authError);
+    if (existingCleaner) {
       return NextResponse.json(
-        { success: false, error: authError?.message || 'Failed to create authentication user' },
-        { status: 500 }
+        { 
+          success: false, 
+          error: `A cleaner with phone number ${phoneWithPlus} already exists (${existingCleaner.name})` 
+        },
+        { status: 400 }
       );
     }
 
-    // Step 2: Create cleaner record in database
+    // Hash the password
+    const passwordHash = await hashPassword(password);
+
+    // Create cleaner record in database
     const cleanerData: any = {
       name,
       phone: phoneWithPlus,
       email: email || null,
+      password_hash: passwordHash,
       is_active: true,
       is_available: true,
-      auth_user_id: authUser.user.id,
       available_monday: true,
       available_tuesday: true,
       available_wednesday: true,
@@ -98,18 +95,38 @@ export async function POST(request: NextRequest) {
 
     if (cleanerError) {
       console.error('Error creating cleaner record:', cleanerError);
-      
-      // If cleaner creation fails, try to clean up the auth user
-      try {
-        await supabaseAdmin.auth.admin.deleteUser(authUser.user.id);
-      } catch (deleteError) {
-        console.error('Error cleaning up auth user:', deleteError);
+
+      // Check for duplicate phone constraint
+      if (cleanerError.code === '23505' || cleanerError.message?.includes('duplicate key') || cleanerError.message?.includes('unique constraint')) {
+        return NextResponse.json(
+          { success: false, error: `A cleaner with phone number ${phoneWithPlus} already exists` },
+          { status: 400 }
+        );
       }
 
       return NextResponse.json(
         { success: false, error: cleanerError.message || 'Failed to create cleaner record' },
         { status: 500 }
       );
+    }
+
+    // Create notification for admin about new cleaner
+    try {
+      await createNotification({
+        user_type: 'admin',
+        type: 'new_user_registered',
+        title: 'New Cleaner Created',
+        message: `A new cleaner "${cleaner.name}" has been added to the system.`,
+        data: {
+          user_id: cleaner.id,
+          user_type: 'cleaner',
+          cleaner_name: cleaner.name,
+          cleaner_phone: cleaner.phone,
+        },
+      });
+    } catch (notificationError) {
+      // Don't fail cleaner creation if notification fails
+      console.error('Error creating notification for new cleaner:', notificationError);
     }
 
     return NextResponse.json({
@@ -119,7 +136,6 @@ export async function POST(request: NextRequest) {
         name: cleaner.name,
         phone: cleaner.phone,
         email: cleaner.email,
-        auth_email: authEmail,
       },
       message: 'Cleaner created successfully',
     });

@@ -4,19 +4,25 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getAllBookings } from '../../actions';
 import { Booking } from '@/types/booking';
-import { Loader2, Calendar } from 'lucide-react';
+import { Loader2, Calendar, Edit, Settings } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 import { format } from 'date-fns';
+import { EditBookingDialog } from './components/EditBookingDialog';
+import { AssignCleanersDialog } from './components/AssignCleanersDialog';
+import { StatusUpdateDropdown } from './components/StatusUpdateDropdown';
+import { CleanerEarningsEditor } from './components/CleanerEarningsEditor';
 
 export default function AdminBookingsPage() {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<'all' | 'pending' | 'confirmed' | 'completed' | 'cancelled'>('all');
   const [search, setSearch] = useState('');
+  const [editingBooking, setEditingBooking] = useState<Booking | null>(null);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
 
   // Get all bookings
   useQuery({
@@ -158,9 +164,22 @@ export default function AdminBookingsPage() {
                         </td>
                         <td className="p-4 font-medium">R{booking.total_amount.toFixed(2)}</td>
                         <td className="p-4">
-                          <Button variant="outline" size="sm" asChild>
-                            <Link href={`/admin/bookings/${booking.id}`}>View</Link>
-                          </Button>
+                          <div className="flex items-center gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => {
+                                setEditingBooking(booking);
+                                setEditDialogOpen(true);
+                              }}
+                            >
+                              <Edit className="h-4 w-4 mr-1" />
+                              Edit
+                            </Button>
+                            <Button variant="outline" size="sm" asChild>
+                              <Link href={`/admin/bookings/${booking.id}`}>View</Link>
+                            </Button>
+                          </div>
                         </td>
                       </tr>
                     ))
@@ -171,6 +190,27 @@ export default function AdminBookingsPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Edit Booking Dialog */}
+      <EditBookingDialog
+        open={editDialogOpen}
+        onOpenChange={setEditDialogOpen}
+        booking={editingBooking}
+        onSuccess={() => {
+          // Refresh bookings
+          setBookings([]);
+          setLoading(true);
+          getAllBookings({
+            status: filter === 'all' ? undefined : filter,
+          }).then((result) => {
+            if (result.success && result.bookings) {
+              setBookings(result.bookings);
+              setLoading(false);
+            }
+          });
+        }}
+      />
+
     </div>
   );
 }

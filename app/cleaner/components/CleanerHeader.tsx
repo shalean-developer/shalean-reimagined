@@ -13,10 +13,10 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { createClient } from '@/lib/supabase/client';
 import { toast } from 'sonner';
 import { getCurrentCleaner } from '../actions';
 import { Cleaner } from '@/types/booking';
+import { NotificationBell } from '@/components/NotificationBell';
 
 export function CleanerHeader() {
   const router = useRouter();
@@ -51,24 +51,18 @@ export function CleanerHeader() {
 
     loadCleanerProfile();
 
-    // Listen for auth changes
-    const supabase = createClient();
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async () => {
-      // Reload cleaner profile when auth state changes
-      await loadCleanerProfile();
-    });
-
-    return () => subscription.unsubscribe();
+    // Note: Session management is now cookie-based, so we don't need auth state listeners
+    // The profile will be reloaded on page refresh/navigation
   }, []);
 
   const handleLogout = async () => {
     try {
-      const supabase = createClient();
-      const { error } = await supabase.auth.signOut();
-      
-      if (error) {
+      // Call logout API to clear session cookie
+      const response = await fetch('/api/cleaner/logout', {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
         toast.error('Failed to sign out');
         return;
       }
@@ -99,7 +93,10 @@ export function CleanerHeader() {
       </div>
 
       {/* Profile icon on right */}
-      <div className="flex items-center ml-auto">
+      <div className="flex items-center gap-2 md:gap-3 ml-auto">
+        {/* Notification Bell */}
+        <NotificationBell userType="cleaner" />
+
         {mounted ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

@@ -6,16 +6,24 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllCustomers, getAllCleaners } from '../../../actions';
 import { Profile } from '@/types/profile';
 import { Cleaner } from '@/types/booking';
-import { Loader2, ArrowLeft, User, Mail, Phone, Calendar } from 'lucide-react';
+import { Loader2, ArrowLeft, User, Mail, Phone, Calendar, Edit, UserPlus, Key } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { EditCleanerDialog } from '../components/EditCleanerDialog';
+import { EditCustomerDialog } from '../components/EditCustomerDialog';
+import { AssignCleanersToBookingsDialog } from '../components/AssignCleanersToBookingsDialog';
+import { ResetCleanerPasswordDialog } from '../components/ResetCleanerPasswordDialog';
 
 export default function UserDetailPage() {
   const params = useParams();
   const userId = params.id as string;
   const [user, setUser] = useState<Profile | Cleaner | null>(null);
   const [userType, setUserType] = useState<'customer' | 'cleaner' | null>(null);
+  const [editCleanerOpen, setEditCleanerOpen] = useState(false);
+  const [editCustomerOpen, setEditCustomerOpen] = useState(false);
+  const [assignBookingsOpen, setAssignBookingsOpen] = useState(false);
+  const [resetPasswordOpen, setResetPasswordOpen] = useState(false);
 
   // Get all customers and cleaners to find the user
   const { data: customers } = useQuery({
@@ -79,15 +87,40 @@ export default function UserDetailPage() {
         </Button>
       </div>
 
-      <div className="space-y-2">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-          {isCustomer
-            ? `${customer?.first_name} ${customer?.last_name}`
-            : cleaner?.name}
-        </h1>
-        <p className="text-muted-foreground">
-          {isCustomer ? 'Customer' : 'Cleaner'} Profile
-        </p>
+      <div className="flex items-center justify-between">
+        <div className="space-y-2">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+            {isCustomer
+              ? `${customer?.first_name} ${customer?.last_name}`
+              : cleaner?.name}
+          </h1>
+          <p className="text-muted-foreground">
+            {isCustomer ? 'Customer' : 'Cleaner'} Profile
+          </p>
+        </div>
+        <div className="flex gap-2">
+          {isCustomer ? (
+            <Button onClick={() => setEditCustomerOpen(true)}>
+              <Edit className="h-4 w-4 mr-2" />
+              Edit Customer
+            </Button>
+          ) : (
+            <>
+              <Button onClick={() => setEditCleanerOpen(true)}>
+                <Edit className="h-4 w-4 mr-2" />
+                Edit Cleaner
+              </Button>
+              <Button onClick={() => setResetPasswordOpen(true)} variant="outline">
+                <Key className="h-4 w-4 mr-2" />
+                Reset Password
+              </Button>
+              <Button onClick={() => setAssignBookingsOpen(true)} variant="outline">
+                <UserPlus className="h-4 w-4 mr-2" />
+                Assign to Bookings
+              </Button>
+            </>
+          )}
+        </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -212,6 +245,49 @@ export default function UserDetailPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Dialogs */}
+      {cleaner && (
+        <>
+          <EditCleanerDialog
+            open={editCleanerOpen}
+            onOpenChange={setEditCleanerOpen}
+            cleaner={cleaner}
+            onSuccess={() => {
+              // Refresh cleaners data
+              window.location.reload();
+            }}
+          />
+          <ResetCleanerPasswordDialog
+            open={resetPasswordOpen}
+            onOpenChange={setResetPasswordOpen}
+            cleaner={cleaner}
+            onSuccess={() => {
+              // Optionally refresh data or show success message
+            }}
+          />
+          <AssignCleanersToBookingsDialog
+            open={assignBookingsOpen}
+            onOpenChange={setAssignBookingsOpen}
+            cleanerIds={[cleaner.id]}
+            cleanerNames={[cleaner.name]}
+            onSuccess={() => {
+              // Optionally refresh data
+            }}
+          />
+        </>
+      )}
+      {customer && (
+        <EditCustomerDialog
+          open={editCustomerOpen}
+          onOpenChange={setEditCustomerOpen}
+          customer={customer}
+          onSuccess={() => {
+            // Refresh customers data
+            window.location.reload();
+          }}
+        />
+      )}
     </div>
   );
 }

@@ -6,11 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Search } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function CreateCleanerPage() {
   const [loading, setLoading] = useState(false);
+  const [searching, setSearching] = useState(false);
   const [formData, setFormData] = useState({
     phone: '0824644655',
     password: 'Cleaner2024!',
@@ -21,6 +22,44 @@ export default function CreateCleanerPage() {
     specialties: '',
     yearsExperience: '',
   });
+
+  const handleSearch = async () => {
+    if (!formData.phone.trim()) {
+      toast.error('Please enter a phone number to search');
+      return;
+    }
+
+    setSearching(true);
+    try {
+      const response = await fetch(`/api/admin/search-cleaner?phone=${encodeURIComponent(formData.phone)}`);
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        toast.error(data.error || 'Cleaner not found');
+        return;
+      }
+
+      const cleaner = data.cleaner;
+      
+      // Populate form fields with cleaner data
+      setFormData((prev) => ({
+        ...prev,
+        name: cleaner.name || '',
+        email: cleaner.email || '',
+        areas: cleaner.areas && Array.isArray(cleaner.areas) ? cleaner.areas.join(', ') : '',
+        bio: cleaner.bio || '',
+        specialties: cleaner.specialties && Array.isArray(cleaner.specialties) ? cleaner.specialties.join(', ') : '',
+        yearsExperience: cleaner.years_experience ? String(cleaner.years_experience) : '',
+      }));
+
+      toast.success('Cleaner found! Details populated.');
+    } catch (error) {
+      console.error('Error searching cleaner:', error);
+      toast.error('Failed to search cleaner');
+    } finally {
+      setSearching(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,16 +160,38 @@ export default function CreateCleanerPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="phone">Phone Number *</Label>
-              <Input
-                id="phone"
-                type="tel"
-                placeholder="0824644655 or +27824644655"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                required
-              />
+              <div className="flex gap-2">
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="0824644655 or +27824644655"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSearch();
+                    }
+                  }}
+                  required
+                  className="flex-1"
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleSearch}
+                  disabled={searching || !formData.phone.trim()}
+                  className="px-4"
+                >
+                  {searching ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Search className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
               <p className="text-xs text-muted-foreground">
-                South African phone number (with or without +27)
+                South African phone number (with or without +27). Click search to populate details from database.
               </p>
             </div>
 

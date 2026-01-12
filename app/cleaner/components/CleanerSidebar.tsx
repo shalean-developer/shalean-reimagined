@@ -22,7 +22,6 @@ import {
   Clock,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
@@ -60,10 +59,12 @@ export function CleanerSidebar() {
 
   const handleLogout = async () => {
     try {
-      const supabase = createClient();
-      const { error } = await supabase.auth.signOut();
-      
-      if (error) {
+      // Call logout API to clear session cookie
+      const response = await fetch('/api/cleaner/logout', {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
         toast.error('Failed to sign out');
         return;
       }

@@ -17,6 +17,7 @@ import { createClient } from '@/lib/supabase/client';
 import { toast } from 'sonner';
 import { getAuthenticatedUser, getCustomerProfile } from '../actions';
 import { Profile } from '@/types/profile';
+import { NotificationBell } from '@/components/NotificationBell';
 
 export function DashboardHeader() {
   const router = useRouter();
@@ -159,7 +160,10 @@ export function DashboardHeader() {
       </div>
 
       {/* Profile icon on right */}
-      <div className="flex items-center ml-auto">
+      <div className="flex items-center gap-2 md:gap-3 ml-auto">
+        {/* Notification Bell */}
+        <NotificationBell userType="customer" />
+
         {mounted ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

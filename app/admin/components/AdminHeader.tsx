@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +15,8 @@ import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/client';
 import { toast } from 'sonner';
 import { getCurrentAdmin } from '../actions';
+import { ChevronDown } from 'lucide-react';
+import { NotificationBell } from '@/components/NotificationBell';
 
 export function AdminHeader() {
   const router = useRouter();
@@ -100,29 +101,32 @@ export function AdminHeader() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex h-16 items-center justify-between border-b bg-background/95 backdrop-blur-sm px-4 md:px-6 w-full max-w-full overflow-x-hidden">
-      {/* Logo */}
-      <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-shrink-0">
-        <div className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center flex-shrink-0">
-          <Image
-            src="/logo.png"
-            alt="Shalean Logo"
-            width={32}
-            height={32}
-            className="object-contain"
-          />
-        </div>
-        <span className="font-bold text-base md:text-lg truncate">Shalean Admin</span>
+      {/* SHALEAN Logo */}
+      <div className="flex items-center flex-shrink-0 mr-6">
+        <h1 className="text-xl md:text-2xl font-bold uppercase text-[#1e3a8a] tracking-tight">
+          SHALEAN
+        </h1>
       </div>
 
-      {/* Profile icon on right */}
-      <div className="flex items-center ml-auto">
+      {/* Notifications and Profile - Right Side */}
+      <div className="flex items-center gap-2 md:gap-3 ml-auto">
+        {/* Notification Bell */}
+        <NotificationBell userType="admin" />
+
+        {/* User Profile */}
         {mounted ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-9 w-9 md:h-10 md:w-10 rounded-full">
+              <Button variant="ghost" className="flex items-center gap-2 h-auto p-1">
                 <Avatar className="h-9 w-9 md:h-10 md:w-10">
                   <AvatarFallback className="text-xs md:text-sm">{userInitials || 'A'}</AvatarFallback>
                 </Avatar>
+                <div className="hidden md:block text-left">
+                  <p className="text-sm font-medium leading-none">
+                    {admin?.name || 'John Doe'}
+                  </p>
+                </div>
+                <ChevronDown className="h-4 w-4 hidden md:block" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">

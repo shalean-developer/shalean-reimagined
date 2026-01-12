@@ -609,6 +609,26 @@ export async function updateCustomerProfile(
         };
       }
 
+      // Create notification for admin about new customer
+      try {
+        const { createNotification } = await import('@/app/notifications/actions');
+        await createNotification({
+          user_type: 'admin',
+          type: 'new_user_registered',
+          title: 'New Customer Registered',
+          message: `A new customer "${newProfile.first_name} ${newProfile.last_name}" (${newProfile.email}) has registered.`,
+          data: {
+            user_id: newProfile.id,
+            user_type: 'customer',
+            customer_email: newProfile.email,
+            customer_name: `${newProfile.first_name} ${newProfile.last_name}`,
+          },
+        });
+      } catch (notificationError) {
+        // Don't fail profile creation if notification fails
+        console.error('Error creating notification for new customer:', notificationError);
+      }
+
       result = newProfile;
     }
 

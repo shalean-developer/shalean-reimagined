@@ -74,8 +74,10 @@ async function middleware(request) {
             }
         }
         // Protect cleaner dashboard routes (but allow /cleaner/login)
+        // Cleaners now use cookie-based sessions instead of Supabase Auth
         if (request.nextUrl.pathname.startsWith('/cleaner') && !request.nextUrl.pathname.startsWith('/cleaner/login')) {
-            if (!user) {
+            const cleanerSession = request.cookies.get('cleaner_session');
+            if (!cleanerSession) {
                 const url = request.nextUrl.clone();
                 url.pathname = '/cleaner/login';
                 url.searchParams.set('redirect', request.nextUrl.pathname);
@@ -87,13 +89,8 @@ async function middleware(request) {
                 redirectResponse.headers.set('x-pathname', request.nextUrl.pathname);
                 return redirectResponse;
             }
-            // Additional check: verify user is a cleaner
-            // We'll do a basic check here - full verification happens in layout
-            // Check if email matches cleaner format or if user has cleaner profile
-            if (user.email && !user.email.includes('@cleaners.shalean.local')) {
-            // Allow through - layout will verify cleaner status more thoroughly
-            // This is just a basic filter
-            }
+        // Cleaner session cookie exists - allow through
+        // Layout will verify cleaner exists and is active
         }
         // Protect admin dashboard routes (but allow /admin/login and standalone admin pages)
         if (request.nextUrl.pathname.startsWith('/admin') && !request.nextUrl.pathname.startsWith('/admin/login') && !request.nextUrl.pathname.startsWith('/admin/create-cleaner') && !request.nextUrl.pathname.startsWith('/admin/discount-codes') && !request.nextUrl.pathname.startsWith('/admin/fix-duplicate-codes') && !request.nextUrl.pathname.startsWith('/admin/fix-referral')) {

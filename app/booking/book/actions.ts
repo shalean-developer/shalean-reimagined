@@ -628,6 +628,89 @@ export async function createBookingDraft(formData: BookingFormData): Promise<{
       }
     }
 
+    // Create notifications for new bookings
+    try {
+      const { createNotification } = await import('@/app/notifications/actions');
+      
+      // Get full booking details for notifications
+      const { data: bookingDetails } = await supabase
+        .from('bookings')
+        .select('id, booking_number, customer_email, preferred_cleaner_id, preferred_cleaner_ids, service_type, service_date, total_amount')
+        .in('id', insertedBookings.map(b => b.id));
+
+      if (bookingDetails && bookingDetails.length > 0) {
+        const firstBooking = bookingDetails[0];
+        
+        // Notification for admin
+        await createNotification({
+          user_type: 'admin',
+          type: 'booking_created',
+          title: 'New Booking Created',
+          message: `New booking ${firstBooking.booking_number} created by ${formData.customerEmail}${bookingDetails.length > 1 ? ` (${bookingDetails.length} bookings)` : ''}.`,
+          data: {
+            booking_id: firstBooking.id,
+            booking_number: firstBooking.booking_number,
+            customer_email: formData.customerEmail,
+            booking_count: bookingDetails.length,
+          },
+        });
+
+        // Notification for assigned cleaner(s)
+        if (firstBooking.preferred_cleaner_id) {
+          const { data: cleaner } = await supabase
+            .from('cleaners')
+            .select('id, email')
+            .eq('id', firstBooking.preferred_cleaner_id)
+            .single();
+
+          if (cleaner) {
+            await createNotification({
+              user_id: cleaner.id,
+              user_email: cleaner.email || undefined,
+              user_type: 'cleaner',
+              type: 'booking_assigned',
+              title: 'New Booking Assigned',
+              message: `You have been assigned to booking ${firstBooking.booking_number} on ${new Date(firstBooking.service_date).toLocaleDateString()}.`,
+              data: {
+                booking_id: firstBooking.id,
+                booking_number: firstBooking.booking_number,
+                service_date: firstBooking.service_date,
+              },
+            });
+          }
+        }
+
+        // Handle multiple cleaners
+        if (firstBooking.preferred_cleaner_ids && Array.isArray(firstBooking.preferred_cleaner_ids)) {
+          const { data: cleaners } = await supabase
+            .from('cleaners')
+            .select('id, email')
+            .in('id', firstBooking.preferred_cleaner_ids);
+
+          if (cleaners) {
+            for (const cleaner of cleaners) {
+              await createNotification({
+                user_id: cleaner.id,
+                user_email: cleaner.email || undefined,
+                user_type: 'cleaner',
+                type: 'booking_assigned',
+                title: 'New Booking Assigned',
+                message: `You have been assigned to booking ${firstBooking.booking_number} on ${new Date(firstBooking.service_date).toLocaleDateString()}.`,
+                data: {
+                  booking_id: firstBooking.id,
+                  booking_number: firstBooking.booking_number,
+                  service_date: firstBooking.service_date,
+                },
+              });
+            }
+          }
+        }
+      }
+    } catch (notificationError) {
+      // Don't fail booking creation if notification fails
+      console.error('Error creating notifications for new booking:', notificationError);
+    }
+
     // Calculate total amount
     const totalAmount = insertedBookings.reduce((sum, booking) => sum + Number(booking.total_amount), 0);
     const bookingIds = insertedBookings.map(booking => booking.id);

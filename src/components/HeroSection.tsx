@@ -46,7 +46,7 @@ const HeroSection = () => {
                 <div className="w-px h-12 bg-border" />
                 <div className="text-center">
                   <p className="text-3xl font-bold text-foreground">10K+</p>
-                  <p className="text-sm text-muted-foreground">Projects Done</p>
+                  <p className="text-sm text-muted-foreground">Bookings Done</p>
                 </div>
                 <div className="w-px h-12 bg-border" />
                 <div className="text-center">

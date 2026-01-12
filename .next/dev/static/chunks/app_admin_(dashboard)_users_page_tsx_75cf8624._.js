@@ -1,0 +1,8 @@
+(globalThis.TURBOPACK_CHUNK_LISTS || (globalThis.TURBOPACK_CHUNK_LISTS = [])).push({
+    script: typeof document === "object" ? document.currentScript : undefined,
+    chunks: [
+  "static/chunks/_995d0af2._.js",
+  "static/chunks/node_modules_@radix-ui_react-tabs_dist_index_mjs_5380426d._.js"
+],
+    source: "dynamic"
+});

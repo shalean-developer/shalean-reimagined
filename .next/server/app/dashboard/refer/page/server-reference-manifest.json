@@ -3,7 +3,7 @@
     "006434c97c3044593734d2467ca4ab71d2aa8a91e5": {
       "workers": {
         "app/dashboard/refer/page": {
-          "moduleId": 52723,
+          "moduleId": 67437,
           "async": false,
           "exportedName": "getAuthenticatedUser",
           "filename": "app/dashboard/actions.ts"
@@ -18,7 +18,7 @@
     "60807cfd74cfd1cbb01dfd2d0381be86a68ba78a4c": {
       "workers": {
         "app/dashboard/refer/page": {
-          "moduleId": 52723,
+          "moduleId": 67437,
           "async": false,
           "exportedName": "getCustomerProfile",
           "filename": "app/dashboard/actions.ts"
@@ -30,10 +30,70 @@
       "exportedName": "getCustomerProfile",
       "filename": "app/dashboard/actions.ts"
     },
+    "609a27fd30f765407b4f12d8c09bf5e1a49d8b26b4": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": 67437,
+          "async": false,
+          "exportedName": "getNotifications",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "getNotifications",
+      "filename": "app/notifications/actions.ts"
+    },
+    "40232874feb8248283c7ff91c07c56fe857944eb3c": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": 67437,
+          "async": false,
+          "exportedName": "getUnreadCount",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "getUnreadCount",
+      "filename": "app/notifications/actions.ts"
+    },
+    "60c02d4bb4ed0c4f79a18e6c326f75c4dcd177b7e1": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": 67437,
+          "async": false,
+          "exportedName": "markAsRead",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "markAsRead",
+      "filename": "app/notifications/actions.ts"
+    },
+    "408e18910fa49d283d7ac82d822cbd0c224944b4d8": {
+      "workers": {
+        "app/dashboard/refer/page": {
+          "moduleId": 67437,
+          "async": false,
+          "exportedName": "markAllAsRead",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/refer/page": "action-browser"
+      },
+      "exportedName": "markAllAsRead",
+      "filename": "app/notifications/actions.ts"
+    },
     "40c280e4472d77247d064fde473e4660ba84d97e60": {
       "workers": {
         "app/dashboard/refer/page": {
-          "moduleId": 52723,
+          "moduleId": 67437,
           "async": false,
           "exportedName": "getOrCreateReferralCode",
           "filename": "app/dashboard/actions.ts"
@@ -48,7 +108,7 @@
     "70bb8d271ef08c3d35598898e6acef663b01286a3b": {
       "workers": {
         "app/dashboard/refer/page": {
-          "moduleId": 52723,
+          "moduleId": 67437,
           "async": false,
           "exportedName": "sendReferralInvites",
           "filename": "app/dashboard/actions.ts"
@@ -63,7 +123,7 @@
     "40b898d280ce8de58d611013704a50e39abcdee454": {
       "workers": {
         "app/dashboard/refer/page": {
-          "moduleId": 52723,
+          "moduleId": 67437,
           "async": false,
           "exportedName": "getReferralStats",
           "filename": "app/dashboard/actions.ts"

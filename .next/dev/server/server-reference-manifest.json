@@ -1,304 +1,1262 @@
 {
   "node": {
-    "0092476789f4f1ad4a1c9f60a21dc907c037165309": {
+    "001fc05361210f0cb460b9890a512006fb7653ec44": {
       "workers": {
-        "app/admin/(dashboard)/bookings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAdminStats",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAdminStats",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/reports/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAdminStats",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/settings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAdminStats",
-          "filename": "app/admin/actions.ts"
-        },
         "app/admin/(dashboard)/users/[id]/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
-          "exportedName": "getAdminStats",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/users/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAdminStats",
+          "exportedName": "getTopActiveUsers",
           "filename": "app/admin/actions.ts"
         }
       },
       "layer": {
-        "app/admin/(dashboard)/bookings/page": "rsc",
-        "app/admin/(dashboard)/page": "action-browser",
-        "app/admin/(dashboard)/reports/page": "action-browser",
-        "app/admin/(dashboard)/settings/page": "rsc",
-        "app/admin/(dashboard)/users/[id]/page": "rsc",
-        "app/admin/(dashboard)/users/page": "rsc"
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
       },
       "filename": "app/admin/actions.ts",
-      "exportedName": "getAdminStats"
+      "exportedName": "getTopActiveUsers"
+    },
+    "007aef7fb8d7b19fd92f7da67587a40a9b4eedfe93": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAllCustomersWithCredits",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getAllCustomersWithCredits"
+    },
+    "0083692216b78d97562e6e5a1a13ed4e83149312a5": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAllAdditionalServices",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getAllAdditionalServices"
     },
     "0097f6a77558e0ca0b2bd800bbbb35227b2ff8d496": {
       "workers": {
-        "app/admin/(dashboard)/bookings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getCurrentAdmin",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getCurrentAdmin",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/reports/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getCurrentAdmin",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/settings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getCurrentAdmin",
-          "filename": "app/admin/actions.ts"
-        },
         "app/admin/(dashboard)/users/[id]/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getCurrentAdmin",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/users/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getCurrentAdmin",
           "filename": "app/admin/actions.ts"
         }
       },
       "layer": {
-        "app/admin/(dashboard)/bookings/page": "action-browser",
-        "app/admin/(dashboard)/page": "action-browser",
-        "app/admin/(dashboard)/reports/page": "action-browser",
-        "app/admin/(dashboard)/settings/page": "action-browser",
-        "app/admin/(dashboard)/users/[id]/page": "action-browser",
-        "app/admin/(dashboard)/users/page": "action-browser"
+        "app/admin/(dashboard)/users/[id]/page": "action-browser"
       },
       "filename": "app/admin/actions.ts",
       "exportedName": "getCurrentAdmin"
     },
     "0098d3c279eb4b40d99dbca04ff9c57dd3bb7b4d0d": {
       "workers": {
-        "app/admin/(dashboard)/bookings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCleaners",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCleaners",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/reports/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCleaners",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/settings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCleaners",
-          "filename": "app/admin/actions.ts"
-        },
         "app/admin/(dashboard)/users/[id]/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCleaners",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/users/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getAllCleaners",
           "filename": "app/admin/actions.ts"
         }
       },
       "layer": {
-        "app/admin/(dashboard)/bookings/page": "rsc",
-        "app/admin/(dashboard)/page": "rsc",
-        "app/admin/(dashboard)/reports/page": "rsc",
-        "app/admin/(dashboard)/settings/page": "rsc",
-        "app/admin/(dashboard)/users/[id]/page": "action-browser",
-        "app/admin/(dashboard)/users/page": "action-browser"
+        "app/admin/(dashboard)/users/[id]/page": "action-browser"
       },
       "filename": "app/admin/actions.ts",
       "exportedName": "getAllCleaners"
     },
     "00ec23dc30346eb0b06872c62ee11beb9bc0025c60": {
       "workers": {
-        "app/admin/(dashboard)/bookings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCustomers",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCustomers",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/reports/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCustomers",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/settings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCustomers",
-          "filename": "app/admin/actions.ts"
-        },
         "app/admin/(dashboard)/users/[id]/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllCustomers",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/users/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getAllCustomers",
           "filename": "app/admin/actions.ts"
         }
       },
       "layer": {
-        "app/admin/(dashboard)/bookings/page": "rsc",
-        "app/admin/(dashboard)/page": "rsc",
-        "app/admin/(dashboard)/reports/page": "rsc",
-        "app/admin/(dashboard)/settings/page": "rsc",
-        "app/admin/(dashboard)/users/[id]/page": "action-browser",
-        "app/admin/(dashboard)/users/page": "action-browser"
+        "app/admin/(dashboard)/users/[id]/page": "action-browser"
       },
       "filename": "app/admin/actions.ts",
       "exportedName": "getAllCustomers"
     },
+    "00ecf9a7b2f23b5c6c68cc946a7e37e6f3937307ab": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAllServices",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getAllServices"
+    },
+    "4007a04587bd53392cae2c6ee477a304828da0272f": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCustomerSegmentation",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getCustomerSegmentation"
+    },
+    "40092b4795eaaa38b9c29c27221522e370b85ddd4b": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getServicePopularity",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getServicePopularity"
+    },
+    "400ad969f4d32e82f0b0d79a1b61d22b9b657136e9": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getServicePrice",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getServicePrice"
+    },
+    "4011cfa5d565db15fadcfb6139574eb600657b080d": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getTopPerformers",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getTopPerformers"
+    },
+    "401f679af1d94ec45f41fc4f29eaa91bf5f0c56443": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "deleteService",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "deleteService"
+    },
+    "4020bcde5f8a1e7ee368388d1d68de035793ea4717": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getYearOverYearGrowth",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getYearOverYearGrowth"
+    },
+    "402407ac22a805954d7565afa9c1849c0b04ba074c": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getRepeatCustomerRate",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getRepeatCustomerRate"
+    },
+    "4024cd1a5f95b0528a1a4cf18ab664c0f1db77a1f7": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getServiceTypeDistribution",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getServiceTypeDistribution"
+    },
+    "402ac8f60cd73af0f5e24d924927feac19e8b3299c": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getRevenueByPaymentStatus",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getRevenueByPaymentStatus"
+    },
+    "402f617e2a4cffef469ceb5d6fdf1750cbb05ddbe5": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getMonthlyUserData",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getMonthlyUserData"
+    },
+    "4031c1c12021ffdca87ff5c8747e1f58331ebcc544": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getBookingStatusDistribution",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getBookingStatusDistribution"
+    },
+    "40448c4c54116ebc429b2c2ab0ec227ad709ab4ee5": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getServiceTypeComparison",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getServiceTypeComparison"
+    },
+    "4046cfb4817340f18b90b2ddd4edc4588c3019b806": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getBookingWithCleaners",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getBookingWithCleaners"
+    },
+    "404a7068315f4581547c549f4397372c1a92de04a9": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "createAdditionalService",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "createAdditionalService"
+    },
+    "404f25c89c091bda9a114df3bbbc2a9fdeb6aa6770": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAverageOrderValue",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getAverageOrderValue"
+    },
+    "405260ba29639f6ac6d1d7fdd688194f2b3944a94d": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCustomerLifetimeValue",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getCustomerLifetimeValue"
+    },
+    "4057a6a6b76a5597bbc80da19c1fa07d91aa67a7d9": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getServiceRules",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getServiceRules"
+    },
+    "407eaa5bd29c3d61dcd0e82e51198904f8f4c69dd5": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "deleteAdditionalService",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "deleteAdditionalService"
+    },
+    "408530f1520d3e70659f9b4dfef77d429d3d65707a": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAdditionalServicePrice",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getAdditionalServicePrice"
+    },
+    "4092476789f4f1ad4a1c9f60a21dc907c037165309": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getAdminStats",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getAdminStats"
+    },
     "409f29161cc3d02faa5d5819175e69698f9cbe385a": {
       "workers": {
-        "app/admin/(dashboard)/bookings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllBookings",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllBookings",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/reports/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllBookings",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/settings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllBookings",
-          "filename": "app/admin/actions.ts"
-        },
         "app/admin/(dashboard)/users/[id]/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getAllBookings",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/users/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getAllBookings",
           "filename": "app/admin/actions.ts"
         }
       },
       "layer": {
-        "app/admin/(dashboard)/bookings/page": "action-browser",
-        "app/admin/(dashboard)/page": "rsc",
-        "app/admin/(dashboard)/reports/page": "rsc",
-        "app/admin/(dashboard)/settings/page": "rsc",
-        "app/admin/(dashboard)/users/[id]/page": "rsc",
-        "app/admin/(dashboard)/users/page": "rsc"
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
       },
       "filename": "app/admin/actions.ts",
       "exportedName": "getAllBookings"
     },
+    "40b281e3e2e6aa66036b947d620294fc98178f2635": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPeriodComparison",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getPeriodComparison"
+    },
+    "40b2bfd5fdfbf794b8ab3f0a5057d9dc6da5e3fa18": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getBookingsForAssignment",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "action-browser"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getBookingsForAssignment"
+    },
+    "40b6005fe9921a03ff87fcf5435707dea3b7f371d2": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerPerformanceMetrics",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getCleanerPerformanceMetrics"
+    },
+    "40bbb74d2d3ea3259a2dc2686750b15583d3c54e23": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCustomerAcquisitionCost",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getCustomerAcquisitionCost"
+    },
+    "40bd94eff2cc9bf809965bce2d4bcdbb17d3d20306": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getRevenueByServiceType",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getRevenueByServiceType"
+    },
+    "40bdb74d8ba715827bc29bc755ff7760f45f5c47f1": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "createService",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "createService"
+    },
+    "40becce9c1f7c05d7ce48799e009b7923cd4adb1bc": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerBookingStats",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getCleanerBookingStats"
+    },
+    "40cbab06bd4de7c4c4073c6c25417f7eca3771f2e2": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCustomerRetentionRate",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getCustomerRetentionRate"
+    },
+    "40cfe4f10726ad622929985249c0b946c61f6f5ee3": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getRevenueTrends",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getRevenueTrends"
+    },
+    "40d55c5f4501727da2c555cfe1f6cbaf5ec2dd2bce": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getRatingStats",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getRatingStats"
+    },
+    "40e12648f4e39b3faead6ddbac8def821f5f660f87": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getMonthlyTransactionData",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getMonthlyTransactionData"
+    },
+    "40e56d3fb810bb84b2c3ace7e237165210c6123ef7": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerEarningsReport",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getCleanerEarningsReport"
+    },
+    "40e5858db763da57b015db21bf1c4db502b3bc884a": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getRevenueForecast",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getRevenueForecast"
+    },
+    "601f0889cd1c80334485cf784c30d12a3cf04a1cf0": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateService",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateService"
+    },
+    "603e12ad3623fab02311660d1f03cfcc647e786c65": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateAdditionalServicePrice",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateAdditionalServicePrice"
+    },
     "603f8b11f86ad400c9981577e45baa113ee887c0fa": {
       "workers": {
-        "app/admin/(dashboard)/bookings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "authenticateAdmin",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "authenticateAdmin",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/reports/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "authenticateAdmin",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/settings/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/settings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "authenticateAdmin",
-          "filename": "app/admin/actions.ts"
-        },
         "app/admin/(dashboard)/users/[id]/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "authenticateAdmin",
-          "filename": "app/admin/actions.ts"
-        },
-        "app/admin/(dashboard)/users/page": {
-          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "authenticateAdmin",
           "filename": "app/admin/actions.ts"
         }
       },
       "layer": {
-        "app/admin/(dashboard)/bookings/page": "rsc",
-        "app/admin/(dashboard)/page": "rsc",
-        "app/admin/(dashboard)/reports/page": "rsc",
-        "app/admin/(dashboard)/settings/page": "rsc",
-        "app/admin/(dashboard)/users/[id]/page": "rsc",
-        "app/admin/(dashboard)/users/page": "rsc"
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
       },
       "filename": "app/admin/actions.ts",
       "exportedName": "authenticateAdmin"
+    },
+    "60553bacb99b8afbda47a30faed433490bd8222b18": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateCleaner",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "action-browser"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateCleaner"
+    },
+    "6063bcd4f4bebcb36be741179f75fd85fb9913283d": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "assignCleanersToBookings",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "action-browser"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "assignCleanersToBookings"
+    },
+    "60732fc1d7942bc8304c7ebe6143417925c165a6df": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateCustomer",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "action-browser"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateCustomer"
+    },
+    "6085e3ecbbc94e253defa7519738268b8174ebff59": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "resetCleanerPassword",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "action-browser"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "resetCleanerPassword"
+    },
+    "60a903787909e53b48cffa2ccc58ae4797b45d7adb": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateAdditionalService",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateAdditionalService"
+    },
+    "60ad4dd9709e3012ff085268ec15297dfea640bb8c": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateServicePrice",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateServicePrice"
+    },
+    "60b76360dd990103d6e2f5f7364ee298566d9630cf": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateServiceRules",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateServiceRules"
+    },
+    "60c9a932f574768b968ad2167dc0f50a45c58808be": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "removeCleanerFromBooking",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "removeCleanerFromBooking"
+    },
+    "60dca3aa0396997e25aad261cbeade95167ab3f21f": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateBooking",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateBooking"
+    },
+    "60e62ecf6e5792a2edd7067ba80a2587be52c95b77": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateBookingStatus",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateBookingStatus"
+    },
+    "700351acdcac91776eda9d062e66d3c2f025a164ab": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "allocateCreditsToCustomer",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "allocateCreditsToCustomer"
+    },
+    "7032fb9ad53e762248e19ebd7baf63c576f3583ba4": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "adjustCustomerCredits",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "adjustCustomerCredits"
+    },
+    "704f7351d91641ace46163f3aaa0504f7da13357ad": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCustomerCreditTransactions",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "getCustomerCreditTransactions"
+    },
+    "705396d3b0b8103d2be8b06dac8c07f2791e627187": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "setCustomerCredits",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "setCustomerCredits"
+    },
+    "70b4559bfb9700d4ac5e16bdfad4a12f7b9d6119e6": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateCleanerEarnings",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "updateCleanerEarnings"
+    },
+    "70e2171f4fd22aa36f2f3213c9aef89c09af03f5d8": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "assignCleanersToBooking",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "rsc"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "assignCleanersToBooking"
+    },
+    "604a497a04f05efcb11f4e8a9d3ae8b946c7792ff1": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getNotifications",
+          "filename": "app/notifications/actions.ts"
+        },
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getNotifications",
+          "filename": "app/notifications/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getNotifications",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "action-browser",
+        "app/cleaner/(dashboard)/bookings/page": "action-browser",
+        "app/cleaner/(dashboard)/page": "action-browser"
+      },
+      "filename": "app/notifications/actions.ts",
+      "exportedName": "getNotifications"
+    },
+    "40413e7f909489684c9bcc1668a76d1b32f129be8d": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getUnreadCount",
+          "filename": "app/notifications/actions.ts"
+        },
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getUnreadCount",
+          "filename": "app/notifications/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getUnreadCount",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "action-browser",
+        "app/cleaner/(dashboard)/bookings/page": "action-browser",
+        "app/cleaner/(dashboard)/page": "action-browser"
+      },
+      "filename": "app/notifications/actions.ts",
+      "exportedName": "getUnreadCount"
+    },
+    "601f2dae89943fdd7ad4e92320842554fcff41980d": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "markAsRead",
+          "filename": "app/notifications/actions.ts"
+        },
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "markAsRead",
+          "filename": "app/notifications/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "markAsRead",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "action-browser",
+        "app/cleaner/(dashboard)/bookings/page": "action-browser",
+        "app/cleaner/(dashboard)/page": "action-browser"
+      },
+      "filename": "app/notifications/actions.ts",
+      "exportedName": "markAsRead"
+    },
+    "401b62d8bda24466c2f55521a8a9fced9394cbf750": {
+      "workers": {
+        "app/admin/(dashboard)/users/[id]/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/(dashboard)/users/[id]/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "markAllAsRead",
+          "filename": "app/notifications/actions.ts"
+        },
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "markAllAsRead",
+          "filename": "app/notifications/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "markAllAsRead",
+          "filename": "app/notifications/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/(dashboard)/users/[id]/page": "action-browser",
+        "app/cleaner/(dashboard)/bookings/page": "action-browser",
+        "app/cleaner/(dashboard)/page": "action-browser"
+      },
+      "filename": "app/notifications/actions.ts",
+      "exportedName": "markAllAsRead"
+    },
+    "006374c708226613b4f9f179bdcc22f548734a4b98": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerStats",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerStats",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "rsc",
+        "app/cleaner/(dashboard)/page": "action-browser"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "getCleanerStats"
+    },
+    "00cfc5487decda11050aba4d6adfc04c97edf6800a": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCurrentCleaner",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCurrentCleaner",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "action-browser",
+        "app/cleaner/(dashboard)/page": "action-browser"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "getCurrentCleaner"
+    },
+    "400c3b38a11e4946f9888927b9dcc25cc258d8b9d2": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "calculateBookingsEarnings",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "calculateBookingsEarnings",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "action-browser",
+        "app/cleaner/(dashboard)/page": "action-browser"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "calculateBookingsEarnings"
+    },
+    "404229d4a2391f70ae4e1636e65b58ce0172045828": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "calculateBookingEarnings",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "calculateBookingEarnings",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "rsc",
+        "app/cleaner/(dashboard)/page": "rsc"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "calculateBookingEarnings"
+    },
+    "407424f522637094128af18ea51884b5441885865a": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerBookingById",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerBookingById",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "rsc",
+        "app/cleaner/(dashboard)/page": "rsc"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "getCleanerBookingById"
+    },
+    "40a21f4363e61128aa708111c03e4b8f9a91215864": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerBookings",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerBookings",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "action-browser",
+        "app/cleaner/(dashboard)/page": "action-browser"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "getCleanerBookings"
+    },
+    "40e9c8b809fbb28f2cba0e39ec8776dc28f8f26b39": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerByPhone",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getCleanerByPhone",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "rsc",
+        "app/cleaner/(dashboard)/page": "rsc"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "getCleanerByPhone"
+    },
+    "60666f28190d6935704cc8de97891a902db58432f2": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "authenticateCleaner",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "authenticateCleaner",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "rsc",
+        "app/cleaner/(dashboard)/page": "rsc"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "authenticateCleaner"
+    },
+    "60973a8852eb904057fe83de54e909caee8024cf23": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateCleanerAvailability",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateCleanerAvailability",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "rsc",
+        "app/cleaner/(dashboard)/page": "rsc"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "updateCleanerAvailability"
+    },
+    "60a12ddac75796db4d4d4fc60138884ab06d6e90be": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateBookingStatus",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateBookingStatus",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "rsc",
+        "app/cleaner/(dashboard)/page": "rsc"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "updateBookingStatus"
+    },
+    "700855f263225f386c33ac1ae426b438ad205851f1": {
+      "workers": {
+        "app/cleaner/(dashboard)/bookings/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/bookings/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "reportLateness",
+          "filename": "app/cleaner/actions.ts"
+        },
+        "app/cleaner/(dashboard)/page": {
+          "moduleId": "[project]/.next-internal/server/app/cleaner/(dashboard)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/cleaner/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/notifications/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "reportLateness",
+          "filename": "app/cleaner/actions.ts"
+        }
+      },
+      "layer": {
+        "app/cleaner/(dashboard)/bookings/page": "rsc",
+        "app/cleaner/(dashboard)/page": "rsc"
+      },
+      "filename": "app/cleaner/actions.ts",
+      "exportedName": "reportLateness"
     }
   },
   "edge": {},

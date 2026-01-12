@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyWebhookSignature, verifyPayment } from '@/lib/paystack/client';
 import { createClient } from '@/lib/supabase/server';
 import { generateVoucherCode } from '@/lib/utils/voucher';
+import { createNotification } from '@/app/notifications/actions';
 
 export async function POST(request: NextRequest) {
   try {
@@ -386,6 +387,97 @@ export async function POST(request: NextRequest) {
                   totalCreditsUsed,
                   paystackAmount: paidAmount,
                 });
+
+                // Create notifications for successful payment
+                if (updatedBookings && updatedBookings.length > 0) {
+                  for (const booking of updatedBookings) {
+                    // Get full booking details for notification
+                    const { data: bookingDetails } = await supabase
+                      .from('bookings')
+                      .select('customer_email, booking_number, total_amount, preferred_cleaner_id, preferred_cleaner_ids')
+                      .eq('id', booking.id)
+                      .single();
+
+                    if (bookingDetails) {
+                      // Notification for customer
+                      await createNotification({
+                        user_email: bookingDetails.customer_email,
+                        user_type: 'customer',
+                        type: 'payment_received',
+                        title: 'Payment Received',
+                        message: `Your payment for booking ${bookingDetails.booking_number} has been confirmed.`,
+                        data: {
+                          booking_id: booking.id,
+                          booking_number: bookingDetails.booking_number,
+                          amount: bookingDetails.total_amount,
+                        },
+                      });
+
+                      // Notification for admin
+                      await createNotification({
+                        user_type: 'admin',
+                        type: 'payment_received',
+                        title: 'Payment Received',
+                        message: `Payment received for booking ${bookingDetails.booking_number} from ${bookingDetails.customer_email}.`,
+                        data: {
+                          booking_id: booking.id,
+                          booking_number: bookingDetails.booking_number,
+                          amount: bookingDetails.total_amount,
+                          customer_email: bookingDetails.customer_email,
+                        },
+                      });
+
+                      // Notification for assigned cleaner(s)
+                      if (bookingDetails.preferred_cleaner_id) {
+                        const { data: cleaner } = await supabase
+                          .from('cleaners')
+                          .select('id, email')
+                          .eq('id', bookingDetails.preferred_cleaner_id)
+                          .single();
+
+                        if (cleaner) {
+                          await createNotification({
+                            user_id: cleaner.id,
+                            user_email: cleaner.email || undefined,
+                            user_type: 'cleaner',
+                            type: 'booking_confirmed',
+                            title: 'Booking Confirmed',
+                            message: `Booking ${bookingDetails.booking_number} has been confirmed and payment received.`,
+                            data: {
+                              booking_id: booking.id,
+                              booking_number: bookingDetails.booking_number,
+                            },
+                          });
+                        }
+                      }
+
+                      // Handle multiple cleaners
+                      if (bookingDetails.preferred_cleaner_ids && Array.isArray(bookingDetails.preferred_cleaner_ids)) {
+                        const { data: cleaners } = await supabase
+                          .from('cleaners')
+                          .select('id, email')
+                          .in('id', bookingDetails.preferred_cleaner_ids);
+
+                        if (cleaners) {
+                          for (const cleaner of cleaners) {
+                            await createNotification({
+                              user_id: cleaner.id,
+                              user_email: cleaner.email || undefined,
+                              user_type: 'cleaner',
+                              type: 'booking_confirmed',
+                              title: 'Booking Confirmed',
+                              message: `Booking ${bookingDetails.booking_number} has been confirmed and payment received.`,
+                              data: {
+                                booking_id: booking.id,
+                                booking_number: bookingDetails.booking_number,
+                              },
+                            });
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             } else {
               console.log('All bookings already processed:', {
