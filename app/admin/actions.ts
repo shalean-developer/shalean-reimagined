@@ -3447,7 +3447,12 @@ export async function getCleanerBookingStats(filter?: {
       return { success: false, error: bookingsError.message };
     }
 
-    const statsByCleaner: { [key: string]: { [status: string]: number; total: number; name: string } } = {};
+    interface CleanerStats {
+      [status: string]: number | string;
+      total: number;
+      name: string;
+    }
+    const statsByCleaner: { [key: string]: CleanerStats } = {};
 
     cleaners?.forEach((cleaner) => {
       statsByCleaner[cleaner.id] = {
@@ -3474,7 +3479,8 @@ export async function getCleanerBookingStats(filter?: {
       cleanerIds.forEach((cleanerId) => {
         if (!statsByCleaner[cleanerId]) return;
         statsByCleaner[cleanerId].total += 1;
-        statsByCleaner[cleanerId][status] = (statsByCleaner[cleanerId][status] || 0) + 1;
+        const currentCount = typeof statsByCleaner[cleanerId][status] === 'number' ? statsByCleaner[cleanerId][status] as number : 0;
+        statsByCleaner[cleanerId][status] = currentCount + 1;
       });
     });
 

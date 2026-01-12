@@ -40,7 +40,7 @@ const REPORT_TYPES = [
 
 export function ExportDialog({ onExport, loading }: ExportDialogProps) {
   const [open, setOpen] = useState(false);
-  const [format, setFormat] = useState<'csv' | 'pdf'>('csv');
+  const [exportFormat, setExportFormat] = useState<'csv' | 'pdf'>('csv');
   const [reportType, setReportType] = useState('revenue');
   const [dateFrom, setDateFrom] = useState<Date | undefined>();
   const [dateTo, setDateTo] = useState<Date | undefined>();
@@ -48,7 +48,7 @@ export function ExportDialog({ onExport, loading }: ExportDialogProps) {
 
   const handleExport = () => {
     onExport({
-      format,
+      format: exportFormat,
       reportType,
       dateFrom: dateFrom ? dateFrom.toISOString().split('T')[0] : undefined,
       dateTo: dateTo ? dateTo.toISOString().split('T')[0] : undefined,
@@ -88,7 +88,7 @@ export function ExportDialog({ onExport, loading }: ExportDialogProps) {
           {/* Format Selection */}
           <div className="space-y-2">
             <Label>Export Format</Label>
-            <RadioGroup value={format} onValueChange={(value) => setFormat(value as 'csv' | 'pdf')}>
+            <RadioGroup value={exportFormat} onValueChange={(value) => setExportFormat(value as 'csv' | 'pdf')}>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="csv" id="csv" />
                 <Label htmlFor="csv" className="font-normal cursor-pointer">

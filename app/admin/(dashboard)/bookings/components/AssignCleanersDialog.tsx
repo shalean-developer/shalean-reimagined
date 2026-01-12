@@ -214,19 +214,19 @@ export function AssignCleanersDialog({ open, onOpenChange, booking, onSuccess }:
         onEscapeKeyDown={(e) => {
           if (!loading) {
             e.preventDefault();
-            handleClose(e);
+            handleClose();
           }
         }}
         onPointerDownOutside={(e) => {
           if (!loading) {
             e.preventDefault();
-            handleClose(e);
+            handleClose();
           }
         }}
         onInteractOutside={(e) => {
           if (!loading) {
             e.preventDefault();
-            handleClose(e);
+            handleClose();
           }
         }}
       >

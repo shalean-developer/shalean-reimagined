@@ -306,7 +306,7 @@ export function CleanerPerformanceChart({ performanceData, earningsData, loading
                               {payload.map((entry, index) => (
                                 <div key={index} className="text-sm">
                                   <span style={{ color: entry.color }}>{entry.name}:</span>{' '}
-                                  {entry.value?.toFixed(1)}%
+                                  {typeof entry.value === 'number' ? entry.value.toFixed(1) : entry.value}%
                                 </div>
                               ))}
                             </div>

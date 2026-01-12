@@ -136,12 +136,7 @@ export default function AdminDashboardPage() {
   const { data: topUsers } = useQuery({
     queryKey: ['top-active-users', filterParams.dateFrom, filterParams.dateTo, filterParams.status, filterParams.serviceType],
     queryFn: async () => {
-      const result = await getTopActiveUsers({
-        dateFrom: filterParams.dateFrom,
-        dateTo: filterParams.dateTo,
-        status: filterParams.status,
-        serviceType: filterParams.serviceType,
-      });
+      const result = await getTopActiveUsers();
       return result.success ? result.users : [];
     },
     enabled: !!admin,

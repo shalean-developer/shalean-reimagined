@@ -1,7 +1,6 @@
 'use client';
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { ChartContainer } from '@/components/ui/chart';
 
 interface BookingStatsChartProps {
   data: { status: string; count: number; percentage: number }[];
@@ -51,7 +50,7 @@ export function BookingStatsChart({ data, total, growthPercentage }: BookingStat
 
   return (
     <div className="w-full">
-      <ChartContainer config={{}} className="h-[220px] w-full relative">
+      <div className="h-[220px] w-full relative">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -77,7 +76,7 @@ export function BookingStatsChart({ data, total, growthPercentage }: BookingStat
             <p className="text-xs text-gray-500 uppercase mt-1">GROWTH</p>
           </div>
         </div>
-      </ChartContainer>
+      </div>
       
       {/* Custom Legend - Two Column Layout matching image design */}
       <div className="mt-4 flex gap-8">
